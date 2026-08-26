@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Обиход — небольшие приложения для повседневных дел</title>
+<meta name="description" content="Обиход делает небольшие Android-приложения для повседневных дел: гороскоп, звуки для сна, трекеры. Работают офлайн, без регистрации и лишних разрешений. Скачать в RuStore.">
+<link rel="canonical" href="https://obihodapp.ru/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Обиход — небольшие приложения для повседневных дел">
+<meta property="og:description" content="Небольшие Android-приложения, которые работают офлайн и не просят лишнего.">
+<meta property="og:url" content="https://obihodapp.ru/">
+<meta property="og:locale" content="ru_RU">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Обиход",
+  "url": "https://obihodapp.ru/",
+  "description": "Разработчик небольших Android-приложений для повседневных дел.",
+  "email": "support@obihodapp.ru",
+  "founder": {
+    "@type": "Person",
+    "name": "Алексей Скурихин"
+  },
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "ИНН", "value": "505012949491" },
+    { "@type": "PropertyValue", "propertyID": "ОГРНИП", "value": "326508100181350" }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1c1a17;
+    --ink-soft: #5d574e;
+    --ink-faint: #8d857a;
+    --rule: #e5ded4;
+    --accent: #a8471f;
+    --measure: 34rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f;
+      --surface: #1e1d16;
+      --ink: #f2ede4;
+      --ink-soft: #b3aa9c;
+      --ink-faint: #857d70;
+      --rule: #302e25;
+      --accent: #e08b5c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.65 ui-serif, "Georgia", "Times New Roman", serif;
+    padding: clamp(2rem, 8vw, 6rem) 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  main { width: 100%; max-width: var(--measure); }
+  .mark {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 2.5rem;
+  }
+  h1 {
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1.25rem; color: var(--ink-soft); }
+  p.lead { color: var(--ink); }
+  h2 {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 1rem;
+  }
+  section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  ul { margin: 0; padding: 0; list-style: none; }
+  li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  li:last-child { border-bottom: 0; }
+  li b { font-weight: 400; color: var(--ink); }
+  li span {
+    font-family: ui-sans-serif, -apple-system, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration: none; }
+  dl { margin: 0; font-size: 0.93rem; color: var(--ink-soft); }
+  dl div { display: flex; gap: 0.75rem; padding: 0.35rem 0; flex-wrap: wrap; }
+  dt { color: var(--ink-faint); min-width: 8.5rem; }
+  dd { margin: 0; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    font-family: ui-sans-serif, -apple-system, sans-serif;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="mark">Обиход</p>
+
+  <h1>Небольшие приложения для повседневных дел</h1>
+
+  <p class="lead">Гороскоп на утро, звуки для сна, трекеры привычек и воды — то, чем пользуются каждый день и не задумываются об этом. Отсюда и название.</p>
+
+  <p>Мы делаем приложения, которые открываются на секунду и делают одно дело. Они работают офлайн, не просят регистрацию и берут ровно те разрешения, без которых не обойтись. Тёмная тема есть везде.</p>
+
+  <section>
+    <h2>Приложения</h2>
+    <ul>
+      <li><b>Гороскоп на день</b> <span>готовится</span></li>
+      <li><b>Звуки для сна</b> <span>готовится</span></li>
+      <li><b>Детектор лжи</b> <span>готовится</span></li>
+    </ul>
+    <p style="margin-top:1.25rem;font-size:0.93rem">Все приложения выходят в <a href="https://www.rustore.ru/">RuStore</a>. Ссылки появятся здесь после публикации.</p>
+  </section>
+
+  <section>
+    <h2>Связаться</h2>
+    <p>По вопросам о приложениях, ошибкам и предложениям: <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>. Отвечаем в течение рабочего дня.</p>
+  </section>
+
+  <section>
+    <h2>Реквизиты</h2>
+    <dl>
+      <div><dt>Разработчик</dt><dd>ИП Скурихин Алексей Владимирович</dd></div>
+      <div><dt>ИНН</dt><dd>505012949491</dd></div>
+      <div><dt>ОГРНИП</dt><dd>326508100181350</dd></div>
+      <div><dt>Почта</dt><dd><a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a></dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <a href="/privacy/">Политика конфиденциальности</a> · © 2026 Обиход
+  </footer>
+
+</main>
+</body>
+</html>
