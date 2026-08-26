@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности — Обиход</title>
+<meta name="description" content="Как приложения Обихода обрабатывают данные: обезличенная статистика AppMetrica, рекламный идентификатор, покупки через RuStore. Регистрация не нужна, данные хранятся на устройстве.">
+<link rel="canonical" href="https://obihodapp.ru/privacy/">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e;
+    --ink-faint: #8d857a; --rule: #e5ded4; --accent: #a8471f; --measure: 38rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f; --surface: #1e1d16; --ink: #f2ede4; --ink-soft: #b3aa9c;
+      --ink-faint: #857d70; --rule: #302e25; --accent: #e08b5c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 16px/1.7 ui-serif, "Georgia", "Times New Roman", serif;
+    padding: clamp(2rem, 7vw, 5rem) 1.5rem; display: flex; justify-content: center;
+  }
+  main { width: 100%; max-width: var(--measure); }
+  .back {
+    display: inline-block; margin-bottom: 2.5rem;
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    color: var(--accent); text-decoration: none;
+  }
+  .back:hover { text-decoration: underline; }
+  h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; font-weight: 400;
+    letter-spacing: -0.015em; margin: 0 0 0.5rem; text-wrap: balance;
+  }
+  .rev {
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem;
+    color: var(--ink-faint); margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.1rem; font-weight: 600; margin: 2.75rem 0 0.9rem;
+    padding-top: 1.75rem; border-top: 1px solid var(--rule); letter-spacing: -0.01em;
+  }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.6rem; }
+  p, li { color: var(--ink-soft); }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:hover { text-decoration: none; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.93rem; }
+  th, td { text-align: left; padding: 0.6rem 0.5rem 0.6rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  td { color: var(--ink-soft); }
+  .wrap { overflow-x: auto; }
+  strong { color: var(--ink); font-weight: 600; }
+  footer {
+    margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--rule);
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem; color: var(--ink-faint);
+  }
+</style>
+</head>
+<body>
+<main>
+
+<a class="back" href="/">← Обиход</a>
+
+<h1>Политика конфиденциальности</h1>
+<p class="rev">Редакция от 26 августа 2026 г. Действует для сайта obihodapp.ru и приложений Обихода, у которых нет отдельной политики.</p>
+
+<h2>1. Кто обрабатывает данные</h2>
+<p>Оператор персональных данных — индивидуальный предприниматель Скурихин Алексей Владимирович (далее — «Разработчик»).</p>
+<ul>
+  <li>ИНН: 505012949491</li>
+  <li>ОГРНИП: 326508100181350</li>
+  <li>Электронная почта: <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a></li>
+</ul>
+<p>Политика составлена в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». У каждого приложения есть собственная политика по адресу <code>obihodapp.ru/&lt;приложение&gt;/privacy/</code> — перечень собираемых данных у приложений различается.</p>
+
+<h2>2. Главный принцип</h2>
+<p>Приложения Обихода спроектированы так, чтобы собирать как можно меньше. Разработчик <strong>не запрашивает</strong> имя, телефон, адрес электронной почты, геолокацию, доступ к контактам, камере, микрофону и файлам, если это прямо не указано в политике конкретного приложения. Регистрация и аккаунт не требуются.</p>
+<p>Данные, которые вы вводите в приложении, хранятся <strong>только на вашем устройстве</strong> и Разработчику не передаются. Собственных серверов у приложений нет.</p>
+
+<h2>3. Какие данные обрабатываются</h2>
+
+<h3>3.1. Обезличенная статистика использования</h3>
+<p>Приложения используют сервис аналитики <strong>AppMetrica</strong> (АО «Яндекс»). Собираются модель устройства, версия операционной системы, язык и регион, версия приложения, обезличенный идентификатор установки, события внутри приложения (запуск, прохождение онбординга, основное действие, покупка, показ рекламы) и IP-адрес, из которого определяется только страна и город.</p>
+<p><strong>Цель:</strong> понять, какими функциями пользуются, где возникают ошибки, и улучшать приложение. <strong>Правовое основание:</strong> законный интерес Разработчика в обеспечении работоспособности и развитии приложения. Политика AppMetrica: <a href="https://yandex.ru/legal/confidential/" rel="nofollow">yandex.ru/legal/confidential</a></p>
+
+<h3>3.2. Рекламный идентификатор</h3>
+<p>Приложения с рекламой показывают её через <strong>Рекламную сеть Яндекса</strong>. Передаются рекламный идентификатор устройства (Advertising ID / AppSet ID), тип устройства, версия ОС, язык, приблизительное местоположение на уровне города и сведения о показанной рекламе.</p>
+<p><strong>Цель:</strong> показ рекламы и расчёт вознаграждения. <strong>Правовое основание:</strong> согласие, которое даётся при первом запуске приложения и может быть отозвано. Рекламный идентификатор можно сбросить в настройках Android: «Настройки → Google → Реклама».</p>
+
+<h3>3.3. Покупки и подписка</h3>
+<p>Оплата проходит на стороне <strong>RuStore</strong>. Данные банковской карты вводятся в интерфейсе RuStore, Разработчику <strong>не передаются</strong> и им не хранятся. Разработчик получает только факт покупки, её идентификатор, наименование тарифа и дату.</p>
+<p><strong>Правовое основание:</strong> исполнение договора (оферты) с пользователем.</p>
+
+<h3>3.4. Обращения в поддержку</h3>
+<p>Если вы пишете на support@obihodapp.ru, Разработчик обрабатывает ваш адрес электронной почты и содержание письма — только для ответа на обращение.</p>
+
+<h3>3.5. Сайт obihodapp.ru</h3>
+<p>Сайт не использует счётчики, рекламные пиксели и файлы cookie для отслеживания. Хостинг фиксирует стандартные журналы обращений (IP-адрес, время запроса, User-Agent) для обеспечения работоспособности.</p>
+
+<h2>4. Чего Разработчик не делает</h2>
+<ul>
+  <li>Не продаёт персональные данные и не передаёт их третьим лицам, кроме сервисов из раздела 3.</li>
+  <li>Не собирает данные о здоровье, вероисповедании, национальности и иные специальные категории персональных данных.</li>
+  <li>Не осуществляет трансграничную передачу: серверы AppMetrica, Рекламной сети Яндекса и RuStore находятся в Российской Федерации.</li>
+  <li>Не принимает решений, порождающих юридические последствия, исключительно на основе автоматизированной обработки.</li>
+</ul>
+
+<h2>5. Сроки хранения</h2>
+<div class="wrap">
+<table>
+  <thead><tr><th>Данные</th><th>Срок</th></tr></thead>
+  <tbody>
+    <tr><td>Обезличенная статистика в AppMetrica</td><td>не более 24 месяцев</td></tr>
+    <tr><td>Данные, введённые вами в приложении</td><td>до удаления вами или до удаления приложения</td></tr>
+    <tr><td>Сведения о покупках</td><td>5 лет — срок хранения документов бухгалтерского учёта</td></tr>
+    <tr><td>Переписка с поддержкой</td><td>1 год с даты последнего письма</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>6. Ваши права</h2>
+<p>Вы вправе получить сведения об обработке ваших данных, потребовать их уточнения, блокирования или уничтожения, а также отозвать согласие.</p>
+<ul>
+  <li><strong>Удалить данные из приложения:</strong> экран «Настройки → Удалить мои данные». Действие стирает все локальные данные без возможности восстановления.</li>
+  <li><strong>Отозвать согласие на персонализированную рекламу:</strong> экран «Настройки → Реклама» либо сброс рекламного идентификатора в настройках Android.</li>
+  <li><strong>Обратиться к Разработчику:</strong> письмо на <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a> с темой «Персональные данные». Ответ — в течение 10 рабочих дней, как требует ч. 1 ст. 20 152-ФЗ.</li>
+  <li><strong>Пожаловаться:</strong> в Роскомнадзор — <a href="https://rkn.gov.ru/treatments/ask-question/" rel="nofollow">rkn.gov.ru</a></li>
+</ul>
+
+<h2>7. Дети</h2>
+<p>Приложения не адресованы детям младше возраста, указанного в возрастном рейтинге карточки приложения, и не собирают осознанно данные таких пользователей. Если вам стало известно, что ребёнок передал данные Разработчику, напишите на support@obihodapp.ru — данные будут удалены.</p>
+
+<h2>8. Безопасность</h2>
+<p>Передача данных сервисам из раздела 3 идёт по защищённому соединению (TLS). Данные на устройстве защищены штатными средствами Android и доступны только приложению. Разработчик не хранит персональные данные пользователей на собственных серверах.</p>
+
+<h2>9. Изменения политики</h2>
+<p>Актуальная редакция всегда доступна по адресу <a href="https://obihodapp.ru/privacy/">obihodapp.ru/privacy/</a>. При существенных изменениях Разработчик показывает уведомление внутри приложения. Дата редакции указана в начале документа.</p>
+
+<footer>
+  ИП Скурихин Алексей Владимирович · ИНН 505012949491 · ОГРНИП 326508100181350 · <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>
+</footer>
+
+</main>
+</body>
+</html>
