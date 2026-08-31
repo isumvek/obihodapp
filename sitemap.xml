@@ -6,8 +6,18 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://obihodapp.ru/habits/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://obihodapp.ru/privacy/</loc>
-    <lastmod>2026-08-26</lastmod>
+    <lastmod>2026-08-31</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://obihodapp.ru/habits/offer/</loc>
+    <lastmod>2026-08-31</lastmod>
     <priority>0.5</priority>
   </url>
 </urlset>

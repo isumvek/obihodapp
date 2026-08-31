@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Трекер привычек на месяц: бесплатный шаблон А4 и приложение — Обиход</title>
+<meta name="description" content="Скачайте бесплатный шаблон трекера привычек на месяц для печати на А4 (PDF, без регистрации) — сетка на 31 день и лист одной привычки на 30 дней. А когда листка станет мало — приложение «Трекер привычек — Обиход» для Android: напоминания, серии, работает офлайн.">
+<link rel="canonical" href="https://obihodapp.ru/habits/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Трекер привычек на месяц: бесплатный шаблон А4 и приложение">
+<meta property="og:description" content="Шаблон для печати — бесплатно и без регистрации. Приложение с напоминаниями и сериями — скоро в RuStore.">
+<meta property="og:url" content="https://obihodapp.ru/habits/">
+<meta property="og:locale" content="ru_RU">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Трекер привычек — Обиход",
+  "operatingSystem": "Android",
+  "applicationCategory": "HealthApplication",
+  "description": "Трекер привычек с напоминаниями, сериями и статистикой. Работает офлайн, без регистрации. До 3 привычек бесплатно; подписка снимает лимит и отключает рекламу.",
+  "inLanguage": "ru",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "RUB",
+    "lowPrice": "0",
+    "highPrice": "990",
+    "offerCount": "4"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Обиход",
+    "url": "https://obihodapp.ru/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Сколько дней формируется привычка — правда ли 21 день?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Единого срока нет: исследования называют от 18 до 254 дней в зависимости от привычки и человека. «21 день» — удобный ориентир для старта, но решает не дата, а регулярность. Трекер делает её видимой: растущая серия и заполненный календарь мотивируют сильнее календарного срока." }
+    },
+    {
+      "@type": "Question",
+      "name": "Чем приложение лучше, чем трекер привычек на месяц, распечатанный на А4?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Бумажный шаблон не напомнит вечером и не посчитает процент за месяц. Приложение делает то же самое само: серии и статистика без ручного подсчёта, напоминания вместо стикера на холодильнике, история не теряется вместе с листком." }
+    },
+    {
+      "@type": "Question",
+      "name": "Трекер привычек работает без интернета?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да. Данные хранятся на вашем устройстве, интернет приложению не нужен: отметки, серии, статистика и напоминания работают без сети." }
+    },
+    {
+      "@type": "Question",
+      "name": "Можно ли вести счётчик дней без вредной привычки — курения, алкоголя, сахара?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да, это отдельный тип привычки — «не делать». Заведите «без сигарет», «без сладкого» или «без алкоголя», и счётчик чистых дней будет расти сам. Срыв честно начнёт отсчёт заново, но история сохранится." }
+    },
+    {
+      "@type": "Question",
+      "name": "Что будет с прогрессом, если пропустить день?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Забытый день прерывает серию — иначе серия ничего бы не значила. Но осознанный пропуск (болезнь, отпуск) отмечается отдельно: он серию не рвёт и не удлиняет. А если сделали, но забыли записать — день можно отметить задним числом." }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e;
+    --ink-faint: #8d857a; --rule: #e5ded4; --accent: #a8471f;
+    --measure: 40rem; --wide: 56rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f; --surface: #1e1d16; --ink: #f2ede4; --ink-soft: #b3aa9c;
+      --ink-faint: #857d70; --rule: #302e25; --accent: #e08b5c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 17px/1.65 ui-serif, "Georgia", "Times New Roman", serif;
+    padding: clamp(2rem, 7vw, 5rem) 1.5rem;
+    display: flex; justify-content: center;
+  }
+  .page { width: 100%; max-width: var(--wide); }
+  .narrow { max-width: var(--measure); }
+  .mark {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 600; font-size: 0.8rem; letter-spacing: 0.16em;
+    text-transform: uppercase; margin: 0 0 2.5rem;
+  }
+  .mark a { color: var(--accent); text-decoration: none; }
+  .mark span { color: var(--ink-faint); font-weight: 400; }
+  h1 {
+    font-size: clamp(1.9rem, 6vw, 2.7rem); line-height: 1.15; font-weight: 400;
+    letter-spacing: -0.015em; margin: 0 0 1.25rem; text-wrap: balance;
+  }
+  p { margin: 0 0 1.25rem; color: var(--ink-soft); }
+  .lead { color: var(--ink); font-size: 1.05em; }
+  h2 {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-faint); margin: 0 0 1.25rem;
+  }
+  section { margin-top: 3.5rem; padding-top: 2.25rem; border-top: 1px solid var(--rule); }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration: none; }
+
+  .hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,300px); gap: 3rem; align-items: start; }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .cta-row { display: flex; gap: 0.75rem 1rem; flex-wrap: wrap; align-items: center; margin: 1.75rem 0 0.5rem; }
+  .btn {
+    display: inline-block; background: var(--accent); color: var(--bg);
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.95rem; font-weight: 600;
+    padding: 0.8rem 1.4rem; border-radius: 6px; text-decoration: none;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .soon {
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem;
+    color: var(--ink-faint); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 0.75rem 1.1rem;
+  }
+  .fineprint { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.8rem; color: var(--ink-faint); }
+
+  /* превью шаблона — вёрстка, не картинка */
+  .sheet {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 1.1rem 1.1rem 0.9rem; font-family: ui-sans-serif, -apple-system, sans-serif;
+  }
+  .sheet .t { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.7rem; }
+  .grid { display: grid; grid-template-columns: 6.5rem repeat(7, 1fr); gap: 4px; font-size: 0.68rem; color: var(--ink-soft); }
+  .grid .h { color: var(--ink-faint); text-align: center; }
+  .grid .n { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cell { aspect-ratio: 1; border: 1px solid var(--rule); border-radius: 3px; text-align: center; line-height: 1.6; }
+  .done { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .skip { color: var(--ink-faint); }
+  .sheet .cap { margin: 0.8rem 0 0; font-size: 0.72rem; color: var(--ink-faint); }
+
+  table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 0.7rem 0.6rem 0.7rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  td { color: var(--ink-soft); }
+  td.y { color: var(--ink); }
+  .wrap { overflow-x: auto; }
+
+  ol.steps { margin: 0; padding-left: 1.2rem; color: var(--ink-soft); }
+  ol.steps li { margin-bottom: 0.6rem; }
+
+  details { border-bottom: 1px solid var(--rule); padding: 0.9rem 0; }
+  details:first-of-type { border-top: 1px solid var(--rule); }
+  summary { cursor: pointer; color: var(--ink); font-weight: 400; }
+  summary::marker { color: var(--accent); }
+  details p { margin: 0.75rem 0 0.25rem; }
+
+  footer {
+    margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--rule);
+    font-size: 0.85rem; color: var(--ink-faint);
+    font-family: ui-sans-serif, -apple-system, sans-serif;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="mark"><a href="/">Обиход</a> <span>· трекер привычек</span></p>
+
+  <div class="hero">
+    <div>
+      <h1>Трекер привычек на месяц — на бумаге уже сегодня, в телефоне скоро</h1>
+      <p class="lead">Скачайте бесплатный шаблон трекера привычек для печати на А4: сетка на 31 день для пяти привычек и лист одной привычки на 30 дней. Без регистрации, почты и оплаты — просто PDF.</p>
+      <div class="cta-row">
+        <a class="btn" href="/habits/shablon-trekera-privychek-a4.pdf" download>Скачать шаблон А4 (PDF)</a>
+        <span class="soon">Приложение — скоро в RuStore</span>
+      </div>
+      <p class="fineprint">PDF откроется и распечатается на любом устройстве. Мы не спрашиваем почту: файл просто скачивается.</p>
+    </div>
+    <div class="sheet" aria-hidden="true">
+      <div class="t">Неделя из шаблона</div>
+      <div class="grid">
+        <div></div><div class="h">пн</div><div class="h">вт</div><div class="h">ср</div><div class="h">чт</div><div class="h">пт</div><div class="h">сб</div><div class="h">вс</div>
+        <div class="n">Зарядка</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell skip">—</div><div class="cell done">✓</div>
+        <div class="n">Чтение 20 мин</div><div class="cell done">✓</div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div>
+        <div class="n">Стакан воды</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div>
+        <div class="n">Без сладкого</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div>
+      </div>
+      <p class="cap">✓ сделано · — осознанный пропуск · пустая клетка — не вышло</p>
+    </div>
+  </div>
+
+  <section class="narrow">
+    <h2>Как пользоваться шаблоном</h2>
+    <ol class="steps">
+      <li>Распечатайте лист и повесьте на видное место — холодильник и рабочий стол работают лучше ящика.</li>
+      <li>Впишите до пяти привычек. Начать с одной — самый надёжный вариант: привычки приживаются по очереди.</li>
+      <li>Каждый вечер ставьте отметку. Сделали — галочка. Осознанно пропустили (болезнь, дорога) — прочерк: он не рвёт серию. Пустая клетка — честный пропуск.</li>
+      <li>В конце месяца посчитайте лучшую серию и процент — на листе есть строка для итогов.</li>
+    </ol>
+  </section>
+
+  <section class="narrow">
+    <h2>Бумага честная, но у неё есть пределы</h2>
+    <div class="wrap">
+    <table>
+      <tr><th></th><th>Лист А4</th><th>Приложение</th></tr>
+      <tr><td class="y">Напомнить вечером</td><td>стикер, если заметите</td><td>уведомление в выбранное время — с диагностикой, почему не пришло</td></tr>
+      <tr><td class="y">Посчитать серию и проценты</td><td>вручную в конце месяца</td><td>считается само, серия видна каждый день</td></tr>
+      <tr><td class="y">Забыли отметить вчера</td><td>клетка потеряна</td><td>отметка задним числом</td></tr>
+      <tr><td class="y">Отпуск или болезнь</td><td>дырка в сетке</td><td>пауза и осознанный пропуск — серия не сгорает</td></tr>
+      <tr><td class="y">История за полгода</td><td>стопка листков</td><td>календарь и графики за всё время</td></tr>
+    </table>
+    </div>
+    <p>Поэтому мы делаем «Трекер привычек — Обиход» для Android: до 3 привычек бесплатно и без ограничения по времени, работает офлайн, без регистрации, данные остаются на вашем устройстве. Выйдет в RuStore — ссылка появится на этой странице.</p>
+  </section>
+
+  <section class="narrow">
+    <h2>Частые вопросы</h2>
+    <details>
+      <summary>Сколько дней формируется привычка — правда ли 21 день?</summary>
+      <p>Единого срока нет: исследования называют от 18 до 254 дней в зависимости от привычки и человека. «21 день» — удобный ориентир для старта, но решает не дата, а регулярность — и трекер делает её видимой.</p>
+    </details>
+    <details>
+      <summary>Шаблон точно бесплатный? Что вы за это берёте?</summary>
+      <p>Точно. Ни оплаты, ни почты, ни регистрации — файл просто скачивается. Мы рассчитываем, что когда листка станет мало, вы вспомните про наше приложение.</p>
+    </details>
+    <details>
+      <summary>Можно вести счётчик дней без вредной привычки?</summary>
+      <p>На бумаге — вторая страница шаблона: лист одной привычки на 30 дней, подходит для «без сигарет» или «без сладкого». В приложении это отдельный тип привычки «не делать» со счётчиком чистых дней.</p>
+    </details>
+    <details>
+      <summary>Что будет с серией, если пропустить день?</summary>
+      <p>Забытый день прерывает серию — иначе она ничего бы не значила. Осознанный пропуск отмечается отдельно (на бумаге — прочерк) и серию не рвёт. В приложении забытый день можно отметить задним числом.</p>
+    </details>
+    <details>
+      <summary>Приложение будет работать без интернета?</summary>
+      <p>Да. Данные хранятся на устройстве и никуда не отправляются, сеть нужна только для подписки и рекламы в бесплатной версии. Отметки, серии, статистика и напоминания работают офлайн.</p>
+    </details>
+  </section>
+
+  <footer>
+    <a href="/privacy/">Политика конфиденциальности</a> · <a href="/habits/offer/">Оферта на подписку</a> · <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a><br>
+    ИП Скурихин Алексей Владимирович · ИНН 505012949491 · ОГРНИП 326508100181350 · © 2026 Обиход
+  </footer>
+
+</div>
+<!-- TODO при релизе: кнопку «Скоро в RuStore» заменить ссылкой
+     https://www.rustore.ru/catalog/app/ru.obihod.habits?referrer=landing_habits
+     и добавить в SoftwareApplication поля installUrl и downloadUrl. -->
+</body>
+</html>
