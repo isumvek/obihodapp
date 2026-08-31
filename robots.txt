@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://obihodapp.ru/sitemap.xml
-
-# проверка автопубликации 31.08.2026
