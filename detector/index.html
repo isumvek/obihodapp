@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Детектор лжи — приложение-игра без микрофона и разрешений | Обиход</title>
+<meta name="description" content="Детектор лжи для компании: приложил палец, подержал три секунды — вердикт. Это игра: приложение не определяет ложь и не просит ни микрофон, ни камеру. Android, скоро в RuStore.">
+<link rel="canonical" href="https://obihodapp.ru/detector/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Детектор лжи — приложение-игра без микрофона и разрешений">
+<meta property="og:description" content="Приложил палец, подержал три секунды — вердикт. Это игра, а не прибор.">
+<meta property="og:url" content="https://obihodapp.ru/detector/">
+<meta property="og:locale" content="ru_RU">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Детектор лжи — Обиход",
+  "operatingSystem": "Android",
+  "applicationCategory": "GameApplication",
+  "description": "Шуточный детектор лжи для компании. Удержание пальца три секунды, вердикт «правда», «ложь» или «не определено». Приложение не определяет ложь и не запрашивает разрешений.",
+  "inLanguage": "ru",
+  "contentRating": "6+",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "RUB",
+    "price": "0"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Обиход",
+    "url": "https://obihodapp.ru/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Детектор лжи в телефоне работает по-настоящему?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Нет, и ни одно приложение не работает. Полиграф измеряет дыхание, давление, проводимость кожи и требует датчиков, которых в телефоне нет. Наше приложение — игра, и оно говорит об этом прямо на экране результата."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Почему приложение не просит разрешений?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Потому что ему нечего просить. Ни микрофон, ни камера, ни геолокация для игры не нужны. Приложения, которые просят микрофон ради «анализа голоса», анализируют им ровно ничего."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Приложение сохраняет мои вопросы?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Нет. Вопрос живёт в памяти до следующего результата, история ответов не ведётся вообще. В аналитику уходит только признак «вопрос был введён» или «не был»."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1c1a17;
+    --ink-soft: #5d574e;
+    --ink-faint: #8d857a;
+    --rule: #e5ded4;
+    --accent: #a8471f;
+    --measure: 34rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f;
+      --surface: #1e1d16;
+      --ink: #f2ede4;
+      --ink-soft: #b3aa9c;
+      --ink-faint: #857d70;
+      --rule: #302e25;
+      --accent: #e08b5c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.65 ui-serif, "Georgia", "Times New Roman", serif;
+    padding: clamp(2rem, 8vw, 6rem) 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  main { width: 100%; max-width: var(--measure); }
+  .mark {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 2.5rem;
+  }
+  h1 {
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1.25rem; color: var(--ink-soft); }
+  p.lead { color: var(--ink); }
+  h2 {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 1rem;
+  }
+  section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  ul { margin: 0; padding: 0; list-style: none; }
+  li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  li:last-child { border-bottom: 0; }
+  li b { font-weight: 400; color: var(--ink); }
+  li span {
+    font-family: ui-sans-serif, -apple-system, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration: none; }
+  dl { margin: 0; font-size: 0.93rem; color: var(--ink-soft); }
+  dl div { display: flex; gap: 0.75rem; padding: 0.35rem 0; flex-wrap: wrap; }
+  dt { color: var(--ink-faint); min-width: 8.5rem; }
+  dd { margin: 0; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    font-family: ui-sans-serif, -apple-system, sans-serif;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="mark"><a href="/" style="color:inherit;text-decoration:none">Обиход</a></p>
+
+  <h1>Детектор лжи, который честно говорит, что он игра</h1>
+
+  <p class="lead">Приложите палец к кругу, подержите три секунды — приложение «подумает» и выдаст вердикт: правда, ложь или «не определено». Дальше начинается самое интересное: спор о том, кто врёт.</p>
+
+  <p>Это игра для компании, а не прибор. Мы пишем это на экране результата, а не прячем в описании: телефон не измеряет ни пульс, ни дыхание, ни проводимость кожи — тех датчиков, на которых работает настоящий полиграф, в нём просто нет.</p>
+
+  <section>
+    <h2>Чем отличается</h2>
+    <ul>
+      <li><b>Не просит разрешений</b> <span>ни микрофона, ни камеры</span></li>
+      <li><b>Не обещает того, чего не делает</b> <span>дисклеймер на экране</span></li>
+      <li><b>Работает офлайн</b> <span>без регистрации</span></li>
+      <li><b>Реклама только между ответами</b> <span>никогда поверх результата</span></li>
+    </ul>
+    <p style="margin-top:1.25rem;font-size:0.93rem">В нише детекторов принято просить микрофон ради «анализа голоса», которого не существует. Мы решили обойтись без этого — заодно и вам спокойнее, и на модерации вопросов меньше.</p>
+  </section>
+
+  <section>
+    <h2>Частые вопросы</h2>
+    <p><b>Детектор лжи в телефоне работает по-настоящему?</b><br>
+    Нет, и ни одно приложение не работает. Полиграф измеряет дыхание, давление и проводимость кожи и требует датчиков, которых в телефоне нет.</p>
+    <p><b>Почему приложение не просит разрешений?</b><br>
+    Потому что ему нечего просить. Ни микрофон, ни камера, ни геолокация для игры не нужны.</p>
+    <p><b>Приложение сохраняет мои вопросы?</b><br>
+    Нет. Вопрос живёт в памяти до следующего результата, история ответов не ведётся вообще.</p>
+  </section>
+
+  <section>
+    <h2>Где скачать</h2>
+    <p>Приложение выходит в <a href="https://www.rustore.ru/">RuStore</a> — ссылка появится здесь после публикации.</p>
+    <!-- TODO при релизе: заменить абзац выше кнопкой
+         https://www.rustore.ru/catalog/app/ru.obihod.detector?referrer=landing_detector
+         Значение referrer обязано отличаться от landing_habits, иначе установки
+         с двух страниц сольются в одну строку и §11.6 перестанет что-либо мерить. -->
+    <p style="font-size:0.93rem"><a href="/detector/privacy/">Политика конфиденциальности</a> · <a href="/detector/offer/">Условия покупки</a></p>
+  </section>
+
+  <section>
+    <h2>Связаться</h2>
+    <p>Ошибки и предложения: <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>. Отвечаем в течение рабочего дня.</p>
+  </section>
+
+  <footer>
+    <a href="/">Обиход</a> · <a href="/privacy/">Общая политика</a> · © 2026
+  </footer>
+
+</main>
+</body>
+</html>
