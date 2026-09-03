@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://obihodapp.ru/habits/">
 <meta property="og:locale" content="ru_RU">
 <meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,186 +70,383 @@
 }
 </script>
 <style>
+  /* ---------- Токены ---------- */
   :root {
-    --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e;
-    --ink-faint: #8d857a; --rule: #e5ded4; --accent: #a8471f;
-    --measure: 40rem; --wide: 56rem;
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1c1a17;
+    --ink-soft: #5d574e;
+    --ink-faint: #8d857a;
+    --rule: #e5ded4;
+    --rule-strong: #d3cabd;
+    --accent: #a8471f;
+    --accent-ink: #ffffff;
+    --dark-bg: #16150f;
+    --habits: #2e5d50;
+    --habits-soft: #e4efeb;
+
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem;
+    --s7: 3rem; --s8: 4rem; --s9: 6rem; --s10: 8rem;
+    --r-sm: 6px; --r-md: 12px; --r-lg: 24px;
+    --shadow-1: 0 1px 2px rgba(28,26,23,.06), 0 8px 24px -12px rgba(28,26,23,.18);
+    --shadow-2: 0 2px 6px rgba(28,26,23,.06), 0 30px 60px -30px rgba(28,26,23,.35);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+    --measure: 36rem;
+    --wrap: 72rem;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #16150f; --surface: #1e1d16; --ink: #f2ede4; --ink-soft: #b3aa9c;
-      --ink-faint: #857d70; --rule: #302e25; --accent: #e08b5c;
+      --bg: #16150f;
+      --surface: #1e1d16;
+      --ink: #f2ede4;
+      --ink-soft: #b3aa9c;
+      --ink-faint: #857d70;
+      --rule: #302e25;
+      --rule-strong: #3f3c30;
+      --accent: #e08b5c;
+      --accent-ink: #16150f;
+      --dark-bg: #0f0e0a;
+      --habits-soft: #1f312b;
+      --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+      --shadow-2: 0 2px 6px rgba(0,0,0,.4), 0 30px 60px -30px rgba(0,0,0,.8);
     }
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+
+  /* ---------- База ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font: 400 17px/1.65 ui-serif, "Georgia", "Times New Roman", serif;
-    padding: clamp(2rem, 7vw, 5rem) 1.5rem;
-    display: flex; justify-content: center;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 var(--serif);
+    overflow-x: hidden;
   }
-  .page { width: 100%; max-width: var(--wide); }
-  .narrow { max-width: var(--measure); }
-  .mark {
-    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
-    font-weight: 600; font-size: 0.8rem; letter-spacing: 0.16em;
-    text-transform: uppercase; margin: 0 0 2.5rem;
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
+  .eyebrow {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 var(--s4);
   }
-  .mark a { color: var(--accent); text-decoration: none; }
-  .mark span { color: var(--ink-faint); font-weight: 400; }
-  h1 {
-    font-size: clamp(1.9rem, 6vw, 2.7rem); line-height: 1.15; font-weight: 400;
-    letter-spacing: -0.015em; margin: 0 0 1.25rem; text-wrap: balance;
-  }
-  p { margin: 0 0 1.25rem; color: var(--ink-soft); }
-  .lead { color: var(--ink); font-size: 1.05em; }
-  h2 {
-    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--ink-faint); margin: 0 0 1.25rem;
-  }
-  section { margin-top: 3.5rem; padding-top: 2.25rem; border-top: 1px solid var(--rule); }
-  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:hover { text-decoration: none; }
+  .eyebrow.accent { color: var(--accent); }
+  h1, h2, h3 { font-weight: 400; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); line-height: 1.15; }
+  h3 { font-size: 1.2rem; line-height: 1.3; }
+  p { margin: 0 0 var(--s4); color: var(--ink-soft); max-width: var(--measure); }
+  p.lead { color: var(--ink); font-size: 1.15rem; line-height: 1.5; }
+  .muted { color: var(--ink-faint); }
+  .sans { font-family: var(--sans); }
+  a.link { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a.link:hover { text-decoration: none; }
 
-  .hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,300px); gap: 3rem; align-items: start; }
-  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; gap: 2rem; } }
-
-  .cta-row { display: flex; gap: 0.75rem 1rem; flex-wrap: wrap; align-items: center; margin: 1.75rem 0 0.5rem; }
+  /* Кнопки */
   .btn {
-    display: inline-block; background: var(--accent); color: var(--bg);
-    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.95rem; font-weight: 600;
-    padding: 0.8rem 1.4rem; border-radius: 6px; text-decoration: none;
+    --pad: .9rem 1.4rem;
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: var(--pad);
+    font-family: var(--sans); font-weight: 600; font-size: .95rem; line-height: 1;
+    border-radius: 999px; border: 1px solid transparent;
+    text-decoration: none; cursor: pointer;
+    transition: transform .25s var(--ease-out), background .2s, border-color .2s, box-shadow .25s;
+    white-space: nowrap;
   }
-  .btn:hover { filter: brightness(1.08); }
-  .soon {
-    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem;
-    color: var(--ink-faint); border: 1px solid var(--rule); border-radius: 6px;
-    padding: 0.75rem 1.1rem;
+  .btn-primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow-1); }
+  .btn-primary:hover { box-shadow: var(--shadow-2); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .btn .arrow { transition: transform .3s var(--ease-out); }
+  .btn:hover .arrow { transform: translateX(3px); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Шапка ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    transition: background .3s, border-color .3s, backdrop-filter .3s;
+    border-bottom: 1px solid transparent;
   }
-  .fineprint { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.8rem; color: var(--ink-faint); }
-
-  /* превью шаблона — вёрстка, не картинка */
-  .sheet {
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
-    padding: 1.1rem 1.1rem 0.9rem; font-family: ui-sans-serif, -apple-system, sans-serif;
+  .nav.scrolled {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-color: var(--rule);
   }
-  .sheet .t { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.7rem; }
-  .grid { display: grid; grid-template-columns: 6.5rem repeat(7, 1fr); gap: 4px; font-size: 0.68rem; color: var(--ink-soft); }
-  .grid .h { color: var(--ink-faint); text-align: center; }
-  .grid .n { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .cell { aspect-ratio: 1; border: 1px solid var(--rule); border-radius: 3px; text-align: center; line-height: 1.6; }
-  .done { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-  .skip { color: var(--ink-faint); }
-  .sheet .cap { margin: 0.8rem 0 0; font-size: 0.72rem; color: var(--ink-faint); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 4.25rem; gap: var(--s5); }
+  .brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; font-family: var(--sans); font-weight: 700; letter-spacing: .02em; }
+  .brand .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--habits); display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; padding: 6px; }
+  .brand .logo i { background: #fff; border-radius: 2px; }
+  .brand .logo i:last-child { background: transparent; border: 1.5px solid rgba(255,255,255,.55); }
+  .nav-links { display: flex; gap: var(--s5); font-family: var(--sans); font-size: .92rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); position: relative; padding: .25rem 0; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--ink); transition: right .3s var(--ease-out); }
+  .nav-links a:hover::after { right: 0; }
+  .nav .store { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); display: inline-flex; align-items: center; gap: .45rem; }
+  .nav .store .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);} 60% { box-shadow: 0 0 0 7px transparent; } }
+  @media (max-width: 720px) { .nav-links { display: none; } }
 
-  table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.95rem; }
-  th, td { text-align: left; padding: 0.7rem 0.6rem 0.7rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  th { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
-  td { color: var(--ink-soft); }
-  td.y { color: var(--ink); }
-  .wrap { overflow-x: auto; }
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(2rem, 6vw, 4.5rem) 0 clamp(2.5rem, 6vw, 5rem); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.06; letter-spacing: -.025em; margin-bottom: var(--s5); }
+  .hero .lead { max-width: 32rem; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
+  .hero .fine { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); margin-top: var(--s5); }
 
-  ol.steps { margin: 0; padding-left: 1.2rem; color: var(--ink-soft); }
-  ol.steps li { margin-bottom: 0.6rem; }
+  /* ---------- Лист А4 ---------- */
+  .sheet-stage { display: grid; place-items: center; }
+  .sheet { position: relative; aspect-ratio: 210 / 297; max-width: 20rem; width: 100%; background: #fff; border-radius: 4px; box-shadow: var(--shadow-2); padding: 8% 7%; display: flex; flex-direction: column; gap: 6%; transform: rotate(-2deg); transition: transform .8s var(--ease-out); }
+  .sheet-stage:hover .sheet { transform: rotate(0deg) translateY(-4px); }
+  .sheet .t { height: 8px; width: 55%; background: #1c1a17; border-radius: 2px; }
+  .sheet .grid { flex: 1; display: grid; grid-template-columns: 2.2fr repeat(8, 1fr); grid-auto-rows: 1fr; gap: 2px; }
+  .sheet .grid i { background: #ece7de; border-radius: 1px; }
+  .sheet .grid i.l { background: #d8d1c5; }
+  .sheet .grid i.x { background: #2e5d50; opacity: 0; transform: scale(.5); transition: opacity .3s, transform .4s var(--ease-spring); transition-delay: calc(var(--k) * 60ms + .3s); }
+  .in .sheet .grid i.x { opacity: 1; transform: scale(1); }
+  .sheet .stamp { position: absolute; right: -8%; bottom: 6%; font-family: var(--sans); font-weight: 700; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .35rem .6rem; border-radius: 6px; transform: rotate(8deg); background: #fff; }
 
-  details { border-bottom: 1px solid var(--rule); padding: 0.9rem 0; }
-  details:first-of-type { border-top: 1px solid var(--rule); }
-  summary { cursor: pointer; color: var(--ink); font-weight: 400; }
-  summary::marker { color: var(--accent); }
-  details p { margin: 0.75rem 0 0.25rem; }
+  /* ---------- Reveal ---------- */
+  section { padding: clamp(3rem, 7vw, 6rem) 0; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out), transform 1s var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .sec-head { margin-bottom: clamp(1.5rem, 4vw, 3rem); }
 
-  footer {
-    margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--rule);
-    font-size: 0.85rem; color: var(--ink-faint);
-    font-family: ui-sans-serif, -apple-system, sans-serif;
+  /* ---------- Как пользоваться: шаги ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s6); border-top: 1px solid var(--rule); padding-top: var(--s6); }
+  .step .num { font-family: var(--serif); font-size: 2.8rem; line-height: 1; color: var(--accent); letter-spacing: -.02em; margin-bottom: var(--s3); font-variant-numeric: tabular-nums; }
+  .step h3 { margin-bottom: var(--s2); }
+  .step p { font-size: .98rem; margin: 0; }
+  @media (max-width: 800px) { .steps { grid-template-columns: 1fr; gap: var(--s5); } }
+
+  /* ---------- Бумага vs приложение ---------- */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); border-radius: var(--r-lg); overflow: hidden; }
+  .compare .col { padding: clamp(1.5rem, 3vw, 2.25rem); }
+  .compare .col.app { background: var(--habits-soft); }
+  .compare .lbl { font-family: var(--sans); font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: var(--s4); }
+  .compare .row { padding: var(--s3) 0; border-bottom: 1px solid var(--rule); font-size: .98rem; }
+  .compare .row:last-child { border-bottom: 0; }
+  .compare .row b { display: block; font-weight: 400; color: var(--ink); margin-bottom: .2rem; }
+  .compare .row span { font-family: var(--sans); font-size: .86rem; color: var(--ink-faint); }
+  @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+
+  /* ---------- FAQ ---------- */
+  .faq { border-top: 1px solid var(--rule); }
+  details { border-bottom: 1px solid var(--rule); padding: var(--s4) 0; }
+  summary { cursor: pointer; color: var(--ink); font-size: 1.08rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--s4); }
+  summary::-webkit-details-marker { display: none; }
+  summary .plus { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--rule-strong); display: grid; place-items: center; transition: transform .3s var(--ease-out), background .2s; }
+  summary .plus svg { width: 12px; height: 12px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; }
+  details[open] summary .plus { transform: rotate(45deg); background: var(--ink); }
+  details[open] summary .plus svg { stroke: var(--bg); }
+  details p { margin: var(--s3) 0 0; padding-right: 2rem; }
+
+  /* ---------- Прочее / реквизиты ---------- */
+  .status-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4); margin-top: var(--s5); font-family: var(--sans); font-size: .85rem; color: var(--ink-faint); }
+  .status-row .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; margin-right: .45rem; }
+
+  footer { border-top: 1px solid var(--rule); padding: var(--s6) 0; font-family: var(--sans); font-size: .84rem; color: var(--ink-faint); display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+  footer nav { display: flex; gap: var(--s4); flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .sheet-stage { margin-top: var(--s5); }
+    .sheet { max-width: 16rem; }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal, .sheet .grid i.x, .sheet { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .nav .store .dot { animation: none !important; }
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <p class="mark"><a href="/">Обиход</a> <span>· трекер привычек</span></p>
-
-  <div class="hero">
-    <div>
-      <h1>Трекер привычек на месяц — на бумаге уже сегодня, в телефоне скоро</h1>
-      <p class="lead">Скачайте бесплатный шаблон трекера привычек для печати на А4: сетка на 31 день для пяти привычек и лист одной привычки на 30 дней. Без регистрации, почты и оплаты — просто PDF.</p>
-      <div class="cta-row">
-        <a class="btn" href="/habits/shablon-trekera-privychek-a4.pdf" download>Скачать шаблон А4 (PDF)</a>
-        <span class="soon">Приложение — скоро в RuStore</span>
-      </div>
-      <p class="fineprint">PDF откроется и распечатается на любом устройстве. Мы не спрашиваем почту: файл просто скачивается.</p>
-    </div>
-    <div class="sheet" aria-hidden="true">
-      <div class="t">Неделя из шаблона</div>
-      <div class="grid">
-        <div></div><div class="h">пн</div><div class="h">вт</div><div class="h">ср</div><div class="h">чт</div><div class="h">пт</div><div class="h">сб</div><div class="h">вс</div>
-        <div class="n">Зарядка</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell skip">—</div><div class="cell done">✓</div>
-        <div class="n">Чтение 20 мин</div><div class="cell done">✓</div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div>
-        <div class="n">Стакан воды</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell done">✓</div>
-        <div class="n">Без сладкого</div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div><div class="cell"></div><div class="cell done">✓</div><div class="cell done">✓</div><div class="cell"></div>
-      </div>
-      <p class="cap">✓ сделано · — осознанный пропуск · пустая клетка — не вышло</p>
-    </div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Обиход — на главную"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Обиход</a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="/#apps">Приложения</a>
+      <a href="/#services">Услуги</a>
+      <a href="/#contact">Связаться</a>
+    </nav>
+    <span class="store"><span class="dot" aria-hidden="true"></span>RuStore · на модерации</span>
   </div>
+</header>
 
-  <section class="narrow">
-    <h2>Как пользоваться шаблоном</h2>
-    <ol class="steps">
-      <li>Распечатайте лист и повесьте на видное место — холодильник и рабочий стол работают лучше ящика.</li>
-      <li>Впишите до пяти привычек. Начать с одной — самый надёжный вариант: привычки приживаются по очереди.</li>
-      <li>Каждый вечер ставьте отметку. Сделали — галочка. Осознанно пропустили (болезнь, дорога) — прочерк: он не рвёт серию. Пустая клетка — честный пропуск.</li>
-      <li>В конце месяца посчитайте лучшую серию и процент — на листе есть строка для итогов.</li>
-    </ol>
-  </section>
+<main>
 
-  <section class="narrow">
-    <h2>Бумага честная, но у неё есть пределы</h2>
-    <div class="wrap">
-    <table>
-      <tr><th></th><th>Лист А4</th><th>Приложение</th></tr>
-      <tr><td class="y">Напомнить вечером</td><td>стикер, если заметите</td><td>уведомление в выбранное время — с диагностикой, почему не пришло</td></tr>
-      <tr><td class="y">Посчитать серию и проценты</td><td>вручную в конце месяца</td><td>считается само, серия видна каждый день</td></tr>
-      <tr><td class="y">Забыли отметить вчера</td><td>клетка потеряна</td><td>отметка задним числом</td></tr>
-      <tr><td class="y">Отпуск или болезнь</td><td>дырка в сетке</td><td>пауза и осознанный пропуск — серия не сгорает</td></tr>
-      <tr><td class="y">История за полгода</td><td>стопка листков</td><td>календарь и графики за всё время</td></tr>
-    </table>
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow accent">Трекер привычек</p>
+        <h1>Трекер привычек на месяц — на бумаге уже сегодня, в телефоне скоро</h1>
+        <p class="lead">Скачайте бесплатный шаблон трекера привычек для печати на А4: сетка на 31 день для пяти привычек и лист одной привычки на 30 дней. Без регистрации, почты и оплаты — просто PDF.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="/habits/shablon-trekera-privychek-a4.pdf" download><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Скачать шаблон А4 (PDF)</a>
+          <a class="btn btn-ghost" href="#faq">Как пользоваться</a>
+        </div>
+        <p class="fine">PDF откроется и распечатается на любом устройстве. Мы не спрашиваем почту: файл просто скачивается.</p>
+        <div class="status-row"><span><span class="dot" aria-hidden="true"></span>Приложение — скоро в RuStore</span></div>
+      </div>
+
+      <div class="sheet-stage reveal" aria-hidden="true">
+        <div class="sheet" id="sheet">
+          <div class="t"></div>
+          <div class="grid" id="sheet-grid"></div>
+          <div class="stamp">Бесплатно</div>
+        </div>
+      </div>
     </div>
-    <p>Поэтому мы делаем «Трекер привычек — Обиход» для Android: до 3 привычек бесплатно и без ограничения по времени, работает офлайн, без регистрации, данные остаются на вашем устройстве. Выйдет в RuStore — ссылка появится на этой странице.</p>
   </section>
 
-  <section class="narrow">
-    <h2>Частые вопросы</h2>
-    <details>
-      <summary>Сколько дней формируется привычка — правда ли 21 день?</summary>
-      <p>Единого срока нет: исследования называют от 18 до 254 дней в зависимости от привычки и человека. «21 день» — удобный ориентир для старта, но решает не дата, а регулярность — и трекер делает её видимой.</p>
-    </details>
-    <details>
-      <summary>Шаблон точно бесплатный? Что вы за это берёте?</summary>
-      <p>Точно. Ни оплаты, ни почты, ни регистрации — файл просто скачивается. Мы рассчитываем, что когда листка станет мало, вы вспомните про наше приложение.</p>
-    </details>
-    <details>
-      <summary>Можно вести счётчик дней без вредной привычки?</summary>
-      <p>На бумаге — вторая страница шаблона: лист одной привычки на 30 дней, подходит для «без сигарет» или «без сладкого». В приложении это отдельный тип привычки «не делать» со счётчиком чистых дней.</p>
-    </details>
-    <details>
-      <summary>Что будет с серией, если пропустить день?</summary>
-      <p>Забытый день прерывает серию — иначе она ничего бы не значила. Осознанный пропуск отмечается отдельно (на бумаге — прочерк) и серию не рвёт. В приложении забытый день можно отметить задним числом.</p>
-    </details>
-    <details>
-      <summary>Приложение будет работать без интернета?</summary>
-      <p>Да. Данные хранятся на устройстве и никуда не отправляются, сеть нужна только для подписки и рекламы в бесплатной версии. Отметки, серии, статистика и напоминания работают офлайн.</p>
-    </details>
+  <!-- ===== Как пользоваться ===== -->
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Как пользоваться шаблоном</p>
+        <h2>Четыре шага — от распечатки до итогов месяца</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">1</div>
+          <h3>Повесьте на видное место</h3>
+          <p>Распечатайте лист и повесьте его туда, где увидите — холодильник и рабочий стол работают лучше ящика.</p>
+        </div>
+        <div class="step reveal" style="--i:1">
+          <div class="num">2</div>
+          <h3>Впишите до пяти привычек</h3>
+          <p>Начать с одной — самый надёжный вариант: привычки приживаются по очереди, а не все сразу.</p>
+        </div>
+        <div class="step reveal" style="--i:2">
+          <div class="num">3</div>
+          <h3>Отмечайте каждый вечер</h3>
+          <p>Сделали — галочка. Осознанно пропустили (болезнь, дорога) — прочерк: он не рвёт серию. Пустая клетка — честный пропуск.</p>
+        </div>
+      </div>
+      <p class="reveal" style="--i:3;margin-top:2rem;max-width:none">В конце месяца посчитайте лучшую серию и процент выполнения — на листе есть строка для итогов.</p>
+    </div>
   </section>
 
-  <footer>
-    <a href="/privacy/">Политика конфиденциальности</a> · <a href="/habits/offer/">Оферта на подписку</a> · <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a><br>
-    ИП Скурихин Алексей Владимирович · ИНН 505012949491 · ОГРНИП 326508100181350 · © 2026 Обиход
-  </footer>
+  <!-- ===== Бумага vs приложение ===== -->
+  <section id="compare-section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Честно о пределах</p>
+        <h2>Бумага честная, но у неё есть пределы</h2>
+        <p style="margin-top:1rem">Поэтому мы делаем «Трекер привычек — Обиход» для Android: до 3 привычек бесплатно и без ограничения по времени, работает офлайн, без регистрации, данные остаются на вашем устройстве.</p>
+      </div>
+      <div class="compare reveal" style="--i:1">
+        <div class="col paper">
+          <p class="lbl">Лист А4</p>
+          <div class="row"><b>Напомнить вечером</b><span>стикер, если заметите</span></div>
+          <div class="row"><b>Посчитать серию и проценты</b><span>вручную в конце месяца</span></div>
+          <div class="row"><b>Забыли отметить вчера</b><span>клетка потеряна</span></div>
+          <div class="row"><b>Отпуск или болезнь</b><span>дырка в сетке</span></div>
+          <div class="row"><b>История за полгода</b><span>стопка листков</span></div>
+        </div>
+        <div class="col app">
+          <p class="lbl">Приложение</p>
+          <div class="row"><b>Напомнить вечером</b><span>уведомление в выбранное время — с диагностикой, почему не пришло</span></div>
+          <div class="row"><b>Посчитать серию и проценты</b><span>считается само, серия видна каждый день</span></div>
+          <div class="row"><b>Забыли отметить вчера</b><span>отметка задним числом</span></div>
+          <div class="row"><b>Отпуск или болезнь</b><span>пауза и осознанный пропуск — серия не сгорает</span></div>
+          <div class="row"><b>История за полгода</b><span>календарь и графики за всё время</span></div>
+        </div>
+      </div>
+      <p class="reveal" style="--i:2;margin-top:1.5rem;max-width:none">Выйдет в RuStore — ссылка появится на этой странице.</p>
+    </div>
+  </section>
 
-</div>
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Частые вопросы</p>
+        <h2>Что обычно спрашивают</h2>
+      </div>
+      <div class="faq reveal" style="--i:1">
+        <details>
+          <summary>Сколько дней формируется привычка — правда ли 21 день?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Единого срока нет: исследования называют от 18 до 254 дней в зависимости от привычки и человека. «21 день» — удобный ориентир для старта, но решает не дата, а регулярность — и трекер делает её видимой.</p>
+        </details>
+        <details>
+          <summary>Чем приложение лучше, чем трекер привычек на месяц, распечатанный на А4?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Бумажный шаблон не напомнит вечером и не посчитает процент за месяц. Приложение делает то же самое само: серии и статистика без ручного подсчёта, напоминания вместо стикера на холодильнике, история не теряется вместе с листком.</p>
+        </details>
+        <details>
+          <summary>Трекер привычек работает без интернета?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Да. Данные хранятся на вашем устройстве, интернет приложению не нужен: отметки, серии, статистика и напоминания работают без сети.</p>
+        </details>
+        <details>
+          <summary>Можно ли вести счётчик дней без вредной привычки — курения, алкоголя, сахара?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Да, это отдельный тип привычки — «не делать». Заведите «без сигарет», «без сладкого» или «без алкоголя», и счётчик чистых дней будет расти сам. Срыв честно начнёт отсчёт заново, но история сохранится.</p>
+        </details>
+        <details>
+          <summary>Что будет с прогрессом, если пропустить день?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Забытый день прерывает серию — иначе серия ничего бы не значила. Но осознанный пропуск (болезнь, отпуск) отмечается отдельно: он серию не рвёт и не удлиняет. А если сделали, но забыли записать — день можно отметить задним числом.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <nav aria-label="Документы">
+      <a href="/privacy/">Политика конфиденциальности</a>
+      <a href="/habits/offer/">Оферта на подписку</a>
+      <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>
+    </nav>
+    <span>ИП Скурихин Алексей Владимирович · ИНН 505012949491 · ОГРНИП 326508100181350 · © 2026 Обиход</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* Шапка */
+  const nav = $('#nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Появление секций — один раз */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+  $$('.reveal').forEach(el => io.observe(el));
+
+  /* Лист А4 — детерминированный узор, чтобы верстка не прыгала между загрузками */
+  const sg = $('#sheet-grid');
+  const rows = 8, cols = 9;
+  const pattern = '011010101011101010010111010101101101010101011101010111010101101';
+  let k = 0, p = 0;
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const i = document.createElement('i');
+    if (c === 0) i.className = 'l';
+    else if (r > 0 && c < 6 && pattern[p++ % pattern.length] === '1') { i.className = 'x'; i.style.setProperty('--k', k++); }
+    sg.appendChild(i);
+  }
+})();
+</script>
 <!-- TODO при релизе: кнопку «Скоро в RuStore» заменить ссылкой
      https://www.rustore.ru/catalog/app/ru.obihod.habits?referrer=landing_habits
      и добавить в SoftwareApplication поля installUrl и downloadUrl. -->

@@ -3,173 +3,422 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Обиход — небольшие приложения для повседневных дел</title>
-<meta name="description" content="Обиход делает небольшие Android-приложения для повседневных дел: трекер привычек, будильник, детектор лжи. Работают офлайн, без регистрации и лишних разрешений. Скачать в RuStore.">
+<title>Обиход — студия моушена и приложений</title>
+<meta name="description" content="Обиход — студия моушена и приложений. Музей вирусов в Московском зоопарке: фильм, голограммы, умные зеркала, игры. Android-приложения для RuStore. Всё — кодом, от идеи до релиза.">
 <link rel="canonical" href="https://obihodapp.ru/">
+<meta name="theme-color" content="#fbfaf7">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Обиход — небольшие приложения для повседневных дел">
-<meta property="og:description" content="Небольшие Android-приложения, которые работают офлайн и не просят лишнего.">
+<meta property="og:title" content="Обиход — студия моушена и приложений">
+<meta property="og:description" content="Контент для экранов. Приложения для людей.">
 <meta property="og:url" content="https://obihodapp.ru/">
+<meta property="og:image" content="https://obihodapp.ru/og.png">
 <meta property="og:locale" content="ru_RU">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Обиход",
   "url": "https://obihodapp.ru/",
-  "description": "Разработчик небольших Android-приложений для повседневных дел.",
+  "logo": "https://obihodapp.ru/og.png",
+  "description": "Студия моушена и приложений: контент и интерактив для экранов и музеев, Android-приложения для RuStore, сайты.",
   "email": "support@obihodapp.ru",
-  "founder": {
-    "@type": "Person",
-    "name": "Алексей Скурихин"
-  },
-  "identifier": [
-    { "@type": "PropertyValue", "propertyID": "ИНН", "value": "505012949491" },
-    { "@type": "PropertyValue", "propertyID": "ОГРНИП", "value": "326508100181350" }
-  ]
+  "founder": { "@type": "Person", "name": "Алексей Скурихин" }
 }
 </script>
 <style>
+  /* ---- Токены (site/DESIGN.md 5.0) ---- */
   :root {
-    --bg: #faf8f5;
-    --surface: #ffffff;
-    --ink: #1c1a17;
-    --ink-soft: #5d574e;
-    --ink-faint: #8d857a;
-    --rule: #e5ded4;
-    --accent: #a8471f;
-    --measure: 34rem;
+    color-scheme: light;
+    --bg: #fbfaf7; --ink: #17181c; --ink-soft: #5b5e66; --ink-faint: #8f9299;
+    --rule: rgba(23,24,28,.10); --rule-strong: rgba(23,24,28,.24);
+    --amber: #e0662f; --teal: #1fb39a;
+    --display: "Avenir Next", "Futura", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    --body: "Avenir Next", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
+    --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem; --s7: 3rem; --s8: 4rem; --s9: 6rem;
+    --r: 14px; --r-lg: 26px;
+    --ease: cubic-bezier(.23, 1, .32, 1);
+    --wrap: 92rem;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #16150f;
-      --surface: #1e1d16;
-      --ink: #f2ede4;
-      --ink-soft: #b3aa9c;
-      --ink-faint: #857d70;
-      --rule: #302e25;
-      --accent: #e08b5c;
-    }
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font: 400 17px/1.65 ui-serif, "Georgia", "Times New Roman", serif;
-    padding: clamp(2rem, 8vw, 6rem) 1.5rem;
-    display: flex;
-    justify-content: center;
-  }
-  main { width: 100%; max-width: var(--measure); }
-  .mark {
-    font-family: ui-sans-serif, -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 2.5rem;
-  }
-  h1 {
-    font-size: clamp(1.9rem, 6vw, 2.7rem);
-    line-height: 1.15;
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    margin: 0 0 1.5rem;
-    text-wrap: balance;
-  }
-  p { margin: 0 0 1.25rem; color: var(--ink-soft); }
-  p.lead { color: var(--ink); }
-  h2 {
-    font-family: ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin: 0 0 1rem;
-  }
-  section {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-  }
-  ul { margin: 0; padding: 0; list-style: none; }
-  li {
-    padding: 0.7rem 0;
-    border-bottom: 1px solid var(--rule);
-    color: var(--ink-soft);
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  li:last-child { border-bottom: 0; }
-  li b { font-weight: 400; color: var(--ink); }
-  li span {
-    font-family: ui-sans-serif, -apple-system, sans-serif;
-    font-size: 0.8rem;
-    color: var(--ink-faint);
-    white-space: nowrap;
-  }
-  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
-  a:hover { text-decoration: none; }
-  dl { margin: 0; font-size: 0.93rem; color: var(--ink-soft); }
-  dl div { display: flex; gap: 0.75rem; padding: 0.35rem 0; flex-wrap: wrap; }
-  dt { color: var(--ink-faint); min-width: 8.5rem; }
-  dd { margin: 0; }
-  footer {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule);
-    font-size: 0.85rem;
-    color: var(--ink-faint);
-    font-family: ui-sans-serif, -apple-system, sans-serif;
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.5 var(--body); overflow-x: hidden; }
+  ::selection { background: var(--amber); color: #fff; }
+  a { color: inherit; }
+  img, video, canvas { display: block; max-width: 100%; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
+  h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; letter-spacing: -.035em; line-height: .95; text-wrap: balance; }
+  p { margin: 0; color: var(--ink-soft); }
+  .mono { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+  .btn { display: inline-flex; align-items: center; gap: .6rem; padding: 1rem 1.5rem; font: 600 .95rem/1 var(--body); border-radius: 999px; border: 1px solid transparent; text-decoration: none; cursor: pointer; white-space: nowrap; position: relative; overflow: hidden; background: var(--ink); color: #fff; transition: transform .3s var(--ease); }
+  .btn::before { content: ""; position: absolute; inset: 0; background: var(--amber); transform: translateY(102%); transition: transform .4s var(--ease); }
+  .btn:hover::before { transform: none; }
+  .btn > * { position: relative; }
+  .btn.ghost { background: rgba(255,255,255,.6); color: var(--ink); border-color: var(--rule-strong); backdrop-filter: blur(8px); }
+  .btn.ghost::before { display: none; }
+  .btn.ghost:hover { border-color: var(--ink); }
+  .btn svg { width: 16px; height: 16px; fill: currentColor; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+  body::after { content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .18; mix-blend-mode: multiply; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .28 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+  /* ---- Интро ---- */
+  #intro { position: fixed; inset: 0; z-index: 200; background: var(--bg); display: grid; place-items: center; transition: clip-path 1s var(--ease); }
+  #intro.out { clip-path: inset(0 0 100% 0); pointer-events: none; }
+  #intro .cells { width: 84px; height: 84px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  #intro .cells i { background: var(--ink); border-radius: 7px; opacity: 0; transform: scale(.6); animation: cellOn .5s var(--ease) forwards; }
+  #intro .cells i:nth-child(2) { animation-delay: .12s; } #intro .cells i:nth-child(3) { animation-delay: .24s; } #intro .cells i:nth-child(4) { background: transparent; border: 3px solid rgba(23,24,28,.45); animation-delay: .36s; }
+  @keyframes cellOn { to { opacity: 1; transform: none; } }
+
+  /* ---- Шапка ---- */
+  .nav { position: fixed; inset: 0 0 auto; z-index: 60; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
+  .nav.scrolled { background: rgba(251,250,247,.72); backdrop-filter: saturate(140%) blur(16px); -webkit-backdrop-filter: saturate(140%) blur(16px); border-color: var(--rule); }
+  .nav-in { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 4.5rem; gap: var(--s5); }
+  .brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; font: 700 1.05rem/1 var(--display); letter-spacing: -.01em; }
+  .logo { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 6px; }
+  .logo i { background: #fff; border-radius: 2.5px; } .logo i:last-child { background: transparent; border: 1.5px solid rgba(255,255,255,.6); }
+  .nav-links { display: flex; gap: var(--s5); justify-content: center; font-size: .92rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); position: relative; padding: .25rem 0; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--amber); transition: right .3s var(--ease); }
+  .nav-links a:hover { color: var(--ink); } .nav-links a:hover::after { right: 0; }
+  .nav-r { display: flex; justify-content: flex-end; }
+  .nav .btn { padding: .7rem 1.1rem; font-size: .85rem; }
+  @media (max-width: 800px) { .nav-links { display: none; } .nav-in { grid-template-columns: 1fr auto; } }
+
+  /* ---- Hero: стена → шоурил ---- */
+  .hero { height: 260vh; position: relative; }
+  .pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+  .hero-txt { position: absolute; left: max(1.5rem, (100vw - var(--wrap)) / 2); top: 50%; width: min(44vw, 34rem); z-index: 3; opacity: calc(1 - var(--p2, 0)); transform: translateY(calc(-50% - var(--p2, 0) * 40px)); pointer-events: none; }
+  .hero-txt > * { pointer-events: auto; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 6rem); }
+  .hero h1 .l { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+  .hero h1 .l > span { display: block; transform: translateY(105%); filter: blur(8px); opacity: 0; transition: transform 1.1s var(--ease), filter .9s var(--ease), opacity .6s; }
+  .hero.ready h1 .l > span { transform: none; filter: none; opacity: 1; }
+  .hero h1 .l:nth-child(2) > span { transition-delay: .1s; } .hero h1 .l:nth-child(3) > span { transition-delay: .2s; }
+  .hero h1 .dim { color: var(--amber); }
+  .hero .sub { margin-top: var(--s5); max-width: 28rem; color: var(--ink); font-size: 1.1rem; }
+  .hero .cta { display: flex; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s5); }
+  .fade { opacity: 0; transform: translateY(16px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
+  .hero.ready .fade { opacity: 1; transform: none; }
+  .hero.ready .d1 { transition-delay: .45s; } .hero.ready .d2 { transition-delay: .6s; }
+
+  .stage { position: absolute; inset: 0; display: grid; place-items: center; perspective: 1600px; perspective-origin: 50% 50%; }
+  .wall { position: relative; width: var(--W); height: var(--H); transform-style: preserve-3d; transform: translate3d(var(--tx, 0), var(--ty, 0), 0) scale(var(--s, .5)) rotateY(var(--ry, -18deg)) rotateX(var(--rx, 4deg)); will-change: transform; }
+  .mod { position: absolute; width: calc(100% / 3); height: calc(100% / 3); padding: var(--g, 4px); transform: translate3d(var(--fx), var(--fy), var(--fz)) rotateY(var(--fr)); opacity: 0; transition: transform 1.5s var(--ease), opacity .6s; transition-delay: calc(var(--k) * 80ms); }
+  .mod:nth-child(1){left:0;top:0} .mod:nth-child(2){left:33.3333%;top:0} .mod:nth-child(3){left:66.6667%;top:0} .mod:nth-child(4){left:0;top:33.3333%} .mod:nth-child(5){left:33.3333%;top:33.3333%} .mod:nth-child(6){left:66.6667%;top:33.3333%} .mod:nth-child(7){left:0;top:66.6667%} .mod:nth-child(8){left:33.3333%;top:66.6667%} .mod:nth-child(9){left:66.6667%;top:66.6667%}
+  .wall.on .mod { transform: none; opacity: 1; }
+  .mod > div { position: relative; width: 100%; height: 100%; background: #07080a; overflow: hidden; border-radius: calc(4px * (1 - var(--p, 0))); box-shadow: inset 0 0 0 calc(1.5px * (1 - var(--p, 0))) #23262d; }
+  .mod canvas { width: 100%; height: 100%; }
+  .mod i { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle at center, transparent 0 .6px, rgba(0,0,0,.55) 1.1px); background-size: 3px 3px; mix-blend-mode: multiply; opacity: calc(.6 * (1 - var(--p, 0))); }
+  .mod b { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.16), transparent 40%, transparent 70%, rgba(255,255,255,.06)); opacity: calc(1 - var(--p, 0)); }
+  .wall-shadow { position: absolute; left: 6%; right: 6%; bottom: -7%; height: 14%; background: radial-gradient(50% 100% at 50% 0, rgba(23,24,28,.35), transparent 70%); filter: blur(8px); opacity: calc(1 - var(--p, 0)); }
+  #reelsrc { position: absolute; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
+  .reel-cap { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); z-index: 3; display: flex; gap: 1rem; align-items: center; opacity: var(--p2, 0); background: rgba(23,24,28,.7); color: #fff; padding: .55rem .9rem; border-radius: 999px; backdrop-filter: blur(8px); white-space: nowrap; pointer-events: none; }
+  .hero[style*="--p2: 1"] .reel-cap, .reel-cap.on { pointer-events: auto; }
+  .reel-cap .mono { color: rgba(255,255,255,.85); }
+  .reel-cap .play { display: inline-flex; align-items: center; gap: .4rem; font: 600 .8rem/1 var(--body); color: #fff; background: none; border: 0; cursor: pointer; padding: 0; }
+  .reel-cap .play svg { width: 12px; height: 12px; fill: #fff; }
+  .scroll { position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%); z-index: 3; opacity: calc(1 - var(--p2, 0) * 3); }
+  .scroll::after { content: ""; display: block; width: 1px; height: 36px; margin: .5rem auto 0; background: linear-gradient(var(--ink-faint), transparent); }
+  @media (max-width: 800px) { .hero-txt { width: calc(100vw - 3rem); left: 1.5rem; top: 5.5rem; transform: translateY(calc(var(--p2, 0) * -40px)); } .hero .sub { font-size: 1rem; } .hero h1 { font-size: clamp(2.4rem, 11vw, 3.4rem); } }
+
+  /* ---- Полноэкранный шоурил ---- */
+  #reel { position: fixed; inset: 0; z-index: 150; background: #000; display: none; }
+  #reel.open { display: block; }
+  #reel video { width: 100%; height: 100%; object-fit: contain; }
+  #reel .x { position: absolute; top: 1.2rem; right: 1.2rem; z-index: 2; background: rgba(255,255,255,.14); color: #fff; border: 0; width: 48px; height: 48px; border-radius: 50%; font: 600 1.1rem/1 var(--body); cursor: pointer; backdrop-filter: blur(8px); }
+
+  /* ---- Работы ---- */
+  section { position: relative; }
+  .sec-head { padding: clamp(4rem, 9vw, 8rem) 0 clamp(2rem, 4vw, 3rem); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--s6); align-items: end; }
+  h2 { font-size: clamp(2.4rem, 6vw, 5.6rem); }
+  .lines .l { display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
+  .lines .l > span { display: block; transform: translateY(105%); transition: transform 1s var(--ease); transition-delay: calc(var(--k) * 90ms); }
+  .lines.in .l > span { transform: none; }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .works { display: grid; gap: var(--s4); }
+  .work { position: relative; display: block; border-radius: var(--r-lg); overflow: hidden; background: #0b0c0f; aspect-ratio: 16 / 9; text-decoration: none; color: #fff; isolation: isolate; }
+  .work video, .work img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .work:hover video, .work:hover img { transform: scale(1.03); }
+  .work::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.72) 100%); }
+  .work .t { position: absolute; left: clamp(1.25rem, 3vw, 2.5rem); right: clamp(1.25rem, 3vw, 2.5rem); bottom: clamp(1.25rem, 3vw, 2.5rem); z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: var(--s4); align-items: end; }
+  .work h3 { font-size: clamp(1.6rem, 3.6vw, 3.4rem); letter-spacing: -.03em; }
+  .work .tags { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.8); text-align: right; line-height: 1.7; }
+  .work .n { position: absolute; left: clamp(1.25rem, 3vw, 2.5rem); top: clamp(1.25rem, 3vw, 2.5rem); z-index: 2; font-family: var(--mono); font-size: .74rem; letter-spacing: .1em; color: rgba(255,255,255,.85); }
+  .work p { color: rgba(255,255,255,.8); max-width: 34rem; margin-top: .5rem; font-size: 1rem; }
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .duo .work { aspect-ratio: 4 / 3; }
+  @media (max-width: 800px) { .sec-head { grid-template-columns: 1fr; } .duo { grid-template-columns: 1fr; } .work { aspect-ratio: 4 / 5; } .work .t { grid-template-columns: 1fr; } .work .tags { text-align: left; } }
+
+  /* ---- Приложения на телефонах ---- */
+  .apps { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .app { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: var(--s5); align-items: center; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: var(--r-lg); background: linear-gradient(160deg, #fff, #f1f0eb); border: 1px solid var(--rule); text-decoration: none; color: inherit; overflow: hidden; transition: transform .5s var(--ease), border-color .3s; }
+  .app:hover { transform: translateY(-3px); border-color: var(--rule-strong); }
+  .app h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); margin-bottom: .6rem; }
+  .app p { font-size: .98rem; margin-bottom: .9rem; }
+  .app .status { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); display: inline-flex; align-items: center; gap: .45rem; }
+  .app .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: rec 2s ease-in-out infinite; }
+  @keyframes rec { 50% { opacity: .25; } }
+  .phone { position: relative; width: 100%; max-width: 240px; margin: 0 auto; aspect-ratio: 9 / 19.5; border-radius: 12%/5.6%; background: linear-gradient(160deg, #3a3d45, #14161b 40%, #0d0e11); padding: 3%; box-shadow: 0 50px 80px -30px rgba(23,24,28,.55), inset 0 0 0 1px rgba(255,255,255,.18), inset 0 0 0 2.5px #0b0c0f; transform: rotate(-4deg) translateY(4%); transition: transform .8s var(--ease); }
+  .app:hover .phone { transform: rotate(-2deg) translateY(0); }
+  .phone::before { content: ""; position: absolute; left: -2px; top: 22%; width: 2px; height: 9%; background: #2a2d34; border-radius: 2px; }
+  .phone::after { content: ""; position: absolute; right: -2px; top: 30%; width: 2px; height: 14%; background: #2a2d34; border-radius: 2px; }
+  .scr { position: absolute; inset: 3%; border-radius: 9.5%/4.4%; overflow: hidden; background: #fff; }
+  .scr::before { content: ""; position: absolute; top: 2.2%; left: 50%; width: 5%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: #0b0c0f; z-index: 3; }
+  .scr img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: translateX(6%); transition: opacity .5s var(--ease), transform .7s var(--ease); }
+  .scr img.cur { opacity: 1; transform: none; z-index: 1; }
+  .scr .tap { position: absolute; width: 11%; aspect-ratio: 1; border-radius: 50%; border: 2px solid rgba(23,24,28,.55); background: rgba(23,24,28,.12); left: var(--tx, 50%); top: var(--ty, 50%); transform: translate(-50%,-50%) scale(0); z-index: 4; }
+  .scr .tap.go { animation: tap .6s var(--ease); }
+  @keyframes tap { 0% { transform: translate(-50%,-50%) scale(.4); opacity: 0; } 30% { opacity: 1; transform: translate(-50%,-50%) scale(1); } 100% { transform: translate(-50%,-50%) scale(1.5); opacity: 0; } }
+  @media (max-width: 960px) { .apps { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .app { grid-template-columns: 1fr; } .phone { max-width: 200px; } }
+
+  /* ---- Манифест и услуги ---- */
+  .manifest { padding: clamp(5rem, 12vw, 11rem) 0; }
+  .manifest p { font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 3.6vw, 3.4rem); line-height: 1.12; letter-spacing: -.03em; color: var(--ink); max-width: 60rem; }
+  .manifest p em { font-style: normal; color: var(--amber); }
+  .svcs { border-top: 1px solid var(--rule); }
+  .svc { display: grid; grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--s5); padding: var(--s5) 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .svc h3 { font-size: clamp(1.4rem, 2.6vw, 2.2rem); letter-spacing: -.025em; }
+  .svc p { font-size: 1rem; }
+  @media (max-width: 800px) { .svc { grid-template-columns: 1fr; gap: .5rem; } }
+
+  /* ---- Контакт ---- */
+  .contact { padding: clamp(5rem, 12vw, 11rem) 0 var(--s8); }
+  .mail { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 8vw, 7.5rem); letter-spacing: -.05em; line-height: .95; text-decoration: none; display: inline-block; position: relative; word-break: break-all; }
+  .mail::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.04em; height: .05em; background: var(--amber); transform: scaleX(.08); transform-origin: left; transition: transform .7s var(--ease); }
+  .mail:hover::after { transform: scaleX(1); }
+  .contact p { margin-top: var(--s5); max-width: 32rem; font-size: 1.05rem; }
+  footer { border-top: 1px solid var(--rule); padding: var(--s5) 0 var(--s6); font-size: .84rem; color: var(--ink-faint); }
+  footer .wrap { display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+  footer nav { display: flex; gap: var(--s4); flex-wrap: wrap; }
+  footer a { color: var(--ink-soft); text-decoration: none; } footer a:hover { color: var(--ink); }
+
+  /* ---- Курсор ---- */
+  #cur { position: fixed; z-index: 80; left: 0; top: 0; pointer-events: none; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font: 600 .68rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; transform: scale(0); transition: transform .35s var(--ease); }
+  #cur.on { transform: scale(1); }
+  @media (hover: none) { #cur { display: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    #intro { display: none; }
+    .hero h1 .l > span, .fade, .reveal, .lines .l > span, .mod, .scr img { transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    .app .status::before { animation: none; }
   }
 </style>
 </head>
 <body>
+
+<div id="intro" aria-hidden="true"><div class="cells"><i></i><i></i><i></i><i></i></div></div>
+<div id="cur" aria-hidden="true">Смотреть</div>
+<div id="reel" role="dialog" aria-label="Шоурил"><button class="x" id="reel-x" aria-label="Закрыть">✕</button><video id="reel-v" src="/media/reel.mp4" poster="/media/reel.jpg" playsinline controls></video></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Обиход</a>
+    <nav class="nav-links" aria-label="Разделы"><a href="#works">Работы</a><a href="#about">О студии</a><a href="#contact">Контакт</a></nav>
+    <div class="nav-r"><button class="btn" data-reel><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Шоурил</span></button></div>
+  </div>
+</header>
+
 <main>
 
-  <p class="mark">Обиход</p>
-
-  <h1>Небольшие приложения для повседневных дел</h1>
-
-  <p class="lead">Трекер привычек, будильник, детектор лжи для компании — то, чем пользуются между делом и не задумываются об этом. Отсюда и название.</p>
-
-  <p>Мы делаем приложения, которые открываются на секунду и делают одно дело. Они работают офлайн, не просят регистрацию и берут ровно те разрешения, без которых не обойтись. Тёмная тема есть везде.</p>
-
-  <section>
-    <h2>Приложения</h2>
-    <ul>
-      <li><b><a href="/habits/">Трекер привычек — Обиход</a></b> <span>в разработке · шаблон А4 уже доступен</span></li>
-      <li><b>Будильник со звуками для сна</b> <span>в очереди</span></li>
-      <li><b><a href="/detector/">Детектор лжи — Обиход</a></b> <span>готов к подаче</span></li>
-    </ul>
-    <p style="margin-top:1.25rem;font-size:0.93rem">Все приложения выходят в <a href="https://www.rustore.ru/">RuStore</a>. Ссылки появятся здесь после публикации. А пока на странице трекера привычек можно <a href="/habits/">скачать бесплатный шаблон на месяц для печати</a>.</p>
+  <section class="hero" id="top">
+    <div class="pin">
+      <div class="stage" aria-hidden="true">
+        <div class="wall" id="wall">
+          <div class="mod" style="--k:0;--fx:-60vw;--fy:-30vh;--fz:-900px;--fr:-40deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:1;--fx:0;--fy:-70vh;--fz:-700px;--fr:20deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:2;--fx:60vw;--fy:-40vh;--fz:-1100px;--fr:35deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:3;--fx:-70vw;--fy:0;--fz:-600px;--fr:-25deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:4;--fx:0;--fy:0;--fz:-1400px;--fr:0deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:5;--fx:70vw;--fy:10vh;--fz:-800px;--fr:30deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:6;--fx:-50vw;--fy:60vh;--fz:-1000px;--fr:-30deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:7;--fx:10vw;--fy:70vh;--fz:-500px;--fr:15deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="mod" style="--k:8;--fx:60vw;--fy:50vh;--fz:-1200px;--fr:40deg"><div><canvas></canvas><i></i><b></b></div></div>
+          <div class="wall-shadow"></div>
+        </div>
+      </div>
+      <video id="reelsrc" src="/media/reel.mp4" poster="/media/reel.jpg" muted loop playsinline autoplay preload="auto"></video>
+      <div class="hero-txt">
+        <h1 id="h1"><span class="l"><span>Контент</span></span><span class="l"><span>для экранов.</span></span><span class="l"><span class="dim">Приложения для людей.</span></span></h1>
+        <p class="sub fade d1">Студия «Обиход». Музей вирусов в Московском зоопарке — фильм, голограммы, умные зеркала, игры. Два приложения в RuStore. Всё — кодом.</p>
+        <div class="cta fade d2"><button class="btn" data-reel><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Смотреть шоурил</span></button><a class="btn ghost" href="#works">Работы</a></div>
+      </div>
+      <span class="scroll mono" aria-hidden="true">Листайте</span>
+      <div class="reel-cap" id="reelcap" aria-hidden="true"><span class="mono">Шоурил · Музей вирусов · 0:23</span><button class="play" data-reel tabindex="-1"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Во весь экран</button></div>
+    </div>
   </section>
 
-  <section>
-    <h2>Связаться</h2>
-    <p>По вопросам о приложениях, ошибкам и предложениям: <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>. Отвечаем в течение рабочего дня.</p>
+  <section id="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="lines reveal"><span class="l" style="--k:0"><span>Музей вирусов</span></span><span class="l" style="--k:1"><span>в Московском зоопарке</span></span></h2>
+        <p class="reveal" style="--i:1">Двенадцать экранов, шесть голограмм, фильм, три игры и умные зеркала в одном пространстве. Ниже — сам контент и съёмка с объекта. Делали вместе с командой ИИ-графики и вирусологами.</p>
+      </div>
+      <div class="works">
+        <a class="work reveal" href="#contact" data-cur="Смотреть">
+          <video src="/media/film.mp4" poster="/media/film.jpg" muted loop playsinline preload="metadata" data-lazy></video>
+          <span class="n">01</span>
+          <div class="t"><div><h3>Фильм «Полезные вирусы и не только»</h3><p>Три минуты в трёх главах. Русская озвучка, субтитры на английском и китайском, две версии под горизонтальный и вертикальный экраны 55″.</p></div><div class="tags">фильм · ИИ-графика<br>3 языка · 2 экрана</div></div>
+        </a>
+        <div class="duo">
+          <a class="work reveal" href="#contact" data-cur="Смотреть">
+            <video src="/media/mirror-zone.mp4" poster="/media/mirror-zone.jpg" muted loop playsinline preload="metadata" data-lazy></video>
+            <span class="n">02</span>
+            <div class="t"><div><h3>Умные зеркала</h3><p>LED за зеркальным напылением и ИК-датчик: подошёл к раковине — панда, капибара или волк показывают, как мыть руки.</p></div><div class="tags">интерактив · датчики<br>3 мультфильма</div></div>
+          </a>
+          <a class="work reveal" href="#contact" style="--i:1" data-cur="Смотреть">
+            <video src="/media/holo2.mp4" poster="/media/holo2.jpg" muted loop playsinline preload="metadata" data-lazy></video>
+            <span class="n">03</span>
+            <div class="t"><div><h3>Голограммы и энциклопедия</h3><p>Шесть голографических вентиляторов как одна стена и девять круглых дисплеев: вирус вращается, слои раскрываются по очереди.</p></div><div class="tags">3D · голограммы<br>6 + 9 экранов</div></div>
+          </a>
+        </div>
+        <a class="work reveal" href="#contact" data-cur="Смотреть">
+          <video src="/media/games.mp4" poster="/media/games.jpg" muted loop playsinline preload="metadata" data-lazy></video>
+          <span class="n">04</span>
+          <div class="t"><div><h3>Три игры на сенсорном столе</h3><p>Кликер на реакцию, memory и три в ряд — на одном тач-пилоне, без инструкции: дети разбираются за секунды.</p></div><div class="tags">игры · тач-стол<br>3 механики</div></div>
+        </a>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Реквизиты</h2>
-    <dl>
-      <div><dt>Разработчик</dt><dd>ИП Скурихин Алексей Владимирович</dd></div>
-      <div><dt>ИНН</dt><dd>505012949491</dd></div>
-      <div><dt>ОГРНИП</dt><dd>326508100181350</dd></div>
-      <div><dt>Почта</dt><dd><a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a></dd></div>
-    </dl>
+  <section id="apps">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="lines reveal"><span class="l" style="--k:0"><span>Свои приложения</span></span></h2>
+        <p class="reveal" style="--i:1">Небольшие приложения для повседневных дел — то, чем пользуются между делом и не задумываются об этом. Отсюда и название. Офлайн, без регистрации, с тёмной темой. Оба на модерации в RuStore.</p>
+      </div>
+      <div class="apps">
+        <a class="app reveal" href="/habits/">
+          <div class="phone" data-seq="h" aria-hidden="true"><div class="scr"><img src="/media/app-h1.jpg" alt="" class="cur"><img src="/media/app-h2.jpg" alt=""><img src="/media/app-h3.jpg" alt=""><span class="tap"></span></div></div>
+          <div><h3>Трекер привычек — Обиход</h3><p>Отметил касанием — серия растёт сама. Пауза вместо удаления, отметка задним числом и экран диагностики, где видно, почему напоминание не пришло.</p><span class="status">На модерации в RuStore</span></div>
+        </a>
+        <a class="app reveal" href="/detector/" style="--i:1">
+          <div class="phone" data-seq="d" aria-hidden="true"><div class="scr"><img src="/media/app-d1.jpg" alt="" class="cur"><img src="/media/app-d2.jpg" alt=""><img src="/media/app-d3.jpg" alt=""><span class="tap"></span></div></div>
+          <div><h3>Детектор лжи — Обиход</h3><p>Игра для компании: палец на круг, три секунды — «Правда», «Ложь» или «Не определено». Без микрофона, без камеры, без разрешений.</p><span class="status">На модерации в RuStore</span></div>
+        </a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <a href="/privacy/">Политика конфиденциальности</a> · © 2026 Обиход
-  </footer>
+  <section class="manifest" id="about">
+    <div class="wrap">
+      <p class="reveal">Мы делаем то, что показывается на экранах, и то, что живёт в телефоне. <em>Одна команда</em> проектирует фильм для видеостены и экран приложения — с одним представлением о том, что такое «удобно» и «красиво». Всё собирается кодом: один исходник, любое разрешение, правки за минуты, не сутки рендера.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="svcs">
+        <div class="svc reveal"><span class="mono">01</span><h3>Контент для экранов и музеев</h3><p>Фильмы и заставки под геометрию видеостены или фасада, интерактивные игры, голограммы, умные зеркала, проекции. ИИ-графика с проверкой экспертами предметной области.</p></div>
+        <div class="svc reveal" style="--i:1"><span class="mono">02</span><h3>Приложения для RuStore</h3><p>Нативный Android на Kotlin и Compose. Платежи, подписки и аналитика по правилам площадки, карточка и продвижение внутри стора. Свои продукты в портфеле.</p></div>
+        <div class="svc reveal" style="--i:2"><span class="mono">03</span><h3>Сайты и веб-платформы</h3><p>Лендинги и корпоративные сайты в коде или на Tilda, платформы управления контентом на сети экранов, моушен в браузере без тяжёлых библиотек.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="mono reveal">Есть экран или задача?</p>
+      <a class="mail reveal" href="mailto:support@obihodapp.ru" style="--i:1">support@obihodapp.ru</a>
+      <p class="reveal" style="--i:2">Опишите в двух строках — ответим в течение рабочего дня и предложим, с чего начать.</p>
+    </div>
+  </section>
 
 </main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Документы"><a href="/privacy/">Политика конфиденциальности</a><a href="/habits/offer/">Оферта на подписку</a><a href="/habits/">Трекер привычек</a><a href="/detector/">Детектор лжи</a></nav>
+    <span>© 2026 Обиход</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const mobile = () => matchMedia('(max-width: 800px)').matches;
+  const hover = matchMedia('(hover: hover)').matches;
+
+  /* Интро */
+  const intro = $('#intro'), hero = $('.hero'), wall = $('#wall');
+  let seen = false; try { seen = sessionStorage.getItem('obihod-intro') === '1'; } catch (e) {}
+  const start = () => { intro.classList.add('out'); hero.classList.add('ready'); setTimeout(() => wall.classList.add('on'), 150); try { sessionStorage.setItem('obihod-intro', '1'); } catch (e) {} };
+  if (reduce || seen) { intro.remove(); hero.classList.add('ready'); wall.classList.add('on'); } else setTimeout(start, 1050);
+
+  /* Шапка */
+  const nav = $('#nav'); const onNav = () => nav.classList.toggle('scrolled', scrollY > 24); addEventListener('scroll', onNav, { passive: true }); onNav();
+
+  /* Появление */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+  $$('.reveal').forEach(el => io.observe(el));
+
+  /* Стена: размеры, канвасы, морф по скроллу */
+  const src = $('#reelsrc'); const mods = $$('.mod canvas', wall); const ctxs = mods.map(c => c.getContext('2d', { alpha: false }));
+  const poster = new Image(); poster.src = src.getAttribute('poster');
+  const layout = () => {
+    const vw = innerWidth, vh = innerHeight;
+    const W = Math.max(vw, vh * 16 / 9), H = W * 9 / 16; /* размер, при котором стена покрывает экран */
+    wall.style.setProperty('--W', W + 'px'); wall.style.setProperty('--H', H + 'px');
+    mods.forEach(c => { c.width = Math.round(W / 3); c.height = Math.round(H / 3); });
+    wall.__s0 = mobile() ? Math.min(.62, (vw - 48) / W) : Math.min(.5, (vw * .5) / W);
+    wall.__tx0 = mobile() ? 0 : vw * .24; wall.__ty0 = mobile() ? vh * .2 : 0;
+  };
+  layout(); addEventListener('resize', layout, { passive: true });
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const cap = $('#reelcap');
+  const morph = () => {
+    const r = hero.getBoundingClientRect(); const total = hero.offsetHeight - innerHeight;
+    const p = Math.min(1, Math.max(0, -r.top / total));
+    const p1 = ease(Math.min(1, p / .7));
+    const p2 = Math.min(1, Math.max(0, (p - .15) / .45));
+    wall.style.setProperty('--s', (wall.__s0 + (1 - wall.__s0) * p1).toFixed(4));
+    wall.style.setProperty('--tx', (wall.__tx0 * (1 - p1)).toFixed(1) + 'px');
+    wall.style.setProperty('--ty', (wall.__ty0 * (1 - p1)).toFixed(1) + 'px');
+    wall.style.setProperty('--ry', ((mobile() ? -8 : -18) * (1 - p1)).toFixed(2) + 'deg');
+    wall.style.setProperty('--rx', (4 * (1 - p1)).toFixed(2) + 'deg');
+    wall.style.setProperty('--g', (4 * (1 - p1)).toFixed(2) + 'px');
+    wall.style.setProperty('--p', p1.toFixed(3));
+    hero.style.setProperty('--p2', p2.toFixed(3));
+    cap.classList.toggle('on', p2 > .8);
+  };
+  addEventListener('scroll', morph, { passive: true }); addEventListener('resize', morph, { passive: true }); morph();
+  let vis = true; new IntersectionObserver(es => vis = es[0].isIntersecting, { threshold: 0 }).observe(hero);
+  const draw = () => {
+    const s = (src.readyState >= 2 && !src.paused) ? src : (poster.complete ? poster : null);
+    if (s && vis && !document.hidden) { const sw = s.videoWidth || s.naturalWidth, sh = s.videoHeight || s.naturalHeight; if (sw) for (let k = 0; k < 9; k++) ctxs[k].drawImage(s, (k % 3) * sw / 3, Math.floor(k / 3) * sh / 3, sw / 3, sh / 3, 0, 0, mods[k].width, mods[k].height); }
+    requestAnimationFrame(draw);
+  };
+  requestAnimationFrame(draw); src.play().catch(() => {});
+
+  /* Полноэкранный шоурил */
+  const reel = $('#reel'), rv = $('#reel-v');
+  const openReel = () => { reel.classList.add('open'); rv.currentTime = 0; rv.play().catch(() => {}); document.body.style.overflow = 'hidden'; };
+  const closeReel = () => { reel.classList.remove('open'); rv.pause(); document.body.style.overflow = ''; };
+  $$('[data-reel]').forEach(b => b.addEventListener('click', openReel)); $('#reel-x').addEventListener('click', closeReel);
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeReel(); });
+
+  /* Видео в работах — только на экране */
+  const vo = new IntersectionObserver(es => es.forEach(e => { const v = e.target; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: .2 });
+  $$('video[data-lazy]').forEach(v => vo.observe(v));
+
+  /* Курсор над работами */
+  const cur = $('#cur');
+  if (hover) { let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy; addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+    $$('[data-cur]').forEach(w => { w.addEventListener('pointerenter', () => { cur.textContent = w.dataset.cur; cur.classList.add('on'); }); w.addEventListener('pointerleave', () => cur.classList.remove('on')); });
+    const follow = () => { cx += (tx - cx) * .18; cy += (ty - cy) * .18; cur.style.translate = `${cx}px ${cy}px`; requestAnimationFrame(follow); }; follow(); }
+
+  /* Телефоны: сценарий экранов */
+  const seqs = { h: [[50, 92], [50, 83], [16, 2]], d: [[50, 52], [50, 52], [50, 52]] };
+  $$('.phone[data-seq]').forEach(ph => {
+    const imgs = $$('.scr img', ph), tap = $('.tap', ph), pts = seqs[ph.dataset.seq]; let i = 0; if (reduce) return;
+    const step = () => { const p = pts[i]; tap.style.setProperty('--tx', p[0] + '%'); tap.style.setProperty('--ty', p[1] + '%'); tap.classList.remove('go'); void tap.offsetWidth; tap.classList.add('go');
+      setTimeout(() => { imgs[i].classList.remove('cur'); i = (i + 1) % imgs.length; imgs[i].classList.add('cur'); }, 450); };
+    let t = null; new IntersectionObserver(es => { if (es[0].isIntersecting) { if (!t) t = setInterval(step, ph.dataset.seq === 'd' ? 3200 : 2600); } else { clearInterval(t); t = null; } }, { threshold: .3 }).observe(ph);
+  });
+})();
+</script>
 </body>
 </html>

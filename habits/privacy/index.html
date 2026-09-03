@@ -10,12 +10,17 @@
 <style>
   :root {
     --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e;
-    --ink-faint: #8d857a; --rule: #e5ded4; --accent: #a8471f; --measure: 38rem;
+    --ink-faint: #8d857a; --rule: #e5ded4; --rule-strong: #d3cabd;
+    --accent: #a8471f; --accent-ink: #ffffff; --habits: #2e5d50;
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --measure: 40rem;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #16150f; --surface: #1e1d16; --ink: #f2ede4; --ink-soft: #b3aa9c;
-      --ink-faint: #857d70; --rule: #302e25; --accent: #e08b5c;
+      --ink-faint: #857d70; --rule: #302e25; --rule-strong: #3f3c30;
+      --accent: #e08b5c; --accent-ink: #16150f;
     }
   }
   * { box-sizing: border-box; }
@@ -26,13 +31,25 @@
     padding: clamp(2rem, 7vw, 5rem) 1.5rem; display: flex; justify-content: center;
   }
   main { width: 100%; max-width: var(--measure); }
-  .back {
-    display: inline-block; margin-bottom: 2.5rem;
-    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.8rem;
-    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
-    color: var(--accent); text-decoration: none;
+  .doc-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
   }
-  .back:hover { text-decoration: underline; }
+  .doc-nav .brand {
+    display: inline-flex; align-items: center; gap: .6rem; text-decoration: none;
+    font-family: var(--sans); font-weight: 700; letter-spacing: .02em; color: var(--ink);
+  }
+  .doc-nav .brand .logo {
+    width: 24px; height: 24px; border-radius: 6px; background: var(--habits);
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; padding: 5px;
+  }
+  .doc-nav .brand .logo i { background: #fff; border-radius: 2px; }
+  .doc-nav .brand .logo i:last-child { background: transparent; border: 1.3px solid rgba(255,255,255,.55); }
+  .doc-nav .home {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint); text-decoration: none;
+  }
+  .doc-nav .home:hover { color: var(--ink); }
   h1 {
     font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; font-weight: 400;
     letter-spacing: -0.015em; margin: 0 0 0.5rem; text-wrap: balance;
@@ -67,7 +84,10 @@
 <body>
 <main>
 
-<a class="back" href="/">← Обиход</a>
+<div class="doc-nav">
+  <a class="brand" href="/" aria-label="Обиход — на главную"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Обиход</a>
+  <a class="home" href="/">На главную</a>
+</div>
 
 <h1>Политика конфиденциальности приложения «Трекер привычек — Обиход»</h1>
 <p class="rev">Редакция от 1 сентября 2026 г. Действует для мобильного приложения «Трекер привычек — Обиход» для Android. Для сайта и остальных приложений действует <a href="/privacy/">общая политика</a>.</p>
