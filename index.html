@@ -50,6 +50,7 @@
   .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
   h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; letter-spacing: -.035em; line-height: .95; text-wrap: balance; }
   p { margin: 0; color: var(--ink-soft); }
+  .eyebrow { display: flex; align-items: center; gap: .8rem; margin: 0 0 1.2rem; } .eyebrow i { width: 8px; height: 8px; background: var(--amber); border-radius: 2px; }
   .mono { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
   .btn { display: inline-flex; align-items: center; gap: .6rem; padding: 1rem 1.5rem; font: 600 .95rem/1 var(--body); border-radius: 999px; border: 1px solid transparent; text-decoration: none; cursor: pointer; white-space: nowrap; position: relative; overflow: hidden; background: var(--ink); color: #fff; transition: transform .3s var(--ease); }
   .btn::before { content: ""; position: absolute; inset: 0; background: var(--amber); transform: translateY(102%); transition: transform .4s var(--ease); }
@@ -85,43 +86,25 @@
   .nav .btn { padding: .7rem 1.1rem; font-size: .85rem; }
   @media (max-width: 800px) { .nav-links { display: none; } .nav-in { grid-template-columns: 1fr auto; } }
 
-  /* ---- Hero: стена → шоурил ---- */
-  .hero { height: 260vh; position: relative; }
-  .pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-  .hero-txt { position: absolute; left: max(1.5rem, (100vw - var(--wrap)) / 2); top: 50%; width: min(44vw, 34rem); z-index: 3; opacity: calc(1 - var(--p2, 0)); transform: translateY(calc(-50% - var(--p2, 0) * 40px)); pointer-events: none; }
+  /* ---- Hero: ДНК — программы и контент на двух нитях ---- */
+  .hero { position: relative; height: 100vh; height: 100svh; min-height: 640px; overflow: hidden; }
+  #dna { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-txt { position: absolute; left: max(1.5rem, (100vw - var(--wrap)) / 2); top: 50%; transform: translateY(-50%); width: min(44vw, 36rem); z-index: 3; pointer-events: none; }
   .hero-txt > * { pointer-events: auto; }
-  .hero h1 { font-size: clamp(2.6rem, 6vw, 6rem); }
+  .hero h1 { font-size: clamp(2.4rem, 5.4vw, 5.4rem); }
   .hero h1 .l { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
   .hero h1 .l > span { display: block; transform: translateY(105%); filter: blur(8px); opacity: 0; transition: transform 1.1s var(--ease), filter .9s var(--ease), opacity .6s; }
   .hero.ready h1 .l > span { transform: none; filter: none; opacity: 1; }
-  .hero h1 .l:nth-child(2) > span { transition-delay: .1s; } .hero h1 .l:nth-child(3) > span { transition-delay: .2s; }
+  .hero h1 .l:nth-child(2) > span { transition-delay: .1s; }
   .hero h1 .dim { color: var(--amber); }
-  .hero .sub { margin-top: var(--s5); max-width: 28rem; color: var(--ink); font-size: 1.1rem; }
+  .hero .sub { margin-top: var(--s5); max-width: 27rem; color: var(--ink); font-size: 1.05rem; }
   .hero .cta { display: flex; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s5); }
   .fade { opacity: 0; transform: translateY(16px); transition: opacity .9s var(--ease), transform 1s var(--ease); }
   .hero.ready .fade { opacity: 1; transform: none; }
   .hero.ready .d1 { transition-delay: .45s; } .hero.ready .d2 { transition-delay: .6s; }
-
-  .stage { position: absolute; inset: 0; perspective: 1600px; perspective-origin: 50% 50%; }
-  .wall { position: absolute; left: 50%; top: 50%; margin-left: calc(var(--W) / -2); margin-top: calc(var(--H) / -2); width: var(--W); height: var(--H); background: transparent; transform-style: preserve-3d; transform: translate3d(var(--tx, 0), var(--ty, 0), 0) scale(var(--s, .5)) rotateY(var(--ry, -18deg)) rotateX(var(--rx, 4deg)); will-change: transform; }
-  .mod { position: absolute; width: calc(100% / 3); height: calc(100% / 3); padding: var(--g, 4px); transform: translate3d(var(--fx), var(--fy), var(--fz)) rotateY(var(--fr)); opacity: 0; transition: transform 1.5s var(--ease), opacity .6s; transition-delay: calc(var(--k) * 80ms); }
-  .mod:nth-child(1){left:0;top:0} .mod:nth-child(2){left:33.3333%;top:0} .mod:nth-child(3){left:66.6667%;top:0} .mod:nth-child(4){left:0;top:33.3333%} .mod:nth-child(5){left:33.3333%;top:33.3333%} .mod:nth-child(6){left:66.6667%;top:33.3333%} .mod:nth-child(7){left:0;top:66.6667%} .mod:nth-child(8){left:33.3333%;top:66.6667%} .mod:nth-child(9){left:66.6667%;top:66.6667%}
-  .wall.on .mod { transform: none; opacity: 1; }
-  .wall.on { background: #0a0b0e; transition: background .3s .9s; }
-  .mod > div { position: relative; width: 100%; height: 100%; background: #07080a; overflow: hidden; border-radius: calc(4px * (1 - var(--p, 0))); box-shadow: inset 0 0 0 calc(1.5px * (1 - var(--p, 0))) #23262d; }
-  .mod canvas { width: 100%; height: 100%; }
-  .mod i { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle at center, transparent 0 .6px, rgba(0,0,0,.55) 1.1px); background-size: 3px 3px; mix-blend-mode: multiply; opacity: calc(.6 * (1 - var(--p, 0))); }
-  .mod b { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.16), transparent 40%, transparent 70%, rgba(255,255,255,.06)); opacity: calc(1 - var(--p, 0)); }
-  .wall-shadow { position: absolute; left: 6%; right: 6%; bottom: -7%; height: 14%; background: radial-gradient(50% 100% at 50% 0, rgba(23,24,28,.35), transparent 70%); filter: blur(8px); opacity: calc(1 - var(--p, 0)); }
-  #reelsrc { position: absolute; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
-  .reel-cap { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); z-index: 3; display: flex; gap: 1rem; align-items: center; opacity: var(--p2, 0); background: rgba(23,24,28,.7); color: #fff; padding: .55rem .9rem; border-radius: 999px; backdrop-filter: blur(8px); white-space: nowrap; pointer-events: none; }
-  .hero[style*="--p2: 1"] .reel-cap, .reel-cap.on { pointer-events: auto; }
-  .reel-cap .mono { color: rgba(255,255,255,.85); }
-  .reel-cap .play { display: inline-flex; align-items: center; gap: .4rem; font: 600 .8rem/1 var(--body); color: #fff; background: none; border: 0; cursor: pointer; padding: 0; }
-  .reel-cap .play svg { width: 12px; height: 12px; fill: #fff; }
-  .scroll { position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%); z-index: 3; opacity: calc(1 - var(--p2, 0) * 3); }
-  .scroll::after { content: ""; display: block; width: 1px; height: 36px; margin: .5rem auto 0; background: linear-gradient(var(--ink-faint), transparent); }
-  @media (max-width: 800px) { .hero-txt { width: calc(100vw - 3rem); left: 1.5rem; top: 5.5rem; transform: translateY(calc(var(--p2, 0) * -40px)); } .hero .sub { font-size: 1rem; } .hero h1 { font-size: clamp(2.4rem, 11vw, 3.4rem); } }
+  .hero .legend { position: absolute; left: max(1.5rem, (100vw - var(--wrap)) / 2); bottom: 1.6rem; z-index: 3; font: 500 .68rem/1.7 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+  .hero .legend b { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: -1px; margin-left: .5rem; }
+  @media (max-width: 800px) { .hero-txt { width: calc(100vw - 3rem); left: 1.5rem; top: 5rem; transform: none; background: linear-gradient(90deg, rgba(251,250,247,.92) 55%, rgba(251,250,247,0)); padding-right: 20%; } .hero .sub { font-size: 1rem; } .hero h1 { font-size: 2.3rem; } .hero .legend { display: none; } }
 
   /* ---- Полноэкранный шоурил ---- */
   #reel { position: fixed; inset: 0; z-index: 150; background: #000; display: none; }
@@ -203,7 +186,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     #intro { display: none; }
-    .hero h1 .l > span, .fade, .reveal, .lines .l > span, .mod, .scr img { transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    .hero h1 .l > span, .fade, .reveal, .lines .l > span, .scr img { transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
     .app .status::before { animation: none; }
   }
 </style>
@@ -225,30 +208,14 @@
 <main>
 
   <section class="hero" id="top">
-    <div class="pin">
-      <div class="stage" aria-hidden="true">
-        <div class="wall" id="wall">
-          <div class="mod" style="--k:0;--fx:-60vw;--fy:-30vh;--fz:-900px;--fr:-40deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:1;--fx:0;--fy:-70vh;--fz:-700px;--fr:20deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:2;--fx:60vw;--fy:-40vh;--fz:-1100px;--fr:35deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:3;--fx:-70vw;--fy:0;--fz:-600px;--fr:-25deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:4;--fx:0;--fy:0;--fz:-1400px;--fr:0deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:5;--fx:70vw;--fy:10vh;--fz:-800px;--fr:30deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:6;--fx:-50vw;--fy:60vh;--fz:-1000px;--fr:-30deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:7;--fx:10vw;--fy:70vh;--fz:-500px;--fr:15deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="mod" style="--k:8;--fx:60vw;--fy:50vh;--fz:-1200px;--fr:40deg"><div><canvas></canvas><i></i><b></b></div></div>
-          <div class="wall-shadow"></div>
-        </div>
-      </div>
-      <video id="reelsrc" src="/media/reel.mp4" poster="/media/reel.jpg" muted loop playsinline autoplay preload="auto"></video>
-      <div class="hero-txt">
-        <h1 id="h1"><span class="l"><span>Контент</span></span><span class="l"><span>для экранов.</span></span><span class="l"><span class="dim">Приложения для людей.</span></span></h1>
-        <p class="sub fade d1">Студия «Обиход». Музей вирусов в Московском зоопарке — фильм, голограммы, умные зеркала, игры. Два приложения в RuStore. Всё — кодом.</p>
-        <div class="cta fade d2"><button class="btn" data-reel><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Смотреть шоурил</span></button><a class="btn ghost" href="#works">Работы</a></div>
-      </div>
-      <span class="scroll mono" aria-hidden="true">Листайте</span>
-      <div class="reel-cap" id="reelcap" aria-hidden="true"><span class="mono">Шоурил · Музей вирусов · 0:23</span><button class="play" data-reel tabindex="-1"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Во весь экран</button></div>
+    <canvas id="dna" aria-hidden="true"></canvas>
+    <div class="hero-txt">
+      <p class="eyebrow mono fade" style="color:var(--ink)"><i></i>Обиход — программы · контент · дизайн</p>
+      <h1 id="h1"><span class="l"><span>Мы делаем программы,</span></span><span class="l"><span class="dim">на которые смотрят.</span></span></h1>
+      <p class="sub fade d1">Фильм для видеостены, игра на сенсорном столе, интерактив по датчику, сайт, приложение в RuStore — всё это программы, внутри которых живут контент и дизайн. Мы делаем все три слоя сами.</p>
+      <div class="cta fade d2"><a class="btn" href="#works"><span>Смотреть работы</span></a><button class="btn ghost" data-reel><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Шоурил</span></button></div>
     </div>
+    <div class="legend" aria-hidden="true">нить 1 — код <b style="background:#17181c"></b><br>нить 2 — дизайн <b style="background:#e0662f"></b><br>на нитях — программы и контент</div>
   </section>
 
   <section id="works">
@@ -344,10 +311,10 @@
   const hover = matchMedia('(hover: hover)').matches;
 
   /* Интро */
-  const intro = $('#intro'), hero = $('.hero'), wall = $('#wall');
+  const intro = $('#intro'), hero = $('.hero');
   let seen = false; try { seen = sessionStorage.getItem('obihod-intro') === '1'; } catch (e) {}
-  const start = () => { intro.classList.add('out'); hero.classList.add('ready'); setTimeout(() => wall.classList.add('on'), 150); try { sessionStorage.setItem('obihod-intro', '1'); } catch (e) {} };
-  if (reduce || seen) { intro.remove(); hero.classList.add('ready'); wall.classList.add('on'); } else setTimeout(start, 1050);
+  const start = () => { intro.classList.add('out'); hero.classList.add('ready'); try { sessionStorage.setItem('obihod-intro', '1'); } catch (e) {} };
+  if (reduce || seen) { intro.remove(); hero.classList.add('ready'); } else setTimeout(start, 1050);
 
   /* Шапка */
   const nav = $('#nav'); const onNav = () => nav.classList.toggle('scrolled', scrollY > 24); addEventListener('scroll', onNav, { passive: true }); onNav();
@@ -356,47 +323,127 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
   $$('.reveal').forEach(el => io.observe(el));
 
-  /* Стена: размеры, канвасы, морф по скроллу */
-  const src = $('#reelsrc'); const mods = $$('.mod canvas', wall); const ctxs = mods.map(c => c.getContext('2d', { alpha: false }));
-  const poster = new Image(); poster.src = src.getAttribute('poster');
-  const layout = () => {
-    const vw = innerWidth, vh = innerHeight;
-    const W = Math.max(vw, vh * 16 / 9), H = W * 9 / 16; /* размер, при котором стена покрывает экран */
-    wall.style.setProperty('--W', W + 'px'); wall.style.setProperty('--H', H + 'px');
-    mods.forEach(c => { c.width = Math.round(W / 3); c.height = Math.round(H / 3); });
-    wall.__s0 = mobile() ? Math.min(.62, (vw - 64) / W) : Math.min(.58, (vw * .56) / W);
-    wall.__tx0 = mobile() ? 0 : vw * .24; wall.__ty0 = mobile() ? vh * .3 : 0;
-  };
-  layout(); addEventListener('resize', layout, { passive: true });
-  const ease = t => 1 - Math.pow(1 - t, 3);
-  const cap = $('#reelcap');
-  const morph = () => {
-    const r = hero.getBoundingClientRect(); const total = hero.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, -r.top / total));
-    const p1 = ease(Math.min(1, p / .7));
-    const p2 = Math.min(1, Math.max(0, (p - .04) / .3));
-    wall.style.setProperty('--s', (wall.__s0 + (1 - wall.__s0) * p1).toFixed(4));
-    wall.style.setProperty('--tx', (wall.__tx0 * (1 - p1)).toFixed(1) + 'px');
-    wall.style.setProperty('--ty', (wall.__ty0 * (1 - p1)).toFixed(1) + 'px');
-    wall.style.setProperty('--ry', ((mobile() ? -8 : -18) * (1 - p1)).toFixed(2) + 'deg');
-    wall.style.setProperty('--rx', (4 * (1 - p1)).toFixed(2) + 'deg');
-    wall.style.setProperty('--g', (4 * (1 - p1)).toFixed(2) + 'px');
-    wall.style.setProperty('--p', p1.toFixed(3));
-    hero.style.setProperty('--p2', p2.toFixed(3));
-    cap.classList.toggle('on', p2 > .8);
-  };
-  addEventListener('scroll', morph, { passive: true }); addEventListener('resize', morph, { passive: true }); morph();
-  let vis = true; new IntersectionObserver(es => vis = es[0].isIntersecting, { threshold: 0 }).observe(hero);
-  const draw = () => {
-    const s = (src.readyState >= 2 && !src.paused) ? src : (poster.complete ? poster : null);
-    if (s && vis && !document.hidden) { const sw = s.videoWidth || s.naturalWidth, sh = s.videoHeight || s.naturalHeight; if (sw) for (let k = 0; k < 9; k++) ctxs[k].drawImage(s, (k % 3) * sw / 3, Math.floor(k / 3) * sh / 3, sw / 3, sh / 3, 0, 0, mods[k].width, mods[k].height); }
-    requestAnimationFrame(draw);
-  };
-  requestAnimationFrame(draw); src.play().catch(() => {});
+  /* ---- ДНК: программы и контент на двух нитях ---- */
+  if (!CanvasRenderingContext2D.prototype.roundRect) { CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) { r = Math.min(Array.isArray(r) ? r[0] : r, w / 2, h / 2); this.moveTo(x + r, y); this.arcTo(x + w, y, x + w, y + h, r); this.arcTo(x + w, y + h, x, y + h, r); this.arcTo(x, y + h, x, y, r); this.arcTo(x, y, x + w, y, r); this.closePath(); return this; }; }
+  const A = { corona: '/media/corona.png', 'panda-idle': '/media/wash-idle.jpg', game: '/media/game-clip.jpg', site: '/media/site.jpg', 'app-h1': '/media/app-h1.jpg', 'app-d2': '/media/app-d2.jpg', filmp: '/media/film.jpg', kolba: '/media/sizes.jpg', 'film-s': '/media/film-clip.mp4', 'game-s': '/media/game-clip.mp4', 'kolba-s': '/media/sizes.mp4', 'panda-s': '/media/wash.mp4' };
+const img = (k) => { const i = new Image(); i.src = A[k]; return i; };
+const vid = (k) => { const v = document.createElement('video'); v.src = A[k]; v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true; v.play().catch(()=>{}); return v; };
+const IM = { filmp: img('filmp'), corona: img('corona'), pandaidle: img('panda-idle'), game: img('game'), site: img('site'), h1: img('app-h1'), d2: img('app-d2'), kolba: img('kolba') };
+const VD = { film: vid('film-s'), game: vid('game-s'), kolba: vid('kolba-s'), panda: vid('panda-s') };
+/* продукты вдоль нитей: strand 0 — код, 1 — дизайн */
+const ITEMS = [
+  { u: .06, s: 0, type: 'virus', src: 'corona' },
+  { u: .21, s: 1, type: 'screen', src: 'film', video: true, poster: 'filmp' },
+  { u: .36, s: 0, type: 'phone', frames: ['h1', 'd2'] },
+  { u: .51, s: 1, type: 'screen', src: 'game', video: true, poster: 'game' },
+  { u: .66, s: 0, type: 'mirror' },
+  { u: .80, s: 1, type: 'kolba', src: 'kolba', video: true, poster: 'kolba' },
+  { u: .94, s: 0, type: 'browser', src: 'site' },
+];
+let skin = 'real';
+
+const cv = document.getElementById('dna'), ctx = cv.getContext('2d');
+let W, H; const DPR2 = Math.min(devicePixelRatio || 1, 2);
+const resize = () => { W = cv.clientWidth || innerWidth; H = cv.clientHeight || innerHeight; cv.width = W * DPR2; cv.height = H * DPR2; ctx.setTransform(DPR2, 0, 0, DPR2, 0, 0); }; resize(); addEventListener('resize', resize); setTimeout(resize, 300); setTimeout(resize, 1500);
+let mx = 0, my = 0, tmx = 0, tmy = 0; if (hover) addEventListener('pointermove', e => { tmx = e.clientX / W - .5; tmy = e.clientY / H - .5; }, { passive: true });
+
+const MONO = getComputedStyle(document.body).getPropertyValue('--mono');
+const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); };
+const isAbs = (i) => skin === 'abs' || (skin === 'mix' && (i % 3 === 1));
+
+/* ---- объекты ---- */
+function drawVirus(it, x, y, s, t, d, i) {
+  const im = IM[it.src]; const sz = s * 2.3; ctx.save(); ctx.translate(x, y); ctx.rotate(Math.sin(t * .5 + i) * .35);
+  if (!im.complete) { /* пока грузится */
+    const R = sz * .34; ctx.fillStyle = it.src === 'corona' ? '#e0662f' : '#8c7cf0'; ctx.strokeStyle = ctx.fillStyle; ctx.lineWidth = Math.max(2, sz * .04);
+    for (let k = 0; k < 14; k++) { const a = k / 14 * 6.283 + t * .3; ctx.beginPath(); ctx.moveTo(Math.cos(a) * R * .9, Math.sin(a) * R * .9); ctx.lineTo(Math.cos(a) * R * 1.35, Math.sin(a) * R * 1.35); ctx.stroke(); ctx.beginPath(); ctx.arc(Math.cos(a) * R * 1.4, Math.sin(a) * R * 1.4, sz * .045, 0, 6.283); ctx.fill(); }
+    const g = ctx.createRadialGradient(-R * .35, -R * .35, R * .1, 0, 0, R); g.addColorStop(0, '#fff'); g.addColorStop(.35, ctx.fillStyle); g.addColorStop(1, '#17181c'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, R, 0, 6.283); ctx.fill();
+  } else { ctx.shadowColor = 'rgba(23,24,28,' + (.35 * d) + ')'; ctx.shadowBlur = 30 * d; ctx.shadowOffsetY = 14 * d; const w = sz, h = sz * im.height / im.width; ctx.drawImage(im, -w / 2, -h / 2, w, h); }
+  ctx.restore();
+}
+function screenBox(x, y, w, h, r, d) { ctx.save(); ctx.shadowColor = 'rgba(23,24,28,' + (.4 * d) + ')'; ctx.shadowBlur = 34 * d; ctx.shadowOffsetY = 16 * d; rr(x - w / 2, y - h / 2, w, h, r); ctx.fillStyle = '#0b0c0f'; ctx.fill(); ctx.restore(); }
+function absContent(x, y, w, h, col, t) { ctx.fillStyle = col; rr(x - w / 2, y - h / 2, w, h, 6); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.9)'; const p = w * .08; rr(x - w / 2 + p, y - h / 2 + p, w * .45, h * .09, 3); ctx.fill(); rr(x - w / 2 + p, y - h / 2 + p + h * .16, w * .3, h * .09, 3); ctx.fill(); const q = (t * .4) % 1; rr(x - w / 2 + p, y + h / 2 - p - h * .16, w * (1 - 2 * p / w) * q, h * .09, 3); ctx.fill(); ctx.beginPath(); ctx.arc(x + w / 2 - p - w * .07, y - h / 2 + p + h * .1, w * .05, 0, 6.283); ctx.fill(); }
+function drawScreen(it, x, y, s, t, d, i, ratio = 16 / 9) {
+  const w = s * 1.9, h = w / ratio; screenBox(x, y, w, h, 8, d);
+  ctx.save(); rr(x - w / 2, y - h / 2, w, h, 6); ctx.clip();
+  const src = it.video ? VD[it.src] : IM[it.src];
+  if (isAbs(i)) absContent(x, y, w, h, it.src === 'film' ? '#e0662f' : '#1fb39a', t);
+  else { let S = src; if (it.video && (!src || src.readyState < 2)) S = IM[it.poster]; if (S && (S.videoWidth || S.complete)) { const sw = S.videoWidth || S.width, sh = S.videoHeight || S.height; const sc = Math.max(w / sw, h / sh); const dw = sw * sc, dh = sh * sc; ctx.drawImage(S, x - dw / 2, y - dh / 2, dw, dh); } else { ctx.fillStyle = '#222'; ctx.fillRect(x - w / 2, y - h / 2, w, h); } }
+  /* блик */ const g = ctx.createLinearGradient(x - w / 2, y - h / 2, x + w / 2, y + h / 2); g.addColorStop(0, 'rgba(255,255,255,.18)'); g.addColorStop(.4, 'rgba(255,255,255,0)'); ctx.fillStyle = g; ctx.fillRect(x - w / 2, y - h / 2, w, h); ctx.restore();
+}
+function drawMirror(it, x, y, s, t, d, i) {
+  const w = s * 1.8, h = w * 9 / 16; const ph = (t + 2) % 11; /* 0–5 ожидание, 5–5.8 датчик, 5.8–11 ролик */
+  ctx.save(); ctx.shadowColor = 'rgba(23,24,28,' + (.35 * d) + ')'; ctx.shadowBlur = 28 * d; ctx.shadowOffsetY = 12 * d; rr(x - w / 2, y - h / 2, w, h, 8); ctx.fillStyle = '#000'; ctx.fill(); ctx.restore(); ctx.save(); rr(x - w / 2, y - h / 2, w, h, 6); ctx.clip();
+  const playing = ph > 5.8; const v = VD.panda, idle = IM.pandaidle;
+  if (isAbs(i)) absContent(x, y, w, h, '#1fb39a', t);
+  else { const S = (playing && v.readyState >= 2) ? v : idle; if (S && (S.videoWidth || S.complete)) { const sw = S.videoWidth || S.width, sh = S.videoHeight || S.height; const sc = Math.max(w / sw, h / sh); ctx.drawImage(S, x - sw * sc / 2, y - sh * sc / 2, sw * sc, sh * sc); }
+    if (!playing) { /* режим ожидания: затемнение и подпись */ ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fillRect(x - w / 2, y - h / 2, w, h); ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.font = '600 ' + Math.max(8, s * .11) + 'px ' + MONO; ctx.textAlign = 'center'; ctx.fillText('ЖДЁТ ЧЕЛОВЕКА', x, y + h * .42); } }
+  ctx.restore();
+  /* ИК-датчик над экраном: пульс при срабатывании */
+  const sx = x, sy = y - h / 2 - s * .22; const trig = ph > 5 && ph < 6.4; ctx.beginPath(); ctx.arc(sx, sy, s * .07, 0, 6.283); ctx.fillStyle = trig ? '#e0662f' : '#8f9299'; ctx.fill();
+  if (trig) { const q = (ph - 5) / 1.4; ctx.beginPath(); ctx.arc(sx, sy, s * .07 + q * s * .55, 0, 6.283); ctx.strokeStyle = 'rgba(224,102,47,' + (1 - q) + ')'; ctx.lineWidth = 2; ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(sx, sy + s * .07); ctx.lineTo(sx, y - h / 2 - 4); ctx.strokeStyle = 'rgba(23,24,28,.35)'; ctx.lineWidth = 1; ctx.stroke();
+  /* человек подходит: силуэт-точка слева */
+  if (ph > 4.2 && ph < 7) { const q = Math.min(1, (ph - 4.2) / 1.2); const px = x - w / 2 - s * .9 + q * s * .5; ctx.globalAlpha = .55; ctx.fillStyle = '#17181c'; ctx.beginPath(); ctx.arc(px, y - s * .25, s * .12, 0, 6.283); ctx.fill(); rr(px - s * .13, y - s * .1, s * .26, s * .5, s * .1); ctx.fill(); ctx.globalAlpha = 1; }
+}
+function drawRound(it, x, y, s, t, d, i) { /* энциклопедия: вирус и слои, подписываемые по очереди */
+  const im = IM.adeno; const sz = s * 1.35; ctx.save(); ctx.translate(x, y); ctx.rotate(t * .25); if (im.complete) { ctx.shadowColor = 'rgba(23,24,28,' + (.3 * d) + ')'; ctx.shadowBlur = 24 * d; ctx.shadowOffsetY = 10 * d; ctx.drawImage(im, -sz / 2, -sz / 2 * im.height / im.width, sz, sz * im.height / im.width); } ctx.restore();
+  const layers = ['Капсид', 'Волокна', 'ДНК']; const ph = (t * .5) % 4; const n = Math.min(3, Math.floor(ph) + 1);
+  for (let k = 0; k < n; k++) { const a = k === n - 1 ? Math.min(1, (ph % 1) * 3) : 1; const lx = x + sz * .62, ly = y - sz * .3 + k * s * .42; const w = s * 1.15, h = s * .34; ctx.globalAlpha *= a; ctx.beginPath(); ctx.moveTo(x + sz * .2, y); ctx.lineTo(lx, ly + h / 2); ctx.strokeStyle = 'rgba(31,179,154,.7)'; ctx.lineWidth = 1; ctx.stroke(); rr(lx, ly, w, h, 6); ctx.fillStyle = '#fff'; ctx.fill(); ctx.strokeStyle = 'rgba(23,24,28,.25)'; ctx.stroke(); ctx.fillStyle = '#17181c'; ctx.font = '600 ' + Math.max(9, s * .19) + 'px ' + getComputedStyle(document.body).getPropertyValue('--display'); ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(layers[k], lx + s * .14, ly + h / 2); ctx.textBaseline = 'alphabetic'; ctx.globalAlpha /= a; }
+}
+function drawKolba(it, x, y, s, t, d, i) { const w = s * .48, h = s * 2.2; ctx.save(); ctx.shadowColor = 'rgba(23,24,28,' + (.35 * d) + ')'; ctx.shadowBlur = 24 * d; ctx.shadowOffsetY = 12 * d; rr(x - w / 2, y - h / 2, w, h, 8); ctx.fillStyle = '#000'; ctx.fill(); ctx.restore(); ctx.save(); rr(x - w / 2, y - h / 2, w, h, 8); ctx.clip(); ctx.fillStyle = '#000'; ctx.fillRect(x - w / 2, y - h / 2, w, h);
+  if (isAbs(i)) { for (let k = 0; k < 7; k++) { const q = ((t * (.15 + k * .07)) + k * .37) % 1; ctx.fillStyle = ['#e0662f', '#1fb39a', '#8c7cf0'][k % 3]; ctx.beginPath(); ctx.arc(x + Math.sin(k * 2.1) * w * .25, y - h / 2 + q * h, s * (.06 + (k % 3) * .04), 0, 6.283); ctx.fill(); } }
+  else { const v = VD.kolba, S = (v.readyState >= 2) ? v : IM.kolba; if (S && (S.videoWidth || S.complete)) { const sw = S.videoWidth || S.width, sh = S.videoHeight || S.height; const sc = Math.max(w / sw, h / sh); ctx.drawImage(S, x - sw * sc / 2, y - sh * sc / 2, sw * sc, sh * sc); } } ctx.restore(); }
+function drawPhone(it, x, y, s, t, d, i) { const w = s * .78, h = w * 2.1; ctx.save(); ctx.translate(x, y); ctx.rotate(-.12 + Math.sin(t * .7 + i) * .05); ctx.shadowColor = 'rgba(23,24,28,' + (.4 * d) + ')'; ctx.shadowBlur = 34 * d; ctx.shadowOffsetY = 16 * d; rr(-w / 2, -h / 2, w, h, w * .16); ctx.fillStyle = '#17181c'; ctx.fill(); ctx.shadowColor = 'transparent'; rr(-w / 2, -h / 2, w, h, w * .16); ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1; ctx.stroke();
+  const iw = w * .9, ih = h * .94; ctx.save(); rr(-iw / 2, -ih / 2, iw, ih, w * .13); ctx.clip(); const fr = it.frames; const ph = (((t / 3.2) % fr.length) + fr.length) % fr.length; const k = Math.floor(ph), f = ph - k; const imA = IM[fr[k]], imB = IM[fr[(k + 1) % fr.length]]; if (isAbs(i)) { ctx.fillStyle = '#fff'; ctx.fillRect(-iw / 2, -ih / 2, iw, ih); absContent(0, 0, iw, ih, '#2e5d50', t); } else { if (imA.complete) ctx.drawImage(imA, -iw / 2, -ih / 2, iw, ih); if (f > .85 && imB.complete) { ctx.globalAlpha = (f - .85) / .15; ctx.drawImage(imB, -iw / 2, -ih / 2, iw, ih); ctx.globalAlpha = 1; } } ctx.restore(); ctx.fillStyle = '#0b0c0f'; ctx.beginPath(); ctx.arc(0, -ih / 2 + w * .09, w * .035, 0, 6.283); ctx.fill(); ctx.restore(); }
+function drawBrowser(it, x, y, s, t, d, i) { const w = s * 1.9, h = w * .62; screenBox(x, y, w, h, 8, d); ctx.save(); rr(x - w / 2, y - h / 2, w, h, 6); ctx.clip(); ctx.fillStyle = '#fbfaf7'; ctx.fillRect(x - w / 2, y - h / 2, w, h); ctx.fillStyle = '#e9e8e3'; ctx.fillRect(x - w / 2, y - h / 2, w, h * .1); ['#e0662f', '#1fb39a', '#8c7cf0'].forEach((c, k) => { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x - w / 2 + 12 + k * 12, y - h / 2 + h * .05, 3.2, 0, 6.283); ctx.fill(); });
+  const im = IM.site; if (isAbs(i)) absContent(x, y + h * .05, w * .9, h * .8, '#17181c', t); else if (im.complete) ctx.drawImage(im, x - w / 2, y - h / 2 + h * .1, w, h * .9); ctx.restore(); }
+function drawHolo(it, x, y, s, t, d, i) { const v = VD.holo; const sz = s * 1.5; ctx.save(); ctx.globalCompositeOperation = 'multiply';
+  if (isAbs(i) || v.readyState < 2) { ctx.globalCompositeOperation = 'source-over'; drawVirus({ src: 'ebola' }, x, y, s, t, d, i + 2); }
+  else { ctx.beginPath(); ctx.arc(x, y, sz / 2, 0, 6.283); ctx.clip(); ctx.globalCompositeOperation = 'screen'; /* черный фон ролика исчезает на светлом */ ctx.fillStyle = '#fff'; ctx.globalAlpha = 1; const sw = v.videoWidth, sh = v.videoHeight; const sc = Math.max(sz / sw, sz / sh); ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#000'; ctx.fill(); ctx.drawImage(v, x - sw * sc / 2, y - sh * sc / 2, sw * sc, sh * sc); }
+  ctx.restore(); /* ободок голограммы */ ctx.save(); ctx.strokeStyle = 'rgba(31,179,154,.6)'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 6]); ctx.beginPath(); ctx.arc(x, y, sz / 2 + 6, t * .5, t * .5 + 6.283); ctx.stroke(); ctx.restore(); }
+function label(it, x, y, s, a) { ctx.save(); ctx.globalAlpha = a; ctx.font = '600 ' + Math.max(9, s * .105) + 'px ' + MONO; ctx.fillStyle = '#5b5e66'; ctx.textAlign = 'center'; ctx.letterSpacing = '1px'; ctx.fillText(it.label.toUpperCase(), x, y); ctx.restore(); }
+
+/* ---- спираль, вертикальная, объёмная ---- */
+const COL = { 0: { base: '#17181c', hi: '#7a7e8a', lo: '#05060a' }, 1: { base: '#e0662f', hi: '#ffc39f', lo: '#7a2d0f' } };
+function bead(x, y, r, k, d) { /* шарик нити с бликом: источник света слева-сверху */
+  const c = COL[k]; const g = ctx.createRadialGradient(x - r * .35, y - r * .4, r * .1, x, y, r); g.addColorStop(0, c.hi); g.addColorStop(.45, c.base); g.addColorStop(1, c.lo);
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fillStyle = g; ctx.fill(); }
+function rung(a, b, d, p) { /* перекладина: две половины, код и дизайн, с бликом */
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2; const w = (3.2 + 3.4 * d) * p;
+  const half = (x1, y1, x2, y2, k) => { const c = COL[k]; const g = ctx.createLinearGradient(x1, y1 - w, x1, y1 + w); g.addColorStop(0, c.hi); g.addColorStop(.5, c.base); g.addColorStop(1, c.lo); ctx.strokeStyle = g; ctx.lineWidth = w; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); };
+  ctx.globalAlpha = .35 + .65 * d; half(a.x, a.y, mx - (mx - a.x) * .04, my - (my - a.y) * .04, 0); half(b.x, b.y, mx + (b.x - mx) * .04, my + (b.y - my) * .04, 1);
+  /* тонкий блик сверху */ ctx.strokeStyle = 'rgba(255,255,255,' + (.35 * d) + ')'; ctx.lineWidth = Math.max(1, w * .22); ctx.beginPath(); ctx.moveTo(a.x, a.y - w * .3); ctx.lineTo(b.x, b.y - w * .3); ctx.stroke(); ctx.globalAlpha = 1; }
+function draw(t) {
+  const cx = mobile() ? W * .74 : W * .72, cy = H * .5;
+  const len = mobile() ? H * 1.05 : H * .98, R = mobile() ? W * .17 : Math.min(W * .12, H * .22);
+  const tilt = (mobile() ? .1 : .14) + mx * .07, spin = t * .4 + my * .5, D = 560, TW = Math.PI * 2.6;
+  const P3 = (u, k) => { const ang = u * TW + spin + k * Math.PI; const y = (u - .5) * len, x = Math.cos(ang) * R, z = Math.sin(ang) * R; const xx = x * Math.cos(tilt) + y * Math.sin(tilt) * .18; const p = 1 / (1 + z / D); return { x: cx + xx * p, y: cy + y * p, z, p, d: (z / R + 1) / 2 }; };
+  const L = []; /* единый список по глубине */
+  /* тень спирали на «полу» */
+  ctx.save(); const g0 = ctx.createRadialGradient(cx, cy + len * .5, 0, cx, cy + len * .5, R * 1.6); g0.addColorStop(0, 'rgba(23,24,28,.10)'); g0.addColorStop(1, 'rgba(23,24,28,0)'); ctx.fillStyle = g0; ctx.beginPath(); ctx.ellipse(cx, cy + len * .5, R * 1.6, R * .35, 0, 0, 6.283); ctx.fill(); ctx.restore();
+  const N = 230; for (let i = 0; i <= N; i++) { const u = i / N; [0, 1].forEach(k => { const p = P3(u, k); L.push({ z: p.z, f: () => { ctx.globalAlpha = .45 + .55 * p.d; bead(p.x, p.y, (3.2 + 3.2 * p.d) * p.p, k, p.d); ctx.globalAlpha = 1; } }); }); }
+  const rungs = 30; for (let i = 0; i < rungs; i++) { const u = (i + .5) / rungs; const a = P3(u, 0), b = P3(u, 1); L.push({ z: (a.z + b.z) / 2 - 1, f: () => rung(a, b, (a.d + b.d) / 2, (a.p + b.p) / 2) }); }
+  ITEMS.forEach((it, i) => { if (it.type === 'walker') { /* бактериофаг ходит по нити туда-сюда */
+      const u = .5 + .4 * Math.sin(t * .22); const p = P3(u, it.s); const p2 = P3(u + .01, it.s); const ang = Math.atan2(p2.y - p.y, p2.x - p.x) + Math.PI / 2; const im = IM.phage; const sz = (mobile() ? 36 : 66) * p.p;
+      L.push({ z: p.z + 3, f: () => { if (!im.complete) return; ctx.save(); ctx.globalAlpha = .5 + .5 * p.d; ctx.translate(p.x, p.y); ctx.rotate(ang + Math.sin(t * 2.2) * .06); ctx.shadowColor = 'rgba(23,24,28,' + (.3 * p.d) + ')'; ctx.shadowBlur = 20 * p.d; const w = sz, h = sz * im.height / im.width; ctx.drawImage(im, -w / 2, -h + 4 * p.p, w, h); ctx.restore(); ctx.globalAlpha = 1; } }); return; }
+    const p = P3(it.u, it.s); L.push({ z: p.z + 2, f: () => { const s = (mobile() ? 30 : 58) * p.p; const bob = Math.sin(t * 1.1 + i * 1.3) * 4 * p.p; const a = .35 + .65 * p.d; ctx.globalAlpha = a;
+    const dir = it.s ? 1 : -1; const off = { virus: 1.55, screen: 1.35, phone: 1.0, mirror: 1.35, browser: 1.35, round: 1.3, kolba: .75 }[it.type] * s; const x = p.x + dir * off, y = p.y + bob;
+    /* крепление: короткий стержень от нити */ ctx.strokeStyle = 'rgba(23,24,28,.45)'; ctx.lineWidth = 1.5 * p.p; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(x - dir * off * .5, y); ctx.stroke(); ctx.beginPath(); ctx.arc(x - dir * off * .5, y, 2.2 * p.p, 0, 6.283); ctx.fillStyle = '#17181c'; ctx.fill();
+    if (it.type === 'virus') drawVirus(it, x, y, s, t, p.d, i); else if (it.type === 'screen') drawScreen(it, x, y, s, t, p.d, i, it.src === 'game' ? 4 / 3 : 16 / 9); else if (it.type === 'phone') drawPhone(it, x, y, s, t, p.d, i); else if (it.type === 'mirror') drawMirror(it, x, y, s, t, p.d, i); else if (it.type === 'browser') drawBrowser(it, x, y, s, t, p.d, i); else if (it.type === 'round') drawRound(it, x, y, s, t, p.d, i); else if (it.type === 'kolba') drawKolba(it, x, y, s, t, p.d, i);
+    const lh = { virus: 1.3, screen: .72, phone: 1.15, mirror: .72, browser: .78, round: 1.1, kolba: 1.4 }[it.type] * s; ctx.globalAlpha = 1; } }); });
+  L.sort((a, b) => a.z - b.z).forEach(o => o.f());
+}
+let last = performance.now(), T = 0;
+function frame(now) { if (!dnaVis && !reduce) { requestAnimationFrame(frame); return; } try { const dt = Math.max(0, Math.min(.05, (now - last) / 1000)); last = now; T += dt; mx += (tmx - mx) * .06; my += (tmy - my) * .06; ctx.clearRect(0, 0, W, H);
+  const cx = mobile() ? W * .74 : W * .72, cy = H * .5; const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * .6); g.addColorStop(0, 'rgba(224,102,47,.09)'); g.addColorStop(.55, 'rgba(31,179,154,.05)'); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  draw(T); } catch (e) { console.error('dna', e); } if (!reduce) requestAnimationFrame(frame); }
+let dnaVis = true; new IntersectionObserver(es => dnaVis = es[0].isIntersecting, { threshold: 0 }).observe(cv);
+if (reduce) { T = 3; frame(performance.now()); } else requestAnimationFrame(frame);
 
   /* Полноэкранный шоурил */
   const reel = $('#reel'), rv = $('#reel-v');
-  const openReel = () => { if (!rv.getAttribute('src')) rv.src = src.currentSrc || src.getAttribute('src'); reel.classList.add('open'); rv.currentTime = 0; rv.play().catch(() => {}); document.body.style.overflow = 'hidden'; };
+  const openReel = () => { if (!rv.getAttribute('src')) rv.src = '/media/reel.mp4'; reel.classList.add('open'); rv.currentTime = 0; rv.play().catch(() => {}); document.body.style.overflow = 'hidden'; };
   const closeReel = () => { reel.classList.remove('open'); rv.pause(); document.body.style.overflow = ''; };
   $$('[data-reel]').forEach(b => b.addEventListener('click', openReel)); $('#reel-x').addEventListener('click', closeReel);
   addEventListener('keydown', e => { if (e.key === 'Escape') closeReel(); });
