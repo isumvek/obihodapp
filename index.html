@@ -102,11 +102,12 @@
   .hero.ready .fade { opacity: 1; transform: none; }
   .hero.ready .d1 { transition-delay: .45s; } .hero.ready .d2 { transition-delay: .6s; }
 
-  .stage { position: absolute; inset: 0; display: grid; place-items: center; perspective: 1600px; perspective-origin: 50% 50%; }
-  .wall { position: relative; width: var(--W); height: var(--H); transform-style: preserve-3d; transform: translate3d(var(--tx, 0), var(--ty, 0), 0) scale(var(--s, .5)) rotateY(var(--ry, -18deg)) rotateX(var(--rx, 4deg)); will-change: transform; }
+  .stage { position: absolute; inset: 0; perspective: 1600px; perspective-origin: 50% 50%; }
+  .wall { position: absolute; left: 50%; top: 50%; margin-left: calc(var(--W) / -2); margin-top: calc(var(--H) / -2); width: var(--W); height: var(--H); background: transparent; transform-style: preserve-3d; transform: translate3d(var(--tx, 0), var(--ty, 0), 0) scale(var(--s, .5)) rotateY(var(--ry, -18deg)) rotateX(var(--rx, 4deg)); will-change: transform; }
   .mod { position: absolute; width: calc(100% / 3); height: calc(100% / 3); padding: var(--g, 4px); transform: translate3d(var(--fx), var(--fy), var(--fz)) rotateY(var(--fr)); opacity: 0; transition: transform 1.5s var(--ease), opacity .6s; transition-delay: calc(var(--k) * 80ms); }
   .mod:nth-child(1){left:0;top:0} .mod:nth-child(2){left:33.3333%;top:0} .mod:nth-child(3){left:66.6667%;top:0} .mod:nth-child(4){left:0;top:33.3333%} .mod:nth-child(5){left:33.3333%;top:33.3333%} .mod:nth-child(6){left:66.6667%;top:33.3333%} .mod:nth-child(7){left:0;top:66.6667%} .mod:nth-child(8){left:33.3333%;top:66.6667%} .mod:nth-child(9){left:66.6667%;top:66.6667%}
   .wall.on .mod { transform: none; opacity: 1; }
+  .wall.on { background: #0a0b0e; transition: background .3s .9s; }
   .mod > div { position: relative; width: 100%; height: 100%; background: #07080a; overflow: hidden; border-radius: calc(4px * (1 - var(--p, 0))); box-shadow: inset 0 0 0 calc(1.5px * (1 - var(--p, 0))) #23262d; }
   .mod canvas { width: 100%; height: 100%; }
   .mod i { position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(circle at center, transparent 0 .6px, rgba(0,0,0,.55) 1.1px); background-size: 3px 3px; mix-blend-mode: multiply; opacity: calc(.6 * (1 - var(--p, 0))); }
@@ -211,7 +212,7 @@
 
 <div id="intro" aria-hidden="true"><div class="cells"><i></i><i></i><i></i><i></i></div></div>
 <div id="cur" aria-hidden="true">Смотреть</div>
-<div id="reel" role="dialog" aria-label="Шоурил"><button class="x" id="reel-x" aria-label="Закрыть">✕</button><video id="reel-v" src="/media/reel.mp4" poster="/media/reel.jpg" playsinline controls></video></div>
+<div id="reel" role="dialog" aria-label="Шоурил"><button class="x" id="reel-x" aria-label="Закрыть">✕</button><video id="reel-v" poster="/media/reel.jpg" playsinline controls></video></div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -363,8 +364,8 @@
     const W = Math.max(vw, vh * 16 / 9), H = W * 9 / 16; /* размер, при котором стена покрывает экран */
     wall.style.setProperty('--W', W + 'px'); wall.style.setProperty('--H', H + 'px');
     mods.forEach(c => { c.width = Math.round(W / 3); c.height = Math.round(H / 3); });
-    wall.__s0 = mobile() ? Math.min(.62, (vw - 48) / W) : Math.min(.5, (vw * .5) / W);
-    wall.__tx0 = mobile() ? 0 : vw * .24; wall.__ty0 = mobile() ? vh * .2 : 0;
+    wall.__s0 = mobile() ? Math.min(.62, (vw - 64) / W) : Math.min(.58, (vw * .56) / W);
+    wall.__tx0 = mobile() ? 0 : vw * .24; wall.__ty0 = mobile() ? vh * .3 : 0;
   };
   layout(); addEventListener('resize', layout, { passive: true });
   const ease = t => 1 - Math.pow(1 - t, 3);
@@ -373,7 +374,7 @@
     const r = hero.getBoundingClientRect(); const total = hero.offsetHeight - innerHeight;
     const p = Math.min(1, Math.max(0, -r.top / total));
     const p1 = ease(Math.min(1, p / .7));
-    const p2 = Math.min(1, Math.max(0, (p - .15) / .45));
+    const p2 = Math.min(1, Math.max(0, (p - .04) / .3));
     wall.style.setProperty('--s', (wall.__s0 + (1 - wall.__s0) * p1).toFixed(4));
     wall.style.setProperty('--tx', (wall.__tx0 * (1 - p1)).toFixed(1) + 'px');
     wall.style.setProperty('--ty', (wall.__ty0 * (1 - p1)).toFixed(1) + 'px');
@@ -395,7 +396,7 @@
 
   /* Полноэкранный шоурил */
   const reel = $('#reel'), rv = $('#reel-v');
-  const openReel = () => { reel.classList.add('open'); rv.currentTime = 0; rv.play().catch(() => {}); document.body.style.overflow = 'hidden'; };
+  const openReel = () => { if (!rv.getAttribute('src')) rv.src = src.currentSrc || src.getAttribute('src'); reel.classList.add('open'); rv.currentTime = 0; rv.play().catch(() => {}); document.body.style.overflow = 'hidden'; };
   const closeReel = () => { reel.classList.remove('open'); rv.pause(); document.body.style.overflow = ''; };
   $$('[data-reel]').forEach(b => b.addEventListener('click', openReel)); $('#reel-x').addEventListener('click', closeReel);
   addEventListener('keydown', e => { if (e.key === 'Escape') closeReel(); });
