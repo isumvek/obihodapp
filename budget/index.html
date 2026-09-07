@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Учёт расходов — простой бюджет без доступа к банку | Обиход</title>
+<meta name="description" content="Учёт расходов на телефоне: трата записывается за пару касаний, на главном экране — сколько осталось до конца месяца. Без подключения к банкам, без облака и аккаунта. Android, скоро в RuStore.">
+<link rel="canonical" href="https://obihodapp.ru/budget/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Учёт расходов — простой бюджет без доступа к банку">
+<meta property="og:description" content="Записали трату — видите, сколько осталось на месяц. Данные лежат на телефоне, банковский доступ не нужен.">
+<meta property="og:url" content="https://obihodapp.ru/budget/">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Учёт расходов — Обиход",
+  "operatingSystem": "Android",
+  "applicationCategory": "FinanceApplication",
+  "description": "Простой учёт расходов и бюджет на месяц. Траты вносятся вручную за пару касаний, на главном экране — остаток бюджета. Приложение не подключается к банковским счетам и картам, данные хранятся на устройстве.",
+  "inLanguage": "ru",
+  "contentRating": "0+",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "RUB",
+    "price": "0"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Обиход",
+    "url": "https://obihodapp.ru/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Приложение подключается к банку или читает SMS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Нет. Приложение не просит доступ к SMS, банковским счетам и картам и не спрашивает паролей от банка. Траты вносятся вручную — это единственный способ, которым в него попадают данные."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Где хранятся мои расходы?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "В памяти телефона. Аккаунта, облака и синхронизации между устройствами нет, записи никуда не отправляются. Обратная сторона: при удалении приложения данные удаляются вместе с ним, поэтому в платной версии есть выгрузка в файл."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что доступно бесплатно, а что по подписке?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Бесплатно: до пяти категорий, бюджет на месяц с остатком и история за три месяца. Платный доступ снимает лимит категорий, открывает всю историю, добавляет выгрузку в файл и убирает рекламу — 99 ₽ в неделю, 249 ₽ в месяц, 990 ₽ в год или 1 490 ₽ разово навсегда."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  /* ---------- Токены ---------- */
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1c1a17;
+    --ink-soft: #5d574e;
+    --ink-faint: #8d857a;
+    --rule: #e5ded4;
+    --rule-strong: #d3cabd;
+    --accent: #a8471f;
+    --accent-ink: #ffffff;
+    --dark-bg: #16150f;
+    --budget: #1f5c8b;
+    --budget-soft: #e3eef7;
+
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem;
+    --s7: 3rem; --s8: 4rem; --s9: 6rem; --s10: 8rem;
+    --r-sm: 6px; --r-md: 12px; --r-lg: 24px;
+    --shadow-1: 0 1px 2px rgba(28,26,23,.06), 0 8px 24px -12px rgba(28,26,23,.18);
+    --shadow-2: 0 2px 6px rgba(28,26,23,.06), 0 30px 60px -30px rgba(28,26,23,.35);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+    --measure: 36rem;
+    --wrap: 72rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f;
+      --surface: #1e1d16;
+      --ink: #f2ede4;
+      --ink-soft: #b3aa9c;
+      --ink-faint: #857d70;
+      --rule: #302e25;
+      --rule-strong: #3f3c30;
+      --accent: #e08b5c;
+      --accent-ink: #16150f;
+      --dark-bg: #0f0e0a;
+      --budget-soft: #12263a;
+      --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+      --shadow-2: 0 2px 6px rgba(0,0,0,.4), 0 30px 60px -30px rgba(0,0,0,.8);
+    }
+  }
+
+  /* ---------- База ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 var(--serif);
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
+  .eyebrow {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 var(--s4);
+  }
+  .eyebrow.accent { color: var(--accent); }
+  h1, h2, h3 { font-weight: 400; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); line-height: 1.15; }
+  h3 { font-size: 1.2rem; line-height: 1.3; }
+  p { margin: 0 0 var(--s4); color: var(--ink-soft); max-width: var(--measure); }
+  p.lead { color: var(--ink); font-size: 1.15rem; line-height: 1.5; }
+  .muted { color: var(--ink-faint); }
+  .sans { font-family: var(--sans); }
+  a.link { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a.link:hover { text-decoration: none; }
+
+  /* Кнопки */
+  .btn {
+    --pad: .9rem 1.4rem;
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: var(--pad);
+    font-family: var(--sans); font-weight: 600; font-size: .95rem; line-height: 1;
+    border-radius: 999px; border: 1px solid transparent;
+    text-decoration: none; cursor: pointer;
+    transition: transform .25s var(--ease-out), background .2s, border-color .2s, box-shadow .25s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow-1); }
+  .btn-primary:hover { box-shadow: var(--shadow-2); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Шапка ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    transition: background .3s, border-color .3s, backdrop-filter .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-color: var(--rule);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 4.25rem; gap: var(--s5); }
+  .brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; font-family: var(--sans); font-weight: 700; letter-spacing: .02em; }
+  .brand .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--budget); display: grid; place-items: center; }
+  .brand .logo svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .nav-links { display: flex; gap: var(--s5); font-family: var(--sans); font-size: .92rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); position: relative; padding: .25rem 0; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--ink); transition: right .3s var(--ease-out); }
+  .nav-links a:hover::after { right: 0; }
+  .nav .store { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); display: inline-flex; align-items: center; gap: .45rem; }
+  .nav .store .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);} 60% { box-shadow: 0 0 0 7px transparent; } }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(2rem, 6vw, 4.5rem) 0 clamp(2.5rem, 6vw, 5rem); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.06; letter-spacing: -.025em; margin-bottom: var(--s5); }
+  .hero .lead { max-width: 32rem; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
+  .status-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4); margin-top: var(--s5); font-family: var(--sans); font-size: .85rem; color: var(--ink-faint); }
+  .status-row .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; margin-right: .45rem; }
+
+  /* ---------- Карточка бюджета ---------- */
+  .money-stage { display: grid; place-items: center; }
+  .mcard { width: min(100%, 330px); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r-lg); box-shadow: var(--shadow-2); padding: var(--s5); }
+  .mcard-top { display: grid; gap: .3rem; margin-bottom: var(--s4); }
+  .mlabel { font-family: var(--sans); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .msum { font-size: 2.1rem; line-height: 1.1; letter-spacing: -.02em; color: var(--budget); font-variant-numeric: tabular-nums; }
+  .mday { font-family: var(--sans); font-size: .8rem; color: var(--ink-faint); }
+  .mbar { height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--budget) 15%, transparent); overflow: hidden; }
+  .mbar-fill { display: block; height: 100%; width: 62%; border-radius: 999px; background: var(--budget); }
+  .in .mbar-fill { animation: mfill 6s var(--ease-out) infinite; }
+  @keyframes mfill { 0% { width: 0; } 40%, 80% { width: 62%; } 100% { width: 0; } }
+  .mrows { margin-top: var(--s5); display: grid; gap: var(--s3); }
+  .mrow { display: grid; grid-template-columns: 5.4rem minmax(0, 1fr) auto; align-items: center; gap: var(--s3); font-family: var(--sans); font-size: .8rem; color: var(--ink-faint); }
+  .mrow b { font-weight: 500; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .mrow i { position: relative; height: 4px; border-radius: 999px; background: color-mix(in srgb, var(--budget) 12%, transparent); overflow: hidden; }
+  .mrow i::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: var(--w, 50%); border-radius: 999px; background: color-mix(in srgb, var(--budget) 60%, transparent); }
+  .in .mrow i::after { animation: mgrow 6s var(--ease-out) infinite; animation-delay: var(--d, 0s); }
+  @keyframes mgrow { 0% { width: 0; } 40%, 80% { width: var(--w, 50%); } 100% { width: 0; } }
+  .m-cap { font-family: var(--sans); font-size: .8rem; color: var(--ink-faint); text-align: center; margin-top: var(--s5); }
+  /* ---------- Reveal ---------- */
+  section { padding: clamp(3rem, 7vw, 6rem) 0; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out), transform 1s var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .sec-head { margin-bottom: clamp(1.5rem, 4vw, 3rem); }
+
+  /* ---------- Чем отличается ---------- */
+  .diff { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); }
+  .diff-item { border: 1px solid var(--rule); border-radius: var(--r-md); padding: var(--s5); background: var(--surface); }
+  .diff-item b { display: block; font-weight: 400; color: var(--ink); font-size: 1.05rem; margin-bottom: .35rem; }
+  .diff-item span { font-family: var(--sans); font-size: .84rem; color: var(--ink-faint); }
+  @media (max-width: 700px) { .diff { grid-template-columns: 1fr; } }
+
+  /* ---------- FAQ ---------- */
+  .faq { border-top: 1px solid var(--rule); }
+  details { border-bottom: 1px solid var(--rule); padding: var(--s4) 0; }
+  summary { cursor: pointer; color: var(--ink); font-size: 1.08rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--s4); }
+  summary::-webkit-details-marker { display: none; }
+  summary .plus { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--rule-strong); display: grid; place-items: center; transition: transform .3s var(--ease-out), background .2s; }
+  summary .plus svg { width: 12px; height: 12px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; }
+  details[open] summary .plus { transform: rotate(45deg); background: var(--ink); }
+  details[open] summary .plus svg { stroke: var(--bg); }
+  details p { margin: var(--s3) 0 0; padding-right: 2rem; }
+
+  footer { border-top: 1px solid var(--rule); padding: var(--s6) 0; font-family: var(--sans); font-size: .84rem; color: var(--ink-faint); display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+  footer nav { display: flex; gap: var(--s4); flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .money-stage { margin-top: var(--s5); }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+    .nav .store .dot, .mbar-fill, .mrow i::after { animation: none !important; }
+    .mbar-fill { width: 62%; }
+    .mrow i::after { width: var(--w, 50%); }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18V9l8-5 8 5v9"/><path d="M9 18v-5h6v5"/></svg>
+      </span>
+      <span>Обиход</span>
+    </a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="/#apps">Приложения</a>
+      <a href="/#about">О нас</a>
+      <a href="/#contact">Контакты</a>
+      <span class="store"><span class="dot" aria-hidden="true"></span>RuStore · готовится</span>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow accent">Учёт расходов</p>
+      <h1>Сколько осталось до конца месяца</h1>
+      <p class="lead">Записали трату — увидели остаток. Не таблица на двадцать колонок, а одно число на главном экране, ради которого приложение и открывают.</p>
+      <p>Трата вносится за пару касаний: сумма, категория, готово. Приложение не подключается к банкам, не читает SMS и не спрашивает паролей — данные появляются в нём только тогда, когда их внесли вы, и остаются в памяти телефона.</p>
+      <div class="cta">
+        <a class="btn btn-ghost" href="#diff-section">Чем отличается</a>
+        <a class="btn btn-ghost" href="#faq">Частые вопросы</a>
+      </div>
+      <p class="status-row">Приложение выходит в RuStore — ссылка появится здесь после публикации.</p>
+    </div>
+    <div class="money-stage reveal" aria-hidden="true">
+      <div class="mcard">
+        <div class="mcard-top">
+          <span class="mlabel">Сентябрь · осталось</span>
+          <span class="msum">12 400 ₽</span>
+          <span class="mday">23 дня · 540 ₽ в день</span>
+        </div>
+        <div class="mbar"><span class="mbar-fill"></span></div>
+        <div class="mrows">
+          <div class="mrow" style="--w:72%;--d:0s"><span>Продукты</span><i></i><b>8 640 ₽</b></div>
+          <div class="mrow" style="--w:46%;--d:.15s"><span>Транспорт</span><i></i><b>3 200 ₽</b></div>
+          <div class="mrow" style="--w:28%;--d:.3s"><span>Кафе</span><i></i><b>1 760 ₽</b></div>
+        </div>
+      </div>
+      <div class="m-cap">Одно число вместо таблицы</div>
+    </div>
+  </div>
+</section>
+
+<section id="diff-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Отличия</p>
+      <h2>Что мы сделали иначе</h2>
+      <p class="lead">Мы прочитали, на что жалуются в отзывах на приложения для учёта расходов. Две главные претензии — реклама поверх ввода и требование пустить приложение в банк. Из них и вырос список.</p>
+    </div>
+    <div class="diff">
+      <div class="diff-item reveal" style="--i:0"><b>Не подключается к банкам</b><span>Ни счетов, ни карт, ни SMS, ни паролей от онлайн-банка. Траты вносятся руками — это единственный вход данных, и он же граница ответственности.</span></div>
+      <div class="diff-item reveal" style="--i:1"><b>Одно число на главном</b><span>Первое, что видно при запуске, — сколько осталось до конца месяца и сколько это в день. Категории и история — ниже, для тех, кому они нужны.</span></div>
+      <div class="diff-item reveal" style="--i:2"><b>Работает офлайн</b><span>Записи лежат в памяти телефона, аккаунта и облака нет. Интернет нужен только рекламе в бесплатной версии — в платной он не нужен вообще.</span></div>
+      <div class="diff-item reveal" style="--i:3"><b>Реклама не мешает вводу</b><span>Никакой рекламы на первом экране и во время добавления траты. Платный доступ убирает её целиком, включая разовую покупку навсегда.</span></div>
+    </div>
+    <p class="reveal" style="--i:2;margin-top:1.5rem;max-width:none">Бесплатно доступны пять категорий, бюджет на месяц с остатком и история за три месяца — этого хватает, чтобы понять, подходит ли вам такой учёт, до всякой оплаты.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Вопросы</p>
+      <h2>Коротко о главном</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Приложение подключается к банку или читает SMS?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>Нет. Приложение не просит доступ к SMS, банковским счетам и картам и не спрашивает паролей от банка. Траты вносятся вручную — это единственный способ, которым в него попадают данные.</p>
+      </details>
+      <details>
+        <summary>Где хранятся мои расходы?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>В памяти телефона. Аккаунта, облака и синхронизации между устройствами нет, записи никуда не отправляются. Обратная сторона: при удалении приложения данные удаляются вместе с ним, поэтому в платной версии есть выгрузка в файл.</p>
+      </details>
+      <details>
+        <summary>Что доступно бесплатно, а что по подписке?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>Бесплатно: до пяти категорий, бюджет на месяц с остатком и история за три месяца. Платный доступ снимает лимит категорий, открывает всю историю, добавляет выгрузку в файл и убирает рекламу — 99 ₽ в неделю, 249 ₽ в месяц, 990 ₽ в год или 1 490 ₽ разово навсегда. Полные условия — в <a class="link" href="/budget/offer/">оферте</a>.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Установка</p>
+      <h2>Приложение выходит в RuStore</h2>
+      <p class="lead">Как только версия пройдёт модерацию, здесь появится прямая ссылка на страницу приложения в магазине.</p>
+      <p style="font-size:.93rem"><a class="link" href="/budget/privacy/">Политика конфиденциальности</a> · <a class="link" href="/budget/offer/">Условия покупки</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Поддержка</p>
+      <h2>Написать нам</h2>
+      <p class="lead"><a class="link" href="mailto:support@obihodapp.ru">support@obihodapp.ru</a></p>
+      <p>Отвечаем в течение рабочего дня.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <nav aria-label="Документы">
+      <a href="/">Главная</a>
+      <a href="/privacy/">Политика конфиденциальности</a>
+      <a href="/budget/privacy/">Данные приложения</a>
+      <a href="/budget/offer/">Условия покупки</a>
+    </nav>
+    <span>© 2026 ИП Скурихин А. В.</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* Шапка */
+  const nav = $('#nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Появление секций — один раз */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+  $$('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+
+<!--
+  TODO при релизе: заменить строку «Приложение выходит в RuStore» в секции #download
+  ссылкой https://www.rustore.ru/catalog/app/ru.obihod.budget?referrer=landing_budget
+  (метка landing_budget — aso/launch/referrer-scheme.md) и снять «готовится» в шапке.
+-->
+
+</body>
+</html>
