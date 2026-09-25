@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности — Нейросети с нуля «Обиход»</title>
+<meta name="description" content="Политика конфиденциальности приложения «Нейросети с нуля — Обиход»: какие данные обрабатываются, зачем и как отказаться от персонализированной рекламы.">
+<link rel="canonical" href="https://obihodapp.ru/gramota/privacy/">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e;
+    --ink-faint: #8d857a; --rule: #e5ded4; --rule-strong: #d3cabd;
+    --accent: #a8471f; --accent-ink: #ffffff; --detector: #b5651d;
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --measure: 40rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f; --surface: #1e1d16; --ink: #f2ede4; --ink-soft: #b3aa9c;
+      --ink-faint: #857d70; --rule: #302e25; --rule-strong: #3f3c30;
+      --accent: #e08b5c; --accent-ink: #16150f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 16px/1.7 ui-serif, "Georgia", "Times New Roman", serif;
+    padding: clamp(2rem, 7vw, 5rem) 1.5rem; display: flex; justify-content: center;
+  }
+  main { width: 100%; max-width: var(--measure); }
+  .doc-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .doc-nav .brand {
+    display: inline-flex; align-items: center; gap: .6rem; text-decoration: none;
+    font-family: var(--sans); font-weight: 700; letter-spacing: .02em; color: var(--ink);
+  }
+  .doc-nav .brand .logo {
+    width: 24px; height: 24px; border-radius: 6px; background: var(--detector);
+    display: grid; place-items: center;
+  }
+  .doc-nav .brand .logo svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .doc-nav .home {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint); text-decoration: none;
+  }
+  .doc-nav .home:hover { color: var(--ink); }
+  h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; font-weight: 400;
+    letter-spacing: -0.015em; margin: 0 0 0.5rem; text-wrap: balance;
+  }
+  .rev {
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem;
+    color: var(--ink-faint); margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.1rem; font-weight: 600; margin: 2.75rem 0 0.9rem;
+    padding-top: 1.75rem; border-top: 1px solid var(--rule); letter-spacing: -0.01em;
+  }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.6rem; }
+  p, li { color: var(--ink-soft); }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:hover { text-decoration: none; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.93rem; }
+  th, td { text-align: left; padding: 0.6rem 0.5rem 0.6rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  td { color: var(--ink-soft); }
+  .wrap { overflow-x: auto; }
+  strong { color: var(--ink); font-weight: 600; }
+  footer {
+    margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--rule);
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem; color: var(--ink-faint);
+  }
+</style>
+</head>
+<body>
+<main>
+
+<div class="doc-nav">
+  <a class="brand" href="/" aria-label="Обиход — на главную"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4M14 13.12c0 2.38 0 6.38-1 8.88M17.29 21.02c.12-.6.43-2.3.5-3.02M2 12a10 10 0 0 1 18-6M2 16h.01M21.8 16c.2-2 .131-5.354 0-6M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2M8.65 22c.21-.66.45-1.32.57-2M9 6.8a6 6 0 0 1 9 5.2v2"/></svg></span>Обиход</a>
+  <a class="home" href="/">На главную</a>
+</div>
+
+<h1>Политика конфиденциальности приложения «Нейросети с нуля — Обиход»</h1>
+<p class="rev">Редакция от 25 сентября 2026 г. Действует для мобильного приложения «Нейросети с нуля — Обиход» для Android. Для сайта и остальных приложений действует <a href="/privacy/">общая политика</a>.</p>
+
+<h2>1. Кто обрабатывает данные</h2>
+<p>Оператор персональных данных — индивидуальный предприниматель Скурихин Алексей Владимирович (далее — «Разработчик»).</p>
+<ul>
+  <li>ИНН: 505012949491</li>
+  <li>ОГРНИП: 326508100181350</li>
+  <li>Электронная почта: <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a></li>
+</ul>
+<p>Политика составлена в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». Категории субъектов: пользователи Приложения и лица, обращающиеся в поддержку.</p>
+
+<h2>2. Главный принцип</h2>
+<p>Приложение работает без регистрации и без собственного сервера. Прогресс курса, серия дней, настройки и выбранная нейросеть хранятся только на вашем телефоне.</p>
+<p>Приложение не передаёт нейросетям ничего от вашего имени. Промпт вы копируете сами и сами вставляете в выбранную нейросеть; что вы туда пишете, Приложение не видит и не хранит. Сторонние нейросети (Алиса AI, ГигаЧат, DeepSeek, Qwen и другие) обрабатывают данные по своим правилам — Приложение с ними не связано.</p>
+<p>Разрешения: уведомления (только если вы включили напоминание) и проверка, установлены ли на телефоне приложения нескольких нейросетей из фиксированного списка — чтобы открыть нужное и заранее отметить его в выборе. Список установленных приложений никуда не передаётся. Озвучка уроков — встроенным голосом Android, на телефоне, без отправки текста в интернет.</p>
+<h2>3. Какие данные обрабатываются</h2>
+
+<h3>3.1. Обезличенная статистика использования</h3>
+<p>Приложение использует сервис аналитики AppMetrica (АО «Яндекс»). Передаются: модель устройства, версия операционной системы, язык и регион, версия Приложения, источник установки, обезличенный идентификатор установки, события внутри Приложения (запуск, пройденные шаги и уроки, верно или нет дан ответ, какую нейросеть вы выбрали и открылась ли она, показ рекламы, покупка, напоминания, нажатие «Поделиться») и IP-адрес, из которого определяется только страна и город.</p>
+<p>Текст промптов, которые вы копируете, и ответы нейросетей в аналитику не передаются.</p>
+<p>Цель: понять, какие уроки работают, где люди бросают курс и где возникают ошибки. Правовое основание: законный интерес Разработчика в обеспечении работоспособности и развитии Приложения (п. 7 ч. 1 ст. 6 152-ФЗ).</p>
+<p>Политика AppMetrica: <a href="https://yandex.ru/legal/confidential/">yandex.ru/legal/confidential</a></p>
+<h3>3.2. Рекламный идентификатор</h3>
+<p>Приложение показывает рекламу через <strong>Рекламную сеть Яндекса</strong>. Передаются рекламный идентификатор устройства (Advertising ID / AppSet ID), тип устройства, версия ОС, язык, приблизительное местоположение на уровне города (по IP) и сведения о показанной рекламе.</p>
+<p><strong>Купившим полный курс эти данные не передаются.</strong></p>
+<p><strong>Цель:</strong> показ рекламы и расчёт вознаграждения. <strong>Правовое основание:</strong> согласие. Отозвать согласие: тумблер «Персонализированная реклама» в настройках Приложения либо письмом на <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>. Рекламный идентификатор можно сбросить в настройках Android.</p>
+<p>Правила Рекламной сети Яндекса: <a href="https://yandex.ru/legal/rules_advert/" rel="nofollow">yandex.ru/legal/rules_advert</a></p>
+
+<h3>3.3. Разовая покупка</h3>
+<p>Оплата проходит на стороне <strong>RuStore</strong>; агентом по приёму платежей выступает ООО «Много приложений» (ОГРН 1237700094752, ИНН 9725113777). Данные банковской карты вводятся в интерфейсе RuStore, Разработчику <strong>не передаются</strong> и им не хранятся. Разработчик получает только факт покупки, её идентификатор и дату.</p>
+<p><strong>Цель:</strong> предоставление оплаченной функции. <strong>Правовое основание:</strong> исполнение договора (<a href="/gramota/offer/">оферты</a>).</p>
+
+<h3>3.4. Источник установки</h3>
+<p>При первом запуске Приложение получает от RuStore обезличенную метку источника установки (параметр <code>referrer</code>) — по ней видно, из какой ссылки пришла установка. Сведений о вас метка не содержит.</p>
+
+<h3>3.5. Обращения в поддержку</h3>
+<p>Если вы пишете на support@obihodapp.ru, Разработчик обрабатывает адрес электронной почты и содержание письма — только для ответа. Переписка хранится не дольше одного года.</p>
+
+<h2>4. Чего Разработчик не делает</h2>
+<ul>
+  <li>не требует регистрации и не узнаёт ваше имя, телефон или почту (кроме писем в поддержку);</li>
+  <li>не видит и не хранит то, что вы пишете нейросетям, и их ответы;</li>
+  <li>не собирает биометрические и медицинские данные;</li>
+  <li>не продаёт и не передаёт данные третьим лицам, кроме названных в разделе 3;</li>
+  <li>не передаёт данные за пределы Российской Федерации.</li>
+</ul>
+<h2>5. Сроки хранения</h2>
+<ul>
+  <li>прогресс курса и настройки — на телефоне, пока вы не удалите их или Приложение;</li>
+  <li>обезличенная статистика в AppMetrica — по срокам АО «Яндекс»;</li>
+  <li>сведения о покупке — в течение сроков, установленных законодательством для документов о расчётах;</li>
+  <li>переписка с поддержкой — не дольше года.</li>
+</ul>
+<h2>6. Ваши права и как ими воспользоваться</h2>
+<ul>
+  <li>Отозвать согласие на персонализированную рекламу: тумблер в настройках Приложения либо сброс рекламного идентификатора в настройках Android.</li>
+  <li>Удалить данные: кнопка «Удалить мои данные» в настройках стирает прогресс и настройки на телефоне и сбрасывает профиль аналитики; удаление Приложения стирает всё, кроме факта покупки на стороне RuStore.</li>
+  <li>Обратиться к Разработчику: письмо на <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a> с темой «Персональные данные». Ответ — в течение 10 рабочих дней (возможно продление не более чем на 5 рабочих дней с уведомлением). Неточные данные исправляются в течение 7 рабочих дней.</li>
+  <li>Отозвать согласие целиком: тем же письмом. Обработка прекращается, данные уничтожаются в срок не более 30 дней; уничтожение подтверждается актом.</li>
+  <li>Пожаловаться: в Роскомнадзор — <a href="https://rkn.gov.ru/">rkn.gov.ru</a></li>
+</ul>
+<h2>7. Возраст</h2>
+<p>Возрастной рейтинг Приложения — 16+. Приложение адресовано взрослым, не предназначено детям и не собирает их данные осознанно. Некоторые нейросети сами требуют возраст 18+ и вход — это их правила.</p>
+<h2>8. Изменения политики</h2>
+<p>Новая редакция публикуется по адресу <a href="https://obihodapp.ru/gramota/privacy/">obihodapp.ru/gramota/privacy/</a> с указанием даты.</p>
+<footer>
+  ИП Скурихин Алексей Владимирович · ИНН 505012949491 · ОГРНИП 326508100181350 · <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>
+</footer>
+
+</main>
+</body>
+</html>
