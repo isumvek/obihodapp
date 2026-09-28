@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ru.obihod.detector",
+      "sha256_cert_fingerprints": [
+        "A3:7B:33:1A:9B:4F:FA:61:F4:B5:2A:DE:7C:DF:E1:41:42:18:B5:12:FA:A3:B2:3A:7E:71:C9:08:09:9C:3D:47"
+      ]
+    }
+  }
+]
