@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Результат — Детектор лжи | Обиход</title>
+<meta name="description" content="Другу пришёл результат детектора лжи. Это шутка: приложение ничего не измеряет — попробуй сам за 3 секунды.">
+<link rel="canonical" href="https://obihodapp.ru/detector/r/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Детектор лжи — проверь друга за 3 секунды">
+<meta property="og:description" content="Приложил палец, подержал три секунды — вердикт. Это шутка, а не прибор.">
+<meta property="og:url" content="https://obihodapp.ru/detector/r/">
+<meta property="og:image" content="https://obihodapp.ru/detector/r/icon-512.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Детектор лжи — проверь друга за 3 секунды">
+<meta name="twitter:description" content="Приложил палец, подержал три секунды — вердикт. Это шутка, а не прибор.">
+<meta name="twitter:image" content="https://obihodapp.ru/detector/r/icon-512.png">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e; --ink-faint: #8d857a;
+    --rule: #e5ded4; --rule-strong: #d3cabd; --accent: #a8471f; --accent-ink: #ffffff;
+    --detector: #b5651d; --detector-soft: #f6e7d8;
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem; --s7: 3rem;
+    --r-md: 12px; --shadow-1: 0 1px 2px rgba(28,26,23,.06), 0 8px 24px -12px rgba(28,26,23,.18);
+    --ease-out: cubic-bezier(.16,1,.3,1); --wrap: 30rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16150f; --surface:#1e1d16; --ink:#f2ede4; --ink-soft:#b3aa9c; --ink-faint:#857d70;
+      --rule:#302e25; --rule-strong:#3f3c30; --accent:#e08b5c; --accent-ink:#16150f; --detector-soft:#33241a; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.5 var(--serif); overflow-x: hidden; }
+  a { color: inherit; }
+  svg { display: block; }
+  .wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+  .sans { font-family: var(--sans); }
+  .eyebrow { font-family: var(--sans); font-weight: 600; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--detector); margin: 0 0 .4rem; }
+  h1 { font-weight: 400; letter-spacing: -.01em; margin: 0 0 var(--s4); font-size: clamp(1.3rem, 5.5vw, 1.6rem); line-height: 1.2; text-wrap: balance; }
+  h2 { font-weight: 400; letter-spacing: -.01em; margin: 0 0 .3rem; font-size: 1.15rem; line-height: 1.3; }
+  p { margin: 0 0 var(--s4); color: var(--ink-soft); }
+  .muted { color: var(--ink-faint); font-size: .85rem; }
+  a.link { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; width: 100%;
+    padding: .95rem 1.4rem; font-family: var(--sans); font-weight: 600; font-size: 1rem; line-height: 1;
+    border-radius: 999px; border: 1px solid transparent; text-decoration: none; cursor: pointer;
+    transition: transform .2s var(--ease-out), box-shadow .2s, border-color .2s; }
+  .btn-primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow-1); }
+  .btn-primary:active { transform: scale(.98); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+  .btn-ghost:hover, .btn-ghost:focus-visible { border-color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  header.topbar { padding: .85rem 0; }
+  .brand { display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; font-family: var(--sans); font-weight: 700; font-size: .95rem; letter-spacing: .01em; }
+  .brand .logo { width: 24px; height: 24px; border-radius: 6px; background: var(--detector); display: grid; place-items: center; flex: none; }
+  .brand .logo svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  .hero { padding: .25rem 0 var(--s5); }
+  .verdict-block { margin: 0 0 var(--s5); }
+  .verdict-big { font-family: var(--sans); font-weight: 800; letter-spacing: -.01em; font-size: clamp(2.1rem, 11vw, 2.7rem); line-height: 1.05; color: var(--detector); }
+  .verdict-pct { font-family: var(--sans); font-weight: 600; font-size: 1.3rem; color: var(--ink-faint); }
+  .fineprint { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); margin: .65rem 0 0; }
+
+  section.disclaimer { padding: var(--s4) 0; border-top: 1px solid var(--rule); }
+  .disclaimer .box { font-family: var(--sans); font-size: .88rem; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r-md); padding: .9rem 1rem; margin: 0; }
+  .disclaimer .box b { color: var(--ink); }
+
+  section.demo { padding: var(--s6) 0; border-top: 1px solid var(--rule); text-align: center; }
+  .demo .eyebrow { text-align: left; }
+  .demo h2 { text-align: left; }
+  .demo p.lead { text-align: left; margin-bottom: var(--s5); }
+
+  .ring-btn { appearance: none; background: none; border: none; padding: 0; margin: 0 auto; display: block; cursor: pointer; width: 190px; height: 190px; position: relative; }
+  .ring-btn svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring-btn circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+  .ring-btn .bg { stroke: var(--detector-soft); }
+  .ring-btn .fg { stroke: var(--detector); stroke-dasharray: 471; stroke-dashoffset: 471; }
+  .ring-btn .fp { position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; stroke: var(--detector); fill: none; stroke-width: 1.6; stroke-linecap: round; transition: transform .2s var(--ease-out), opacity .2s; }
+  .ring-btn.holding .fp { transform: scale(.92); opacity: .6; }
+  .demo-cap { font-family: var(--sans); font-size: .85rem; color: var(--ink-faint); margin: var(--s4) 0 0; }
+  .demo-result { font-family: var(--sans); font-weight: 800; font-size: 1.4rem; color: var(--detector); min-height: 1.9rem; margin: var(--s2) 0 0; }
+
+  section.challenge { padding: var(--s5) 0 var(--s6); border-top: 1px solid var(--rule); }
+  .challenge-row { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; }
+  #copyStatus { font-family: var(--sans); font-size: .85rem; color: var(--accent); font-weight: 600; }
+
+  footer { border-top: 1px solid var(--rule); padding: var(--s5) 0 var(--s7); font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); }
+  footer nav { display: flex; gap: var(--s4); flex-wrap: wrap; margin-bottom: .6rem; }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+
+  @media (min-width: 640px) {
+    .wrap { width: min(100% - 4rem, var(--wrap)); }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Обиход — на главную">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4M14 13.12c0 2.38 0 6.38-1 8.88M17.29 21.02c.12-.6.43-2.3.5-3.02M2 12a10 10 0 0 1 18-6M2 16h.01M21.8 16c.2-2 .131-5.354 0-6M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2M8.65 22c.21-.66.45-1.32.57-2M9 6.8a6 6 0 0 1 9 5.2v2"/></svg></span>
+      Обиход
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow" id="eyebrow">Детектор лжи</p>
+      <h1 id="title">Кто-то отправил тебе детектор лжи</h1>
+      <div class="verdict-block" id="verdictBlock" hidden>
+        <span class="verdict-big" id="verdictBig"></span>
+      </div>
+      <a class="btn btn-primary" id="rustoreBtn" href="https://www.rustore.ru/catalog/app/ru.obihod.detector?referrer=web">Открыть в RuStore</a>
+      <p class="fineprint">Бесплатно, без регистрации, 6 МБ</p>
+    </div>
+  </section>
+
+  <section class="disclaimer">
+    <div class="wrap">
+      <p class="box"><b>Это шутка.</b> Детектор ничего не измеряет и ложь не определяет — как и любое другое такое приложение в телефоне: датчиков для этого в нём просто нет.</p>
+    </div>
+  </section>
+
+  <section class="demo">
+    <div class="wrap">
+      <p class="eyebrow">Попробуй сам</p>
+      <h2>Приложи палец и задай вопрос вслух</h2>
+      <p class="lead sans" style="font-size:.92rem">Удержи кольцо три секунды — приложение «подумает» и выдаст свой вердикт. Можно сколько угодно раз.</p>
+      <button type="button" class="ring-btn" id="ring" aria-label="Удерживайте 3 секунды, чтобы получить вердикт">
+        <svg class="ring" viewBox="0 0 168 168"><circle class="bg" cx="84" cy="84" r="75"/><circle class="fg" id="ringFg" cx="84" cy="84" r="75"/></svg>
+        <svg class="fp" id="ringFp" viewBox="0 0 24 24"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4M14 13.12c0 2.38 0 6.38-1 8.88M17.29 21.02c.12-.6.43-2.3.5-3.02M2 12a10 10 0 0 1 18-6M2 16h.01M21.8 16c.2-2 .131-5.354 0-6M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2M8.65 22c.21-.66.45-1.32.57-2M9 6.8a6 6 0 0 1 9 5.2v2"/></svg>
+      </button>
+      <p class="demo-result" id="demoResult" aria-live="polite"></p>
+      <p class="demo-cap" id="demoCap">Удерживайте 3 секунды</p>
+    </div>
+  </section>
+
+  <section class="challenge">
+    <div class="wrap">
+      <p class="eyebrow">Твоя очередь</p>
+      <h2>Бросить вызов другу</h2>
+      <p class="sans" style="font-size:.92rem">Скопируй ссылку и отправь тому, кто точно что-то скрывает.</p>
+      <div class="challenge-row">
+        <button type="button" class="btn btn-ghost" id="challengeBtn" style="width:auto">Скопировать ссылку</button>
+        <span id="copyStatus" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Документы">
+      <a href="/detector/">Детектор лжи</a>
+      <a href="/detector/privacy/">Конфиденциальность</a>
+    </nav>
+    <span>Сделано Обиходом</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+
+  // ---------- Разбор параметров ----------
+  const qp = new URLSearchParams(location.search);
+  const vRaw = (qp.get('v') || '').toLowerCase();
+  const v = ['truth', 'lie', 'unclear'].includes(vRaw) ? vRaw : null;
+  const cRaw = qp.get('c');
+  let c = null;
+  if (cRaw !== null && /^\d{1,3}$/.test(cRaw)) {
+    const n = parseInt(cRaw, 10);
+    if (n >= 0 && n <= 100) c = n;
+  }
+  const refRaw = qp.get('ref') || '';
+  const ref = /^[a-z0-9_]{1,40}$/.test(refRaw) ? refRaw : 'web';
+
+  // ---------- RuStore-кнопка ----------
+  $('#rustoreBtn').href = 'https://www.rustore.ru/catalog/app/ru.obihod.detector?referrer=' + ref;
+
+  // ---------- Заголовок и вердикт ----------
+  const labels = { truth: 'ПРАВДА', lie: 'ЛОЖЬ', unclear: 'НЕ ОПРЕДЕЛЕНО' };
+  if (v) {
+    $('#eyebrow').textContent = 'Результат друга';
+    $('#title').textContent = 'Друг проверил тебя на детекторе лжи';
+    const block = $('#verdictBlock');
+    const big = $('#verdictBig');
+    let text = labels[v];
+    if (v !== 'unclear' && c !== null) text += ' · ' + c + '%';
+    big.textContent = text;
+    block.hidden = false;
+  }
+
+  // ---------- Демо-кольцо ----------
+  const ring = $('#ring');
+  const fg = $('#ringFg');
+  const cap = $('#demoCap');
+  const result = $('#demoResult');
+  const DASH = 471;
+  let holdActive = false, holdTimer = null, raf = null, holdStart = 0;
+
+  function setProgress(frac) {
+    fg.style.strokeDashoffset = String(DASH * (1 - frac));
+  }
+  function tick(now) {
+    const elapsed = now - holdStart;
+    const frac = Math.min(elapsed / 3000, 1);
+    setProgress(frac);
+    if (frac < 1 && holdActive) raf = requestAnimationFrame(tick);
+  }
+  function startHold() {
+    if (holdActive) return;
+    holdActive = true;
+    ring.classList.add('holding');
+    cap.textContent = 'Держите…';
+    result.textContent = '';
+    holdStart = performance.now();
+    raf = requestAnimationFrame(tick);
+    holdTimer = setTimeout(finishHold, 3000);
+  }
+  function cancelHold() {
+    if (!holdActive) return;
+    holdActive = false;
+    clearTimeout(holdTimer); holdTimer = null;
+    cancelAnimationFrame(raf);
+    ring.classList.remove('holding');
+    setProgress(0);
+    cap.textContent = 'Отпустили рано — держите все 3 секунды';
+  }
+  function finishHold() {
+    holdActive = false;
+    cancelAnimationFrame(raf);
+    ring.classList.remove('holding');
+    setProgress(1);
+    const picks = [['ПРАВДА', 55, 97], ['ЛОЖЬ', 55, 97], ['НЕ ОПРЕДЕЛЕНО', null, null]];
+    const pick = picks[Math.floor(Math.random() * picks.length)];
+    let text = pick[0];
+    if (pick[1] !== null) {
+      const pct = Math.floor(pick[1] + Math.random() * (pick[2] - pick[1]));
+      text += ' · ' + pct + '%';
+    }
+    result.textContent = text;
+    cap.textContent = 'Отпустите и попробуйте ещё раз';
+    setTimeout(() => setProgress(0), 900);
+  }
+
+  ring.addEventListener('pointerdown', (e) => { e.preventDefault(); startHold(); });
+  ring.addEventListener('pointerup', cancelHold);
+  ring.addEventListener('pointerleave', cancelHold);
+  ring.addEventListener('pointercancel', cancelHold);
+  ring.addEventListener('keydown', (e) => {
+    if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); startHold(); }
+  });
+  ring.addEventListener('keyup', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') cancelHold();
+  });
+
+  // ---------- «Бросить вызов другу» ----------
+  const challengeBtn = $('#challengeBtn');
+  const copyStatus = $('#copyStatus');
+  const shareUrl = 'https://obihodapp.ru/detector/r/?ref=share_web';
+  challengeBtn.addEventListener('click', async () => {
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      ok = true;
+    } catch (err) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = shareUrl;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch (err2) { ok = false; }
+    }
+    copyStatus.textContent = ok ? 'Скопировано' : 'Не получилось — скопируйте вручную';
+    if (ok) setTimeout(() => { copyStatus.textContent = ''; }, 2500);
+  });
+})();
+</script>
+</body>
+</html>
