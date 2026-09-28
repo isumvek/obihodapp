@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Нейросети с нуля — уроки по 3 минуты в день | Обиход</title>
+<meta name="description" content="Как пользоваться нейросетями: уроки по 3 минуты в день, готовые промпты и практика в своей нейросети. Первые 7 уроков бесплатно, без регистрации.">
+<link rel="canonical" href="https://obihodapp.ru/gramota/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Нейросети с нуля — уроки по 3 минуты в день">
+<meta property="og:description" content="Короткие уроки и готовые промпты — практика сразу в вашей нейросети. Первые 7 уроков бесплатно, без регистрации.">
+<meta property="og:url" content="https://obihodapp.ru/gramota/">
+<meta property="og:image" content="https://obihodapp.ru/gramota/icon-512.png">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Нейросети с нуля — Обиход",
+  "operatingSystem": "Android",
+  "applicationCategory": "EducationalApplication",
+  "description": "Короткие уроки по 3 минуты: одна мысль, короткая проверка и практика в настоящей нейросети. 30 уроков, 120 готовых промптов, без регистрации.",
+  "inLanguage": "ru",
+  "contentRating": "16+",
+  "installUrl": "https://www.rustore.ru/catalog/app/ru.obihod.gramota?referrer=landing_gramota",
+  "downloadUrl": "https://www.rustore.ru/catalog/app/ru.obihod.gramota?referrer=landing_gramota",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Полный курс — первая неделя после установки",
+      "priceCurrency": "RUB",
+      "price": "199"
+    },
+    {
+      "@type": "Offer",
+      "name": "Полный курс — обычная цена",
+      "priceCurrency": "RUB",
+      "price": "299"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Обиход",
+    "url": "https://obihodapp.ru/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Как начать пользоваться нейросетью, если я никогда не пробовал?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Откройте первый урок: за три минуты вы напишете первый запрос и получите результат в нейросети, которая уже есть на телефоне. Регистрация в приложении не нужна."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что такое промпт простыми словами?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Промпт — это запрос к нейросети. Чем точнее вы описываете задачу, контекст и формат ответа, тем полезнее результат. Этому и посвящён курс."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Сколько стоит курс?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Первые 7 уроков бесплатны. Полный курс, вся библиотека промптов и отключение рекламы — одна покупка навсегда, без подписки: 199 ₽ в первые 7 дней после установки на устройство, потом 299 ₽. Покупка привязана к аккаунту RuStore и восстанавливается на новом телефоне."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Нужна ли регистрация?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Нет. Приложение работает без регистрации, прогресс хранится на вашем телефоне."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Нейросеть может ошибаться?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Может, причём уверенно. Отдельный урок учит проверять факты и просить нейросеть назвать источники."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что нельзя отправлять нейросети?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Паспорт, номера карт, пароли и медицинские документы с вашим именем. Об этом — отдельный урок курса."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  /* ---------- Токены (по образцу /detector/, акцент курса — фиолетовый) ---------- */
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #1c1a17;
+    --ink-soft: #5d574e;
+    --ink-faint: #8d857a;
+    --rule: #e5ded4;
+    --rule-strong: #d3cabd;
+    --accent: #5A3D8F;
+    --accent-ink: #ffffff;
+    --brand: #5A3D8F;
+    --brand-soft: #efe9f7;
+
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem;
+    --s7: 3rem; --s8: 4rem; --s9: 6rem; --s10: 8rem;
+    --r-sm: 6px; --r-md: 12px; --r-lg: 24px;
+    --shadow-1: 0 1px 2px rgba(28,26,23,.06), 0 8px 24px -12px rgba(28,26,23,.18);
+    --shadow-2: 0 2px 6px rgba(28,26,23,.06), 0 30px 60px -30px rgba(28,26,23,.35);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --measure: 36rem;
+    --wrap: 72rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f;
+      --surface: #1e1d16;
+      --ink: #f2ede4;
+      --ink-soft: #b3aa9c;
+      --ink-faint: #857d70;
+      --rule: #302e25;
+      --rule-strong: #3f3c30;
+      --accent: #b79bea;
+      --accent-ink: #16150f;
+      --brand: #b79bea;
+      --brand-soft: #2a2338;
+      --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+      --shadow-2: 0 2px 6px rgba(0,0,0,.4), 0 30px 60px -30px rgba(0,0,0,.8);
+    }
+  }
+
+  /* ---------- База ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 var(--serif);
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
+  .eyebrow {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 var(--s4);
+  }
+  .eyebrow.accent { color: var(--accent); }
+  h1, h2, h3 { font-weight: 400; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(1.5rem, 3.2vw, 2.1rem); line-height: 1.15; }
+  h3 { font-size: 1.15rem; line-height: 1.3; }
+  p { margin: 0 0 var(--s4); color: var(--ink-soft); max-width: var(--measure); }
+  p.lead { color: var(--ink); font-size: 1.1rem; line-height: 1.5; }
+  .muted { color: var(--ink-faint); }
+  .sans { font-family: var(--sans); }
+  a.link { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a.link:hover { text-decoration: none; }
+  ul.list { margin: 0; padding: 0; list-style: none; }
+  ul.list li { position: relative; padding-left: 1.4rem; margin-bottom: .55rem; color: var(--ink-soft); }
+  ul.list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+
+  /* Кнопки */
+  .btn {
+    --pad: .9rem 1.4rem;
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: var(--pad);
+    font-family: var(--sans); font-weight: 600; font-size: .95rem; line-height: 1;
+    border-radius: 999px; border: 1px solid transparent;
+    text-decoration: none; cursor: pointer;
+    transition: transform .25s var(--ease-out), background .2s, border-color .2s, box-shadow .25s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow-1); }
+  .btn-primary:hover { box-shadow: var(--shadow-2); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---------- Шапка ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    transition: background .3s, border-color .3s, backdrop-filter .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-color: var(--rule);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; height: 4.25rem; gap: var(--s5); }
+  .brand { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; font-family: var(--sans); font-weight: 700; letter-spacing: .02em; }
+  .brand .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--brand); display: grid; place-items: center; }
+  .brand .logo svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .nav-links { display: flex; gap: var(--s5); font-family: var(--sans); font-size: .92rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); position: relative; padding: .25rem 0; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--ink); transition: right .3s var(--ease-out); }
+  .nav-links a:hover::after { right: 0; }
+  .nav .store { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); display: inline-flex; align-items: center; gap: .45rem; }
+  .nav .store .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(1.25rem, 5vw, 3.5rem) 0 clamp(2rem, 5vw, 4rem); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
+  .hero h1 { font-size: clamp(1.9rem, 5.4vw, 3.3rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: var(--s4); }
+  .hero .lead { max-width: 30rem; margin-bottom: var(--s4); }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s5); }
+  .status-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s4); font-family: var(--sans); font-size: .85rem; color: var(--ink-faint); }
+  .status-row .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; margin-right: .45rem; }
+
+  /* ---------- Телефон со скриншотом ---------- */
+  .phone-stage { display: grid; place-items: center; }
+  .phone {
+    position: relative;
+    width: min(260px, 62vw);
+    aspect-ratio: 9 / 16;
+    border-radius: 2rem;
+    background: var(--ink);
+    padding: .55rem;
+    box-shadow: var(--shadow-2);
+  }
+  .phone::before {
+    content: "";
+    position: absolute; top: .95rem; left: 50%; transform: translateX(-50%);
+    width: 34%; height: 7px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 60%, #000);
+    z-index: 2;
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem; display: block; }
+  .phone--sm { width: min(200px, 48vw); }
+
+  /* ---------- Reveal ---------- */
+  section { padding: clamp(2.5rem, 6vw, 5rem) 0; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease-out), transform .9s var(--ease-out); transition-delay: calc(var(--i, 0) * 80ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .sec-head { margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+
+  /* ---------- Разделяющая карта секций ---------- */
+  .split { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+  @media (max-width: 760px) { .split { grid-template-columns: 1fr; } .split .phone-stage { order: -1; margin-bottom: var(--s3); } }
+
+  /* ---------- Карточки (шаги, польза) ---------- */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); }
+  .card { border: 1px solid var(--rule); border-radius: var(--r-md); padding: var(--s5); background: var(--surface); }
+  .card b, .card strong { display: block; font-weight: 400; color: var(--ink); font-size: 1.05rem; margin-bottom: .35rem; }
+  .card span, .card small { font-family: var(--sans); font-size: .84rem; color: var(--ink-faint); }
+  .card .num { font-family: var(--sans); font-weight: 700; font-size: .78rem; color: var(--accent); letter-spacing: .08em; margin-bottom: .6rem; display: block; }
+  @media (max-width: 760px) { .grid3, .grid2 { grid-template-columns: 1fr; } }
+
+  /* ---------- Чипы (нейросети) ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: .6rem; margin: var(--s4) 0; }
+  .chip {
+    font-family: var(--sans); font-size: .88rem; font-weight: 600; color: var(--ink);
+    border: 1px solid var(--rule-strong); border-radius: 999px; padding: .5rem 1rem;
+    background: var(--surface);
+  }
+
+  /* ---------- Цена ---------- */
+  .price-card {
+    display: flex; align-items: center; gap: var(--s5); flex-wrap: wrap;
+    border: 1px solid var(--rule); border-radius: var(--r-lg); padding: var(--s6);
+    background: var(--surface); margin-bottom: var(--s4);
+  }
+  .price-row { display: flex; flex-direction: column; gap: .2rem; }
+  .price-num { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--ink); }
+  .price-label { font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); max-width: 14rem; }
+  .price-arrow { font-size: 1.6rem; color: var(--accent); }
+
+  /* ---------- FAQ ---------- */
+  .faq { border-top: 1px solid var(--rule); }
+  details { border-bottom: 1px solid var(--rule); padding: var(--s4) 0; }
+  summary { cursor: pointer; color: var(--ink); font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--s4); }
+  summary::-webkit-details-marker { display: none; }
+  summary .plus { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--rule-strong); display: grid; place-items: center; transition: transform .3s var(--ease-out), background .2s; }
+  summary .plus svg { width: 12px; height: 12px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; }
+  details[open] summary .plus { transform: rotate(45deg); background: var(--ink); }
+  details[open] summary .plus svg { stroke: var(--bg); }
+  details p { margin: var(--s3) 0 0; padding-right: 2rem; }
+
+  footer { border-top: 1px solid var(--rule); padding: var(--s6) 0; font-family: var(--sans); font-size: .84rem; color: var(--ink-faint); display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+  footer nav { display: flex; gap: var(--s4); flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .phone-stage { margin-top: var(--s4); }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Обиход — на главную"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg></span>Обиход</a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#how">Как устроен урок</a>
+      <a href="#library">Библиотека</a>
+      <a href="#price">Цена</a>
+    </nav>
+    <span class="store"><span class="dot" aria-hidden="true"></span>Android · RuStore</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow accent">Курс в приложении</p>
+        <h1>Нейросети с нуля: уроки по 3 минуты</h1>
+        <p class="lead">Понять нейросети за 3 минуты в день. 30 уроков, 120 промптов, без регистрации.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://www.rustore.ru/catalog/app/ru.obihod.gramota?referrer=landing_gramota">Открыть в RuStore</a>
+        </div>
+        <div class="status-row"><span><span class="dot" aria-hidden="true"></span>Первые 7 уроков бесплатно · без регистрации · 16+</span></div>
+      </div>
+
+      <div class="phone-stage reveal" style="--i:1">
+        <div class="phone"><img src="screen-1.jpg" width="540" height="960" alt="Экран урока: «3 минуты в день — и вы понимаете нейросети», карточка с объяснением формата ответа"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Как устроен урок ===== -->
+  <section id="how">
+    <div class="wrap split">
+      <div>
+        <div class="sec-head reveal">
+          <p class="eyebrow">Как устроен урок</p>
+          <h2>Три минуты: мысль, проверка, практика</h2>
+        </div>
+        <div class="grid3 reveal" style="--i:1">
+          <div class="card">
+            <span class="num">1</span>
+            <b>Карточка</b>
+            <span>Короткое объяснение одной мысли — без терминов и воды.</span>
+          </div>
+          <div class="card">
+            <span class="num">2</span>
+            <b>«Какой промпт лучше?»</b>
+            <span>Сравниваете два запроса и видите, как меняется ответ нейросети.</span>
+          </div>
+          <div class="card">
+            <span class="num">3</span>
+            <b>Практика в своей нейросети</b>
+            <span>Готовый промпт копируется одной кнопкой и открывается в вашей нейросети.</span>
+          </div>
+        </div>
+        <p class="reveal" style="--i:2;margin-top:1.5rem">Урок «Собери промпт» дополнительно учит складывать запрос из частей: роль, задача, формат, ограничения. Урок можно прослушать кнопкой «Слушать», а серия дней и напоминание раз в день помогают не бросить на середине.</p>
+      </div>
+      <div class="phone-stage reveal" style="--i:2">
+        <div class="phone phone--sm"><img src="screen-2.jpg" width="540" height="960" alt="Экран практики: «Готовый промпт — результат в нейросети», кнопки «Скопировать» и «Открыть нейросеть», чип «Алиса · ГигаЧат · DeepSeek»"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== С какими нейросетями ===== -->
+  <section id="ai">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">С какими нейросетями</p>
+        <h2>Уроки работают с бесплатными нейросетями в России</h2>
+      </div>
+      <div class="reveal" style="--i:1">
+        <div class="chips">
+          <span class="chip">Алиса AI</span>
+          <span class="chip">ГигаЧат</span>
+          <span class="chip">DeepSeek</span>
+          <span class="chip">Qwen</span>
+        </div>
+        <p>В начале выберите свою нейросеть — шаги практики подстроятся под неё: где начать новый чат, куда вставить промпт, как приложить фото. Подойдёт и любой другой чат. Если ваша нейросеть чего-то не умеет, например рисовать, приложение подскажет, где это сделать.</p>
+        <p class="muted" style="font-size:.9rem">Приложение не связано с разработчиками перечисленных нейросетей.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Что вы научитесь делать ===== -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Что вы научитесь делать</p>
+        <h2>Восемь навыков, которые остаются после курса</h2>
+      </div>
+      <div class="grid2 reveal" style="--i:1">
+        <div class="card"><b>Писать запросы конкретно</b><span>вместо «в общем» — и получать точный ответ</span></div>
+        <div class="card"><b>Задавать роль, формат, ограничения</b><span>чтобы нейросеть отвечала так, как нужно</span></div>
+        <div class="card"><b>Уточнять ответ в том же чате</b><span>вместо того чтобы начинать заново</span></div>
+        <div class="card"><b>Проверять факты</b><span>нейросеть ошибается уверенно</span></div>
+        <div class="card"><b>Создавать картинки</b><span>открытки, аватарки, иллюстрации в нужном стиле</span></div>
+        <div class="card"><b>Писать письма нужным тоном</b><span>сокращать тексты, готовить конспекты</span></div>
+        <div class="card"><b>Планировать поездки и бюджет</b><span>чёткими промптами вместо общих вопросов</span></div>
+        <div class="card"><b>Понимать, что нельзя отправлять</b><span>паспорт, номера карт, пароли, медицинские документы</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Библиотека промптов ===== -->
+  <section id="library">
+    <div class="wrap split">
+      <div>
+        <div class="sec-head reveal">
+          <p class="eyebrow">Библиотека промптов</p>
+          <h2>120 готовых промптов на каждый день</h2>
+        </div>
+        <p class="reveal" style="--i:1">Четыре темы — работа, учёба, картинки и быт; больше всего промптов для картинок и фото. Каждый день в приложении появляется новый «промпт дня», одинаковый для всех, как загадка дня. Первые 20 промптов и промпт дня доступны бесплатно.</p>
+      </div>
+      <div class="phone-stage reveal" style="--i:2">
+        <div class="phone phone--sm"><img src="screen-3.jpg" width="540" height="960" alt="Экран библиотеки промптов с вкладками «Работа», «Учёба», «Картинки», «Быт» и списком готовых запросов"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Цена ===== -->
+  <section id="price">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Цена</p>
+        <h2>Одна покупка навсегда, без подписки</h2>
+      </div>
+      <div class="price-card reveal" style="--i:1">
+        <div class="price-row"><span class="price-num">199 ₽</span><span class="price-label">первые 7 дней после установки</span></div>
+        <div class="price-arrow" aria-hidden="true">→</div>
+        <div class="price-row"><span class="price-num">299 ₽</span><span class="price-label">далее, обычная цена</span></div>
+      </div>
+      <p class="reveal" style="--i:2">Полный курс из 30 уроков, вся библиотека промптов и отключение рекламы — разовая покупка, без подписки и повторных списаний. Обе цены настоящие. Покупка привязана к аккаунту RuStore и восстанавливается на новом телефоне.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Частые вопросы</p>
+        <h2>Что обычно спрашивают</h2>
+      </div>
+      <div class="faq reveal" style="--i:1">
+        <details>
+          <summary>Как начать пользоваться нейросетью, если я никогда не пробовал?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Откройте первый урок: за три минуты вы напишете первый запрос и получите результат в нейросети, которая уже есть на телефоне. Регистрация в приложении не нужна.</p>
+        </details>
+        <details>
+          <summary>Что такое промпт простыми словами?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Промпт — это запрос к нейросети. Чем точнее вы описываете задачу, контекст и формат ответа, тем полезнее результат. Этому и посвящён курс.</p>
+        </details>
+        <details>
+          <summary>Сколько стоит курс?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Первые 7 уроков бесплатны. Полный курс, вся библиотека промптов и отключение рекламы — одна покупка навсегда, без подписки: 199 ₽ в первые 7 дней после установки, потом 299 ₽. Покупка восстанавливается на новом телефоне тем же аккаунтом RuStore.</p>
+        </details>
+        <details>
+          <summary>Нужна ли регистрация?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Нет. Приложение работает без регистрации, прогресс хранится на вашем телефоне.</p>
+        </details>
+        <details>
+          <summary>Нейросеть может ошибаться?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Может, причём уверенно. Отдельный урок учит проверять факты и просить нейросеть назвать источники.</p>
+        </details>
+        <details>
+          <summary>Что нельзя отправлять нейросети?<span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Паспорт, номера карт, пароли и медицинские документы с вашим именем. Об этом — отдельный урок курса.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Приватность ===== -->
+  <section id="privacy">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Приватность</p>
+        <h2>Без регистрации, без слежки за перепиской</h2>
+      </div>
+      <p class="reveal" style="--i:1">Приложение работает без регистрации: прогресс хранится на вашем телефоне. Приложение не видит, что вы пишете нейросети, и не хранит её ответы — вы открываете свою нейросеть отдельно, и вся переписка остаётся там.</p>
+      <p class="muted reveal" style="--i:2;font-size:.9rem">Приложение для взрослых, 16+. Некоторые нейросети сами требуют вход и возраст 18+. Приложение не связано с разработчиками нейросетей.</p>
+    </div>
+  </section>
+
+  <!-- ===== Где скачать ===== -->
+  <section id="download">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Где скачать</p>
+        <h2>Приложение — в RuStore</h2>
+        <p style="margin-top:1rem">Android. RuStore предустановлен на всех смартфонах, которые продаются в России, — отдельно ставить его не нужно.</p>
+        <div class="cta" style="margin-top:1.25rem">
+          <a class="btn btn-primary" href="https://www.rustore.ru/catalog/app/ru.obihod.gramota?referrer=landing_gramota">Открыть в RuStore</a>
+        </div>
+        <p style="font-size:.93rem"><a class="link" href="/gramota/privacy/">Политика конфиденциальности</a> · <a class="link" href="/gramota/offer/">Условия покупки</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <nav aria-label="Документы">
+      <a href="/">Обиход</a>
+      <a href="/gramota/privacy/">Политика конфиденциальности</a>
+      <a href="/gramota/offer/">Условия покупки</a>
+      <a href="mailto:support@obihodapp.ru">Поддержка</a>
+    </nav>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* Шапка */
+  const nav = $('#nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Появление секций — один раз */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+  $$('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
