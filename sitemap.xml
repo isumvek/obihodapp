@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://obihodapp.ru/</loc><lastmod>2026-09-08</lastmod><priority>1.0</priority></url>
-  <url><loc>https://obihodapp.ru/habits/</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://obihodapp.ru/</loc><lastmod>2026-09-29</lastmod><priority>1.0</priority></url>
+  <url><loc>https://obihodapp.ru/habits/</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
   <url><loc>https://obihodapp.ru/detector/</loc><lastmod>2026-09-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://obihodapp.ru/detector/r/</loc><lastmod>2026-09-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://obihodapp.ru/privacy/</loc><lastmod>2026-09-03</lastmod><priority>0.5</priority></url>
@@ -9,9 +9,10 @@
   <url><loc>https://obihodapp.ru/habits/offer/</loc><lastmod>2026-09-03</lastmod><priority>0.5</priority></url>
   <url><loc>https://obihodapp.ru/detector/privacy/</loc><lastmod>2026-09-03</lastmod><priority>0.5</priority></url>
   <url><loc>https://obihodapp.ru/detector/offer/</loc><lastmod>2026-09-03</lastmod><priority>0.5</priority></url>
-  <url><loc>https://obihodapp.ru/budget/</loc><lastmod>2026-09-07</lastmod><priority>0.8</priority></url>
+  <url><loc>https://obihodapp.ru/budget/</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
   <url><loc>https://obihodapp.ru/budget/privacy/</loc><lastmod>2026-09-07</lastmod><priority>0.5</priority></url>
   <url><loc>https://obihodapp.ru/budget/offer/</loc><lastmod>2026-09-07</lastmod><priority>0.5</priority></url>
+  <url><loc>https://obihodapp.ru/workout/</loc><lastmod>2026-09-29</lastmod><priority>0.8</priority></url>
   <url><loc>https://obihodapp.ru/workout/privacy/</loc><lastmod>2026-09-14</lastmod><priority>0.5</priority></url>
   <url><loc>https://obihodapp.ru/workout/offer/</loc><lastmod>2026-09-14</lastmod><priority>0.5</priority></url>
   <url><loc>https://obihodapp.ru/gramota/privacy/</loc><lastmod>2026-09-25</lastmod><priority>0.5</priority></url>

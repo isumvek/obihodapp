@@ -190,6 +190,18 @@
     .hero h1 .l > span, .fade, .reveal, .lines .l > span, .scr img { transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
     .app .status::before { animation: none; }
   }
+
+  /* ---- Приложения Обихода: пять карточек со ссылками в RuStore ---- */
+  .store-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); padding-bottom: clamp(3rem, 6vw, 5rem); }
+  .store-card { display: flex; flex-direction: column; gap: .7rem; padding: clamp(1.25rem, 2.4vw, 2rem); border-radius: var(--r-lg); background: linear-gradient(160deg, #fff, #f1f0eb); border: 1px solid var(--rule); transition: transform .5s var(--ease), border-color .3s; }
+  .store-card:hover { transform: translateY(-3px); border-color: var(--rule-strong); }
+  .store-card h3 { font-size: clamp(1.3rem, 2vw, 1.7rem); }
+  .store-card p { font-size: .98rem; flex: 1; }
+  .store-card .row { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.2rem; margin-top: .6rem; }
+  .store-card .more { font: 600 .9rem/1 var(--body); color: var(--ink-soft); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .store-card .more:hover { color: var(--ink); }
+  @media (max-width: 960px) { .store-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .store-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -271,6 +283,42 @@
     </div>
   </section>
 
+  <section id="rustore">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="lines reveal"><span class="l" style="--k:0"><span>Приложения Обихода</span></span></h2>
+        <p class="reveal" style="--i:1">Пять Android-приложений для повседневных дел: без регистрации, с тёмной темой, данные хранятся на телефоне. Скачать можно в RuStore — он предустановлен на смартфонах, которые продаются в России.</p>
+      </div>
+      <div class="store-grid">
+        <div class="store-card reveal">
+          <h3>Трекер привычек</h3>
+          <p>Отметил касанием — серия растёт сама. Напоминания, статистика, работает без интернета и регистрации.</p>
+          <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.habits?referrer=landing_habits"><span>Скачать в RuStore</span></a><a class="more" href="/habits/">Подробнее</a></div>
+        </div>
+        <div class="store-card reveal" style="--i:1">
+          <h3>Детектор лжи (шуточная игра)</h3>
+          <p>Игра для компании: палец на круг, три секунды — «Правда» или «Ложь». Без микрофона, без камеры.</p>
+          <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.detector?referrer=landing_detector"><span>Скачать в RuStore</span></a><a class="more" href="/detector/">Подробнее</a></div>
+        </div>
+        <div class="store-card reveal" style="--i:2">
+          <h3>Учет расходов</h3>
+          <p>Записали трату за пару касаний — видите, сколько осталось до конца месяца. Без доступа к банку.</p>
+          <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.budget?referrer=landing_budget"><span>Скачать в RuStore</span></a><a class="more" href="/budget/">Подробнее</a></div>
+        </div>
+        <div class="store-card reveal">
+          <h3>Тренировки дома</h3>
+          <p>Программа на 30 дней по 10–15 минут: таймер, серия и календарь. Без инвентаря и интернета.</p>
+          <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.workout?referrer=landing_workout"><span>Скачать в RuStore</span></a><a class="more" href="/workout/">Подробнее</a></div>
+        </div>
+        <div class="store-card reveal" style="--i:1">
+          <h3>Нейросети с нуля</h3>
+          <p>Уроки по 3 минуты в день и готовые промпты. Первые 7 уроков бесплатно, без регистрации.</p>
+          <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.gramota?referrer=landing_gramota"><span>Скачать в RuStore</span></a><a class="more" href="/gramota/">Подробнее</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="manifest" id="about">
     <div class="wrap">
       <p class="reveal">Мы делаем то, что показывается на экранах, и то, что живёт в телефоне. <em>Одна команда</em> проектирует фильм для видеостены и экран приложения — с одним представлением о том, что такое «удобно» и «красиво». Всё собирается кодом: один исходник, любое разрешение, правки за минуты, не сутки рендера.</p>
@@ -299,7 +347,7 @@
 
 <footer>
   <div class="wrap">
-    <nav aria-label="Документы"><a href="/privacy/">Политика конфиденциальности</a><a href="/habits/offer/">Оферта на подписку</a><a href="/habits/">Трекер привычек</a><a href="/detector/">Детектор лжи</a><a href="/budget/">Учёт расходов</a></nav>
+    <nav aria-label="Документы"><a href="/privacy/">Политика конфиденциальности</a><a href="/habits/offer/">Оферта на подписку</a><a href="/habits/">Трекер привычек</a><a href="/detector/">Детектор лжи</a><a href="/budget/">Учёт расходов</a><a href="/workout/">Тренировки дома</a><a href="/gramota/">Нейросети с нуля</a></nav>
     <span>© 2026 Обиход</span>
   </div>
 </footer>
