@@ -208,9 +208,9 @@
   .msum { font-size: 2.1rem; line-height: 1.1; letter-spacing: -.02em; color: var(--budget); font-variant-numeric: tabular-nums; }
   .mday { font-family: var(--sans); font-size: .8rem; color: var(--ink-faint); }
   .mbar { height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--budget) 15%, transparent); overflow: hidden; }
-  .mbar-fill { display: block; height: 100%; width: 62%; border-radius: 999px; background: var(--budget); }
+  .mbar-fill { display: block; height: 100%; width: 99.6925%; border-radius: 999px; background: var(--budget); }
   .in .mbar-fill { animation: mfill 6s var(--ease-out) infinite; }
-  @keyframes mfill { 0% { width: 0; } 40%, 80% { width: 62%; } 100% { width: 0; } }
+  @keyframes mfill { 0% { width: 0; } 40%, 80% { width: 99.6925%; } 100% { width: 0; } }
   .mrows { margin-top: var(--s5); display: grid; gap: var(--s3); }
   .mrow { display: grid; grid-template-columns: 5.4rem minmax(0, 1fr) auto; align-items: center; gap: var(--s3); font-family: var(--sans); font-size: .8rem; color: var(--ink-faint); }
   .mrow b { font-weight: 500; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
@@ -258,7 +258,7 @@
     html { scroll-behavior: auto; }
     .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
     .nav .store .dot, .mbar-fill, .mrow i::after { animation: none !important; }
-    .mbar-fill { width: 62%; }
+    .mbar-fill { width: 99.6925%; }
     .mrow i::after { width: var(--w, 50%); }
   }
 </style>
@@ -288,9 +288,9 @@
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow accent">Учёт расходов</p>
-      <h1>Учет расходов — скачать приложение: сколько осталось до конца месяца</h1>
-      <p class="lead">Записали трату — увидели остаток. Не таблица на двадцать колонок, а одно число на главном экране, ради которого приложение и открывают.</p>
-      <p>Трата вносится за пару касаний: сумма, категория, готово. Приложение не подключается к банкам, не читает SMS и не спрашивает паролей — данные появляются в нём только тогда, когда их внесли вы, и остаются в памяти телефона.</p>
+      <h1>Учет расходов: сколько осталось до конца месяца</h1>
+      <p class="lead">Запишите трату и увидите, сколько осталось от месячного предела.</p>
+      <p>Для записи траты укажите сумму и категорию. Приложение не подключается к банкам, не читает SMS и не спрашивает паролей — данные появляются в нём только тогда, когда их внесли вы, и остаются в памяти телефона.</p>
       <div class="cta">
         <a class="btn btn-store" href="https://www.rustore.ru/catalog/app/ru.obihod.budget?utm_source=available_in_rustore&utm_medium=ru.obihod.budget&rsm=1&mt_link_id=iios36&mt_sub1=ru.obihod.budget&referrer=landing_budget" target="_blank" rel="noopener"><img src="/media/rustore-button.png" width="188" height="63" alt="Скачайте из RuStore"></a><a class="btn btn-primary" href="https://www.rustore.ru/catalog/app/ru.obihod.budget?referrer=landing_budget">Скачать в RuStore</a>
         <a class="btn btn-ghost" href="#faq">Частые вопросы</a>
@@ -300,18 +300,16 @@
     <div class="money-stage reveal" aria-hidden="true">
       <div class="mcard">
         <div class="mcard-top">
-          <span class="mlabel">Сентябрь · осталось</span>
-          <span class="msum">12 400 ₽</span>
-          <span class="mday">23 дня · 540 ₽ в день</span>
+          <span class="mlabel">Месяц · осталось</span>
+          <span class="msum">39 877 ₽</span>
+          <span class="mday">Месячный предел 40 000 ₽</span>
         </div>
         <div class="mbar"><span class="mbar-fill"></span></div>
         <div class="mrows">
-          <div class="mrow" style="--w:72%;--d:0s"><span>Продукты</span><i></i><b>8 640 ₽</b></div>
-          <div class="mrow" style="--w:46%;--d:.15s"><span>Транспорт</span><i></i><b>3 200 ₽</b></div>
-          <div class="mrow" style="--w:28%;--d:.3s"><span>Кафе</span><i></i><b>1 760 ₽</b></div>
+          <div class="mrow" style="--w:.3075%;--d:0s"><span>Прочее</span><i></i><b>123 ₽</b></div>
         </div>
       </div>
-      <div class="m-cap">Одно число вместо таблицы</div>
+      <div class="m-cap">Пример расчёта: 40 000 − 123 = 39 877 ₽</div>
     </div>
   </div>
 </section>
@@ -320,12 +318,12 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Отличия</p>
-      <h2>Что мы сделали иначе</h2>
-      <p class="lead">Мы прочитали, на что жалуются в отзывах на приложения для учёта расходов. Две главные претензии — реклама поверх ввода и требование пустить приложение в банк. Из них и вырос список.</p>
+      <h2>Как устроен учёт</h2>
+      <p class="lead">Укажите месячный предел, добавляйте траты и смотрите остаток. Приложению не нужен доступ к банку: записи вы ведёте сами.</p>
     </div>
     <div class="diff">
       <div class="diff-item reveal" style="--i:0"><b>Не подключается к банкам</b><span>Ни счетов, ни карт, ни SMS, ни паролей от онлайн-банка. Траты вносятся руками — это единственный вход данных, и он же граница ответственности.</span></div>
-      <div class="diff-item reveal" style="--i:1"><b>Одно число на главном</b><span>Первое, что видно при запуске, — сколько осталось до конца месяца и сколько это в день. Категории и история — ниже, для тех, кому они нужны.</span></div>
+      <div class="diff-item reveal" style="--i:1"><b>Одно число на главном</b><span>На главном экране — остаток заданного месячного предела по введённым тратам. Распределение по категориям и история помогают разобрать расходы подробнее.</span></div>
       <div class="diff-item reveal" style="--i:2"><b>Работает офлайн</b><span>Запись и просмотр расходов работают без интернета. Данные хранятся на телефоне. Интернет нужен для покупки, проверки и восстановления платного доступа, а также рекламных функций.</span></div>
       <div class="diff-item reveal" style="--i:3"><b>Реклама не мешает вводу</b><span>Никакой рекламы на первом экране и во время добавления траты. Платный доступ убирает её целиком, включая разовую покупку навсегда.</span></div>
     </div>
@@ -382,10 +380,10 @@
 <section class="section" aria-label="Другие приложения Обиход">
   <div class="wrap">
     <h2>Все приложения Обихода</h2>
-    <iframe width="100%" height="655" style="max-width:705px;border:0;border-radius:28px;display:block;margin:0 auto" src="https://www.rustore.ru/external/simple-selection?title=Приложения%20Обиход&subtitle=От%20студии%20—%20в%20RuStore&apps=ru.obihod.habits,ru.obihod.detector,ru.obihod.budget,ru.obihod.workout,ru.obihod.gramota" title="Подборка приложений Обиход в RuStore"></iframe>
+    <p><a class="btn btn-primary" href="/apps/">Открыть каталог приложений</a></p>
   </div>
 </section>
-<section class="related-guide" aria-labelledby="related-budget"><div class="wrap" style="padding-block:32px"><h2 id="related-budget">Разобраться перед началом</h2><p><a href="/budget/kak-vesti-rashody/">Как начать вести расходы</a> — первые записи и понятный остаток бюджета.</p><p><a href="/budget/byudzhet-na-mesyats/">Бюджет на месяц</a> · <a href="/budget/do-zarplaty/">Сумма до зарплаты</a> · <a href="/budget/tablica-rashodov/">Таблица расходов XLSX и CSV</a></p><p><a href="/resources/">Все полезные материалы</a> · <a href="/apps/">Все приложения Обихода</a></p></div></section>
+<section class="related-guide" aria-labelledby="related-budget"><div class="wrap" style="padding-block:32px"><h2 id="related-budget">Разобраться перед началом</h2><p><a href="/budget/kak-vybrat-prilozhenie/">Как выбрать приложение для учёта расходов</a> — личные траты, доходы, совместный бюджет и таблица.</p><p><a href="/budget/kak-vesti-rashody/">Как начать вести расходы</a> — первые записи и понятный остаток бюджета.</p><p><a href="/budget/byudzhet-na-mesyats/">Бюджет на месяц</a> · <a href="/budget/do-zarplaty/">Сумма до зарплаты</a> · <a href="/budget/tablica-rashodov/">Таблица расходов XLSX и CSV</a></p><p><a href="/resources/">Все полезные материалы</a> · <a href="/apps/">Все приложения Обихода</a></p></div></section>
 </main>
 
 <footer>
