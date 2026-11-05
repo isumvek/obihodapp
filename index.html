@@ -24,7 +24,11 @@
   "logo": "https://obihodapp.ru/og.png",
   "description": "Студия моушена и приложений: контент и интерактив для экранов и музеев, Android-приложения для RuStore, сайты.",
   "email": "support@obihodapp.ru",
-  "founder": { "@type": "Person", "name": "Алексей Скурихин" }
+  "founder": {
+    "@type": "Person",
+    "name": "Алексей Скурихин"
+  },
+  "@id": "https://obihodapp.ru/#organization"
 }
 </script>
 <style>
@@ -85,7 +89,13 @@
   .nav-links a:hover { color: var(--ink); } .nav-links a:hover::after { right: 0; }
   .nav-r { display: flex; justify-content: flex-end; }
   .nav .btn { padding: .7rem 1.1rem; font-size: .85rem; }
-  @media (max-width: 800px) { .nav-links { display: none; } .nav-in { grid-template-columns: 1fr auto; } }
+  @media (max-width: 800px) {
+    .nav { background: var(--bg); }
+    .nav-in { grid-template-columns: 1fr auto; height: auto; min-height: 4.5rem; gap: 0 var(--s4); }
+    .brand, .nav-r { min-height: 4.5rem; align-items: center; }
+    .nav-links { display: flex; grid-column: 1 / -1; grid-row: 2; justify-content: space-between; gap: .6rem; font-size: .85rem; border-top: 1px solid var(--line); }
+    .nav-links a { min-height: 44px; display: inline-flex; align-items: center; }
+  }
 
   /* ---- Hero: ДНК — программы и контент на двух нитях ---- */
   .hero { position: relative; height: 100vh; height: 100svh; min-height: 640px; overflow: hidden; }
@@ -105,7 +115,7 @@
   .hero.ready .d1 { transition-delay: .45s; } .hero.ready .d2 { transition-delay: .6s; }
   .hero .legend { position: absolute; left: max(1.5rem, (100vw - var(--wrap)) / 2); bottom: 1.6rem; z-index: 3; font: 500 .68rem/1.7 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
   .hero .legend b { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: -1px; margin-left: .5rem; }
-  @media (max-width: 800px) { .hero-txt { width: calc(100vw - 3rem); left: 1.5rem; top: 5rem; transform: none; background: linear-gradient(90deg, rgba(251,250,247,.92) 55%, rgba(251,250,247,0)); padding-right: 20%; } .hero .sub { font-size: 1rem; } .hero h1 { font-size: 2.3rem; } .hero .legend { display: none; } }
+  @media (max-width: 800px) { .hero-txt { width: calc(100vw - 3rem); left: 1.5rem; top: 8.5rem; transform: none; background: linear-gradient(90deg, rgba(251,250,247,.92) 55%, rgba(251,250,247,0)); padding-right: 20%; } .hero .sub { font-size: 1rem; } .hero h1 { font-size: 2.3rem; } .hero .legend { display: none; } }
 
   /* ---- Полноэкранный шоурил ---- */
   #reel { position: fixed; inset: 0; z-index: 150; background: #000; display: none; }
@@ -213,7 +223,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="/"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Обиход</a>
-    <nav class="nav-links" aria-label="Разделы"><a href="#works">Работы</a><a href="#about">О студии</a><a href="#contact">Контакт</a></nav>
+    <nav class="nav-links" aria-label="Разделы"><a href="/apps/">Приложения</a><a href="/studio/">Студия</a><a href="/borya/">Боря</a><a href="#contact">Контакт</a></nav>
     <div class="nav-r"><button class="btn" data-reel><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Шоурил</span></button></div>
   </div>
 </header>
@@ -238,24 +248,24 @@
         <p class="reveal" style="--i:1">Двенадцать экранов, шесть голограмм, фильм, три игры и умные зеркала в одном пространстве. Ниже — сам контент и съёмка с объекта. Делали вместе с командой ИИ-графики и вирусологами.</p>
       </div>
       <div class="works">
-        <a class="work reveal" href="#contact" data-cur="Смотреть">
+        <a class="work reveal" href="/projects/muzey-virusov/#film" data-cur="Смотреть">
           <video src="/media/film.mp4" poster="/media/film.jpg" muted loop playsinline preload="metadata" data-lazy></video>
           <span class="n">01</span>
           <div class="t"><div><h3>Фильм «Полезные вирусы и не только»</h3><p>Три минуты в трёх главах. Русская озвучка, субтитры на английском и китайском, две версии под горизонтальный и вертикальный экраны 55″.</p></div><div class="tags">фильм · ИИ-графика<br>3 языка · 2 экрана</div></div>
         </a>
         <div class="duo">
-          <a class="work reveal" href="#contact" data-cur="Смотреть">
+          <a class="work reveal" href="/projects/muzey-virusov/#mirrors" data-cur="Смотреть">
             <video src="/media/mirror-zone.mp4" poster="/media/mirror-zone.jpg" muted loop playsinline preload="metadata" data-lazy></video>
             <span class="n">02</span>
             <div class="t"><div><h3>Умные зеркала</h3><p>LED за зеркальным напылением и ИК-датчик: подошёл к раковине — панда, капибара или волк показывают, как мыть руки.</p></div><div class="tags">интерактив · датчики<br>3 мультфильма</div></div>
           </a>
-          <a class="work reveal" href="#contact" style="--i:1" data-cur="Смотреть">
+          <a class="work reveal" href="/projects/muzey-virusov/#holograms" style="--i:1" data-cur="Смотреть">
             <video src="/media/holo2.mp4" poster="/media/holo2.jpg" muted loop playsinline preload="metadata" data-lazy></video>
             <span class="n">03</span>
             <div class="t"><div><h3>Голограммы и энциклопедия</h3><p>Шесть голографических вентиляторов как одна стена и девять круглых дисплеев: вирус вращается, слои раскрываются по очереди.</p></div><div class="tags">3D · голограммы<br>6 + 9 экранов</div></div>
           </a>
         </div>
-        <a class="work reveal" href="#contact" data-cur="Смотреть">
+        <a class="work reveal" href="/projects/muzey-virusov/#games" data-cur="Смотреть">
           <video src="/media/games.mp4" poster="/media/games.jpg" muted loop playsinline preload="metadata" data-lazy></video>
           <span class="n">04</span>
           <div class="t"><div><h3>Три игры на сенсорном столе</h3><p>Кликер на реакцию, memory и три в ряд — на одном тач-пилоне, без инструкции: дети разбираются за секунды.</p></div><div class="tags">игры · тач-стол<br>3 механики</div></div>
@@ -268,7 +278,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 class="lines reveal"><span class="l" style="--k:0"><span>Свои приложения</span></span></h2>
-        <p class="reveal" style="--i:1">Небольшие приложения для повседневных дел — то, чем пользуются между делом и не задумываются об этом. Отсюда и название. Офлайн, без регистрации, с тёмной темой. Оба опубликованы в RuStore.</p>
+        <p class="reveal" style="--i:1">Небольшие приложения для повседневных дел — то, чем пользуются между делом и не задумываются об этом. Отсюда и название. Ниже — два примера интерфейсов; <a href="/apps/">в каталоге собраны все семь приложений</a>.</p>
       </div>
       <div class="apps">
         <a class="app reveal" href="/habits/">
@@ -287,7 +297,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 class="lines reveal"><span class="l" style="--k:0"><span>Приложения Обихода</span></span></h2>
-        <p class="reveal" style="--i:1">Пять Android-приложений для повседневных дел: без регистрации, с тёмной темой, данные хранятся на телефоне. Скачать можно в RuStore — он предустановлен на смартфонах, которые продаются в России.</p>
+        <p class="reveal" style="--i:1">Семь Android-приложений для повседневных дел. У каждого своя задача и условия использования. Откройте карточку в RuStore; если магазина нет на телефоне, используйте <a href="https://www.rustore.ru/instruction">официальную инструкцию установки</a>.</p>
       </div>
       <div class="store-grid">
         <div class="store-card reveal">
@@ -302,19 +312,21 @@
         </div>
         <div class="store-card reveal" style="--i:2">
           <h3>Учет расходов</h3>
-          <p>Записали трату за пару касаний — видите, сколько осталось до конца месяца. Без доступа к банку.</p>
+          <p>Записали трату — видите, сколько осталось до конца месяца. Без доступа к банку.</p>
           <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.budget?referrer=landing_budget"><span>Скачать в RuStore</span></a><a class="more" href="/budget/">Подробнее</a></div>
         </div>
         <div class="store-card reveal">
           <h3>Тренировки дома</h3>
-          <p>Программа на 30 дней по 10–15 минут: таймер, серия и календарь. Без инвентаря и интернета.</p>
+          <p>Программа на 30 дней с упражнениями и таймером. Для домашних занятий без инвентаря.</p>
           <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.workout?referrer=landing_workout"><span>Скачать в RuStore</span></a><a class="more" href="/workout/">Подробнее</a></div>
         </div>
         <div class="store-card reveal" style="--i:1">
           <h3>Нейросети с нуля</h3>
-          <p>Уроки по 3 минуты в день и готовые промпты. Первые 7 уроков бесплатно, без регистрации.</p>
+          <p>Короткие уроки и примеры запросов для практики во внешних ИИ-сервисах. Приложение не генерирует ответы.</p>
           <div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.gramota?referrer=landing_gramota"><span>Скачать в RuStore</span></a><a class="more" href="/gramota/">Подробнее</a></div>
         </div>
+        <div class="store-card reveal" style="--i:2"><h3>Учёт авто: расходы и ТО</h3><p>Заправки, обслуживание и другие расходы в одном бортжурнале. Статистика и напоминания.</p><div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.avto?referrer=landing_avto"><span>Открыть в RuStore</span></a><a class="more" href="/avto/">Подробнее</a></div></div>
+        <div class="store-card reveal"><h3>Сборы</h3><p>Свой список вещей, количество и отметки собранного. Бесплатный сценарий — одна поездка для одного человека.</p><div class="row"><a class="btn" href="https://www.rustore.ru/catalog/app/ru.obihod.packing?referrer=landing_packing"><span>Открыть в RuStore</span></a><a class="more" href="/packing/">Подробнее</a></div></div>
       </div>
     </div>
   </section>
@@ -328,7 +340,7 @@
   <section id="services">
     <div class="wrap">
       <div class="svcs">
-        <div class="svc reveal"><span class="mono">01</span><h3>Контент для экранов и музеев</h3><p>Фильмы и заставки под геометрию видеостены или фасада, интерактивные игры, голограммы, умные зеркала, проекции. ИИ-графика с проверкой экспертами предметной области.</p></div>
+        <div class="svc reveal"><span class="mono">01</span><h3><a href="/services/kontent-dlya-muzeev/">Контент для экранов и музеев</a></h3><p>Фильмы и заставки под геометрию видеостены или фасада, интерактивные игры, голограммы, умные зеркала, проекции. ИИ-графика с проверкой экспертами предметной области.</p></div>
         <div class="svc reveal" style="--i:1"><span class="mono">02</span><h3>Приложения для RuStore</h3><p>Нативный Android на Kotlin и Compose. Платежи, подписки и аналитика по правилам площадки, карточка и продвижение внутри стора. Свои продукты в портфеле.</p></div>
         <div class="svc reveal" style="--i:2"><span class="mono">03</span><h3>Сайты и веб-платформы</h3><p>Лендинги и корпоративные сайты в коде или на Tilda, платформы управления контентом на сети экранов, моушен в браузере без тяжёлых библиотек.</p></div>
       </div>
@@ -347,7 +359,7 @@
 
 <footer>
   <div class="wrap">
-    <nav aria-label="Документы"><a href="/privacy/">Политика конфиденциальности</a><a href="/habits/offer/">Оферта на подписку</a><a href="/habits/">Трекер привычек</a><a href="/detector/">Детектор лжи</a><a href="/budget/">Учёт расходов</a><a href="/workout/">Тренировки дома</a><a href="/gramota/">Нейросети с нуля</a></nav>
+    <nav aria-label="Документы и разделы"><a href="/apps/">Все приложения</a><a href="/studio/">Студия</a><a href="/borya/">Боря</a><a href="/resources/">Материалы</a><a href="/avto/">Учёт авто</a><a href="/privacy/">Политика конфиденциальности</a><a href="/habits/offer/">Оферта на подписку</a><a href="/habits/">Трекер привычек</a><a href="/detector/">Детектор лжи</a><a href="/budget/">Учёт расходов</a><a href="/workout/">Тренировки дома</a><a href="/gramota/">Нейросети с нуля</a></nav>
     <span>© 2026 Обиход</span>
   </div>
 </footer>
