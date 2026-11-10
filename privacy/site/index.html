@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности сайта — Обиход</title>
+<meta name="description" content="Добровольная Яндекс Метрика на сайте Обихода: какие данные получает сервис, как изменить выбор и обратиться по ранее собранным данным.">
+<link rel="canonical" href="https://obihodapp.ru/privacy/site/">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg: #faf8f5; --surface: #ffffff; --ink: #1c1a17; --ink-soft: #5d574e;
+    --ink-faint: #8d857a; --rule: #e5ded4; --rule-strong: #d3cabd;
+    --accent: #a8471f; --accent-ink: #ffffff; --habits: #2e5d50;
+    --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", ui-serif, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --measure: 40rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16150f; --surface: #1e1d16; --ink: #f2ede4; --ink-soft: #b3aa9c;
+      --ink-faint: #857d70; --rule: #302e25; --rule-strong: #3f3c30;
+      --accent: #e08b5c; --accent-ink: #16150f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 16px/1.7 ui-serif, "Georgia", "Times New Roman", serif;
+    padding: clamp(2rem, 7vw, 5rem) 1.5rem; display: flex; justify-content: center;
+  }
+  main { width: 100%; max-width: var(--measure); }
+  .doc-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule);
+  }
+  .doc-nav .brand {
+    display: inline-flex; align-items: center; gap: .6rem; text-decoration: none;
+    font-family: var(--sans); font-weight: 700; letter-spacing: .02em; color: var(--ink);
+  }
+  .doc-nav .brand .logo {
+    width: 24px; height: 24px; border-radius: 6px; background: var(--habits);
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; padding: 5px;
+  }
+  .doc-nav .brand .logo i { background: #fff; border-radius: 2px; }
+  .doc-nav .brand .logo i:last-child { background: transparent; border: 1.3px solid rgba(255,255,255,.55); }
+  .doc-nav .home {
+    font-family: var(--sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint); text-decoration: none;
+  }
+  .doc-nav .home:hover { color: var(--ink); }
+  h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; font-weight: 400;
+    letter-spacing: -0.015em; margin: 0 0 0.5rem; text-wrap: balance;
+  }
+  .rev {
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem;
+    color: var(--ink-faint); margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.1rem; font-weight: 600; margin: 2.75rem 0 0.9rem;
+    padding-top: 1.75rem; border-top: 1px solid var(--rule); letter-spacing: -0.01em;
+  }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.6rem; }
+  p, li { color: var(--ink-soft); }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:hover { text-decoration: none; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 1rem; font-size: 0.93rem; }
+  th, td { text-align: left; padding: 0.6rem 0.5rem 0.6rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  td { color: var(--ink-soft); }
+  .wrap { overflow-x: auto; }
+  strong { color: var(--ink); font-weight: 600; }
+  footer {
+    margin-top: 3rem; padding-top: 1.75rem; border-top: 1px solid var(--rule);
+    font-family: ui-sans-serif, -apple-system, sans-serif; font-size: 0.85rem; color: var(--ink-faint);
+  }
+</style>
+<link rel="stylesheet" href="/assets/statistics/v20261110/ui/ui.css">
+</head>
+<body>
+<main>
+<div class="doc-nav">
+  <a class="brand" href="/" aria-label="Обиход — на главную"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Обиход</a>
+  <a class="home" href="/">На главную</a>
+</div>
+
+<h1>Политика конфиденциальности сайта</h1>
+<p class="rev">Редакция от 10 ноября 2026 г. Действует для сайта obihodapp.ru. Для приложений Обихода действуют <a href="/privacy/">отдельные правила</a>.</p>
+
+<h2>1. Кто отвечает за данные</h2>
+<p>Оператор — индивидуальный предприниматель Скурихин Алексей Владимирович (ИНН 505012949491, ОГРНИП 326508100181350). По вопросам данных сайта можно написать на <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a>.</p>
+
+<h2>2. Добровольная аналитика</h2>
+<p>Мы используем <strong>Яндекс Метрику, счётчик № 114091215</strong>, чтобы понимать, какие страницы и материалы открывают посетители.</p>
+<p><strong>Аналитика выключена по умолчанию.</strong> Код Метрики подключается только после вашего явного разрешения. Продолжение просмотра, прокрутка или закрытие сообщения не означают разрешения. Материалы, файлы и инструменты сайта доступны и без аналитики. Выбор на сайте не меняет настройки приложений Обихода.</p>
+
+<h2>3. Какие сведения получает Метрика</h2>
+<p>После разрешения сайт передаёт Метрике по одному просмотру при открытии измеряемой страницы. Для записи просмотра сайт передаёт её постоянный адрес. Параметры ссылки, заголовок и адрес предыдущей страницы сайт не добавляет к записи просмотра.</p>
+<p>Страницы с полями ввода, калькулятор, эта политика и другие правовые страницы не участвуют в сборе посещаемости. Нажатия, скачивания, переходы в RuStore, просмотр видео и другие действия сайт отдельно не записывает.</p>
+<p>Для работы сервиса Яндекс может получать технические сведения, в том числе IP-адрес, информацию о браузере и устройстве и идентификаторы. Метрика использует cookie и локальное хранилище браузера. Сбор технических сведений возможен и при выключенных Вебвизоре, автоматических целях, электронной коммерции и тег-менеджере.</p>
+<p>Подробнее о работе сервиса — в <a href="https://yandex.ru/support/metrica/ru/general/how-it-works" rel="nofollow">справке Яндекса</a>, <a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" rel="nofollow">описании cookie и локального хранилища</a> и <a href="https://yandex.ru/legal/metrica_termsofuse/ru/" rel="nofollow">условиях Метрики</a>.</p>
+
+<h2 id="analytics-choice">4. Ваш выбор и отключение аналитики</h2>
+<p>Разрешение или отказ сохраняется в этом браузере на <strong>90 дней с момента вашего действия</strong>. Просмотр страниц не продлевает этот срок. Запись содержит выбор, дату и срок его действия, а также технические сведения о версии настройки. Мы не используем её как собственный идентификатор посетителя и не отправляем её в Метрику.</p>
+<p>После истечения срока, удаления или повреждения записи аналитика остаётся выключенной до нового разрешения. Если сохранить выбор не удаётся, аналитика не включается.</p>
+<p>Изменить выбор можно через <strong>«Настройки статистики»</strong> внизу страниц сайта. Для отзыва разрешения нажмите <strong>«Отключить и обновить страницу»</strong>. Сайт прекращает отправлять просмотры и обновляет страницу после сохранения отказа или удаления прежнего разрешения. После обновления код Метрики не подключается. Перезагрузка может сбросить несохранённые значения на странице.</p>
+<p>Если страница не обновилась после сохранения отказа, обновите её обычной кнопкой браузера. Чтобы завершить отключение в других открытых вкладках сайта, обновите их тоже.</p>
+<p>Если отключение не удалось сохранить, сайт сообщит об этом. На текущей странице отправка просмотров будет остановлена, но прежнее разрешение может остаться в браузере. Перед следующим посещением сбросьте сохранённый выбор, удалив данные сайта obihodapp.ru в настройках браузера. Такое удаление может затронуть другие сохранённые настройки сайта.</p>
+<p><strong>Отключение аналитики не удаляет ранее отправленную статистику у Яндекса и не означает очистку уже созданных cookie.</strong> Запрос, отправленный до отзыва, нельзя считать отменённым из-за обновления страницы.</p>
+
+<h2>5. Хранение данных</h2>
+<p>Срок 90 дней относится только к запоминанию вашего выбора в браузере. Сроки отдельных cookie Метрики указаны в <a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" rel="nofollow">справке Яндекса</a>; это не срок хранения всей статистики посещений на серверах сервиса.</p>
+<p>Статистика обрабатывается Яндексом в рамках работы Метрики. Единый фиксированный срок хранения всей статистики посещений в проверенных нами условиях сервиса не установлен. Мы не обещаем её автоматического удаления через 90 дней или сразу после отключения аналитики.</p>
+
+<h2>6. Запрос о ранее собранных данных</h2>
+<p>По вопросам обработки, уточнения или удаления данных сайта напишите оператору на <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a> с темой <strong>«Данные сайта»</strong>. Укажите, что вы хотите узнать или изменить. Если помните, добавьте примерную дату посещения и страницу сайта. Не присылайте пароли, платёжные сведения, суммы расходов и другие лишние данные.</p>
+<p>Мы рассмотрим запрос, проверим, какие относящиеся к нему сведения можем определить, и при необходимости уточним детали. Если для действия требуется участие Яндекса, проверим доступный порядок обращения к сервису. Сообщим, что удалось выполнить, либо объясним, какие сведения не удалось связать с запросом или какие действия недоступны.</p>
+<p>Письмо само по себе не позволяет однозначно найти ваши посещения в статистике. Локальное отключение аналитики и запрос об уже переданных данных — разные действия. Эта политика не обещает автоматического удаления всей истории конкретного посетителя или удаления по одному нажатию.</p>
+
+<h2>7. Хостинг, обращения и внешние сайты</h2>
+<p>Хостинг фиксирует стандартные журналы обращений — IP-адрес, время запроса и сведения о браузере — для обеспечения работоспособности сайта. Выбор Метрики не управляет этими журналами.</p>
+<p>Когда вы пишете нам, оператор получает ваш адрес электронной почты и содержание письма для рассмотрения обращения и ответа. Мы не включаем содержание переписки в события аналитики.</p>
+<p>После перехода в RuStore, социальную сеть или на другой внешний сайт обработка данных регулируется также правилами соответствующего сервиса.</p>
+
+<h2>8. Изменения политики</h2>
+<p>Актуальная редакция доступна по адресу <a href="https://obihodapp.ru/privacy/site/">obihodapp.ru/privacy/site/</a>. При изменении целей или условий добровольной аналитики сайт запросит новый выбор; ранее сохранённое разрешение не будет автоматически применяться к изменённым условиям.</p>
+
+<footer>
+  ИП Скурихин Алексей Владимирович · ИНН 505012949491 · ОГРНИП 326508100181350 · <a href="mailto:support@obihodapp.ru">support@obihodapp.ru</a><br>
+  <a href="/privacy/">Политика для приложений</a> · <a href="/">На главную</a>
+</footer>
+</main>
+<script type="module" src="/assets/statistics/v20261110/bootstrap.mjs"></script>
+</body>
+</html>
