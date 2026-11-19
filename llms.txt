@@ -1,0 +1,29 @@
+# Обиход
+
+> Обиход — небольшая российская студия простых приложений для Android. Все приложения опубликованы в RuStore, работают без регистрации; разработчик — ИП Скурихин А. В. Сайт: https://obihodapp.ru/ · поддержка: support@obihodapp.ru
+
+## Приложения
+
+- [Нейросети с нуля](https://obihodapp.ru/gramota/): встроенная нейросеть на русском — без регистрации и VPN, работает на собственном сервере в России. Пишет объявления для Авито, письма, поздравления, объясняет сложное простыми словами; если данных не хватает, задаёт уточняющие вопросы. Бесплатно 5 вопросов в день; 30 коротких уроков для начинающих и 120 готовых запросов. Подписка «Нейросеть Плюс» — 199 ₽ в месяц или 990 ₽ в год (до 100 вопросов в день). Отвечает текстом, картинки не рисует. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.gramota
+- [Учёт расходов](https://obihodapp.ru/budget/): учёт расходов и доходов на телефоне — трата записывается за пару касаний, на главном экране видно, сколько осталось до конца месяца. Без подключения к банкам, без облака и аккаунта. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.budget
+- [Трекер привычек](https://obihodapp.ru/habits/): напоминания и серии, работает офлайн, без регистрации; есть бесплатный шаблон трекера для печати (PDF). RuStore: https://www.rustore.ru/catalog/app/ru.obihod.habits
+- [Тренировки дома](https://obihodapp.ru/workout/): программа «Новичок» на 30 дней по 10–15 минут, без инвентаря, аккаунта и интернета. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.workout
+- [Детектор лжи](https://obihodapp.ru/detector/): шуточная игра для компании; ложь не определяет, микрофон и камеру не просит. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.detector
+- [Все приложения Обихода](https://obihodapp.ru/apps/)
+
+## Полезные материалы
+
+- [Как написать запрос нейросети](https://obihodapp.ru/gramota/kak-napisat-prompt/)
+- [Как проверить ответ нейросети](https://obihodapp.ru/gramota/proverka-otveta/)
+- [Как начать разбираться в нейросетях](https://obihodapp.ru/gramota/kak-ponyat-neyroseti/)
+- [Бюджет на месяц: как считать остаток](https://obihodapp.ru/budget/byudzhet-na-mesyats/)
+- [Сколько можно тратить в день до зарплаты](https://obihodapp.ru/budget/do-zarplaty/)
+- [Таблица учёта расходов — шаблон XLSX и CSV](https://obihodapp.ru/budget/tablica-rashodov/)
+- [Как выбрать приложение для учёта расходов](https://obihodapp.ru/budget/kak-vybrat-prilozhenie/)
+- [Как вести учёт расходов без приложения банка](https://obihodapp.ru/budget/kak-vesti-rashody/)
+- [Калькулятор расхода топлива](https://obihodapp.ru/avto/kalkulyator-rashoda-topliva/)
+
+## Документы
+
+- [Оферта «Нейросети с нуля»](https://obihodapp.ru/gramota/offer/) · [Политика конфиденциальности](https://obihodapp.ru/gramota/privacy/)
+- [Оферта «Учёт расходов»](https://obihodapp.ru/budget/offer/) · [Политика конфиденциальности](https://obihodapp.ru/budget/privacy/)
