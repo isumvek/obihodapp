@@ -16,6 +16,7 @@
 - [Как написать объявление для Авито с помощью нейросети](https://obihodapp.ru/gramota/obyavlenie-avito-neyroset/)
 - [Нейросеть на русском без VPN и регистрации](https://obihodapp.ru/gramota/neyroset-bez-vpn/)
 - [Как написать поздравление с помощью нейросети](https://obihodapp.ru/gramota/pozdravlenie-neyroset/)
+- [Как написать письмо с помощью нейросети: начальнику, в управляющую компанию, претензия магазину](https://obihodapp.ru/gramota/pismo-neyroset/)
 - [Как написать запрос нейросети](https://obihodapp.ru/gramota/kak-napisat-prompt/)
 - [Как проверить ответ нейросети](https://obihodapp.ru/gramota/proverka-otveta/)
 - [Как начать разбираться в нейросетях](https://obihodapp.ru/gramota/kak-ponyat-neyroseti/)
