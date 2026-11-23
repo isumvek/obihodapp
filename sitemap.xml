@@ -203,4 +203,14 @@
     <lastmod>2026-11-20</lastmod>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://obihodapp.ru/rubezh/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://obihodapp.ru/rubezh/play/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>

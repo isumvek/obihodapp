@@ -9,6 +9,7 @@
 - [Трекер привычек](https://obihodapp.ru/habits/): напоминания и серии, работает офлайн, без регистрации; есть бесплатный шаблон трекера для печати (PDF). RuStore: https://www.rustore.ru/catalog/app/ru.obihod.habits
 - [Тренировки дома](https://obihodapp.ru/workout/): программа «Новичок» на 30 дней по 10–15 минут, без инвентаря, аккаунта и интернета. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.workout
 - [Детектор лжи](https://obihodapp.ru/detector/): шуточная игра для компании; ложь не определяет, микрофон и камеру не просит. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.detector
+- [Рубеж: НЛО над Уралом](https://obihodapp.ru/rubezh/): пошаговая тактика про вторжение НЛО на Урал в 2030 году — отряд, база, исследования и бои в изометрии, работает без интернета. Глава 1 бесплатно; «Полная кампания» — разовая покупка 699 ₽ (цена запуска до 7 декабря), без подписки и без рекламы. RuStore: https://www.rustore.ru/catalog/app/ru.obihod.rubezh
 - [Все приложения Обихода](https://obihodapp.ru/apps/)
 
 ## Полезные материалы
